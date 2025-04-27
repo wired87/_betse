@@ -1,0 +1,434 @@
+# --------------------( LICENSE                            )--------------------
+# Copyright 2014-2025 by Alexis Pietak & Cecil Curry.
+# See "LICENSE" for further details.
+#
+# --------------------( SYNOPSIS                           )--------------------
+# Project-wide packager-agnostic configuration. Unlike all other top-level
+# configuration files (e.g., "setup.py", "MANIFEST.in") specific to some
+# utility in Python's package management ecosystem (e.g., "pip", "setuptools"),
+# this file strictly conforms to a standards-compliant PEP and hence
+# generically applies to *ALL* such utilities.
+#
+# Welcome to project distribution hell, where only twenty distinct files in
+# twenty distinct formats suffice to distribute a single project.
+#
+# --------------------( MOTIVATION                         )--------------------
+# This project previously leveraged "setuptools" via the "setuptools"-specific
+# "setup.py" script, like most projects at the time. Like its predecessor
+# "distutils", "setuptools" is now widely regarded as legacy software. Moreover,
+# "setuptools" has repeatedly broken backward compatibility with respect to
+# "setup.py" scripts and thus proven itself to be a poor steward for legacy
+# projects still leveraging those scripts. In short, "setuptools" is no longer a
+# viable path forward. This vendor-agnostic configuration remedies that deficit
+# by abandoning "setuptools" entirely in favour of modern alternatives: namely,
+# Hatch, which the Python Packaging Authority (PyPA) has officially adopted.
+#
+# --------------------( USAGE                              )--------------------
+# Common Hatch commans include:
+#
+#     # Validate this file. *ALWAYS* run this command after modifying this file.
+#     $ hatch project metadata | less
+#
+#     # Build both a source (tarball) *AND* binary distribution (wheel).
+#     $ hatch build -t sdist -t wheel
+#
+# --------------------( SEE ALSO                           )--------------------
+# * https://snarky.ca/clarifying-pep-518
+#   "Clarifying PEP 518 (a.k.a. pyproject.toml)", a human-readable article from
+#   one of the principal authors of the "pyproject.toml" standard.
+
+# ....................{ TODO                               }....................
+#FIXME: Specify package data as well, please. See also:
+#    https://hatch.pypa.io/latest/config/build/#patterns
+
+# ....................{ PEP 621                            }....................
+# PEP 621-compliant section generically defining project metadata in a build
+# tool-agnostic manner.
+#
+# Note that poetry currently ignores this section but does intend to comply with
+# PEP 621 for some future release. Indeed, it appears likely that poetry (and
+# other "pyproject.toml"-based build tools) will *EVENTUALLY* deprecate their
+# existing support for build tool-specific metadata. See also this currently
+# open issue on the subject:
+#     https://github.com/python-poetry/roadmap/issues/3
+[project]
+
+# Fully-qualified name of this project's top-level Python package.
+name = "betse"
+
+# Human-readable single-line synopsis of this project.
+#
+# By PyPI design, this string must *NOT* span multiple lines or paragraphs.
+description = """\
+The BioElectric Tissue Simulation Engine (BETSE) is a discrete exterior \
+calculus simulator for 2D computational multiphysics problems in the life \
+sciences -- including (electro)diffusion, (electro)osmosis, galvanotaxis, \
+voltage-gated ion channels, gene regulatory networks, and biochemical \
+reaction networks.\
+"""
+
+# Relative filename of the license file this project is licensed under.
+#
+# Note that PEP 621 prohibits this table (i.e., dictionary) from defining both
+# the "file" and "text" keys (e.g., 'text = "MIT"'). While defining both would
+# certainly be preferable, the "file" key takes precedence over the "text" key.
+license = { file = "LICENSE" }
+
+# Relative filename of the human-readable file introducing this project.
+readme = "README.rst"
+
+# List of all lowercase alphabetic keywords synopsising this project.
+#
+# These keywords may be arbitrarily selected so as to pretend to improve search
+# engine optimization (SEO). In actuality, they do absolutely nothing.
+keywords = [
+    "biology",
+    "multiphysics",
+    "science",
+    "simulator",
+]
+
+# List of all PyPI-specific trove classifier strings synopsizing this project.
+# Each such string *MUST* contain either two or three " :: " substrings
+# delimiting human-readable capitalized English words formally recognized by the
+# "distutils"-specific register() command. See also:
+# * https://pypi.org/classifiers
+#   Plaintext list of all trove classifier strings recognized by PyPI.
+classifiers = [
+    # PyPI-specific version type. The number specified here is a magic constant
+    # with no relation to this package's version numbering scheme. *sigh*
+    "Development Status :: 5 - Production/Stable",
+
+    # Miscellaneous metadata.
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+# List of all principal authors of this package as a list of tables (i.e.,
+# dictionaries) defining both the names and e-mail addresses of these authors.
+#
+# These authors should be thought of as the corresponding authors of a paper.
+# Academic correspondence should be redirected to these authors.
+authors = [
+    { name="Alexis Pietak", email="alexis.pietak@gmail.com" },
+]
+
+# List of all secondary authors of this package as a list of tables (i.e.,
+# dictionaries) defining both the names and e-mail addresses of these authors.
+#
+# These authors significantly contributed to the development of this project,
+# but lack the scientific expertise to respond to external inquiries. Therefore,
+# academic correspondence should *NOT* be redirected to these authors.
+maintainers = [
+    { name="Cecil Curry", email="leycec@gmail.com" },
+]
+
+# List of the names of all settings recognized by this PEP 621-compliant section
+# that the build backend (specified below) allows to be dynamically harvested
+# from this project's top-level Python package. Supported settings include:
+# * "version", which this build backend typically harvests from the PEP
+#   8-compliant "{name}.__version__" dunder global.
+# * "description", which this build backend typically harvests from the module
+#   docstring defined by the "{name}.__init__" submodule.
+dynamic = ["version"]
+
+# ....................{ PEP 621 ~ dependencies : mandatory }....................
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# WARNING: Changes to this setting *MUST* be synchronized with:
+# * Continuous integration test matrices, including:
+#   * The top-level "tox.ini" file.
+#   * The "jobs/tests/strategy/matrix/{tox-env,include/python-version}"
+#     settings of the GitHub Actions-specific
+#     ".github/workflows/python_test.yml" file.
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# Python interpreter versions required by this package.
+#
+# A relatively recent version of Python is required due to:
+# * @contextlib.contextmanager-decorated generator-based context managers, which
+#   are effectively *NOT* type-checkable by @beartype under Python <= 3.10 due
+#   to inadequaces of the low-level C-based code object API under older Pythons.
+requires-python = ">=3.11"
+
+# List of all mandatory runtime dependencies.
+dependencies = [
+    # Scientific stack. Dismantled, this is:
+    # * Numpy 1.13.0 first introduced the optional "axis" keyword argument to
+    #   the numpy.unique() function, which this codebase commonly passes.
+    # * Pillow 5.3.0 first introduced the standard "pillow.__version__"
+    #   attribute, which this codebase now expects to exist.
+    # * Matplotlib 3.6.0, which first deprecated various APIs and then
+    #   introduced newer replacements for those APIs (e.g., the new
+    #   "matplotlib.colormaps" subpackage).
+    "dill >=0.2.3",
+    "matplotlib >=3.9.0",
+    "numpy >=2.0.0",
+    "pillow >=5.3.0",
+    "scipy >=1.14.0",
+
+    # IO stack. Dismantled, this is:
+    # * ruamel.yaml >= 0.15.24, which resolves a long-standing parser issue
+    #   preventing complex YAML markup (e.g., ours) from being roundtripped:
+    #   "0.15.24 (2017-08-09):
+    #    * (finally) fixed longstanding issue 23 (reported by Antony Sottile),
+    #      now handling comment between block mapping key and value correctly"
+    # * The new "ruamel.yaml" API first introduced in 0.15.0. While older
+    #   versions strictly adhere to the functional PyYAML-compatible API, newer
+    #   versions break backward compatibility by entirely supplanting that API
+    #   with a modern object-oriented approach. Supporting both isn't worth the
+    #   substantial increase in maintenance debt.
+    "ruamel.yaml >=0.15.24",
+
+    # QA stack. Dismantled, this is:
+    # * beartype >= 0.10.0, which first defined the "beartype.typing"
+    #   compatibility layer widely used throughout this codebase.
+    "beartype >=0.18.0",
+]
+
+# ....................{ PEP 621 ~ dependencies : optional  }....................
+# List of all extras (i.e., settings with arbitrary names whose values are lists
+# of optional dependencies, which external end user-oriented package managers
+# like "pip" and "conda" then permit to be installed via those names).
+[project.optional-dependencies]
+
+# Read The Docs (RTD)-specific documentation-time package dependencies required
+# to automatically build documentation for this project from the third-party RTD
+# hosting service. For consistency, these dependencies are often constrained to
+# build documentation with a single well-tested configuration.
+doc = [
+    # Sphinx itself. Specifically, this project requires:
+    "sphinx",
+]
+
+# Tox-specific test-time dependencies required to test this package via
+# the third-party "tox" command at the command line.
+#
+# Note that:
+# * The "extras" key of the top-level "tox.ini" file explicitly references this
+#   extra.
+# * Failure to list *ALL* optional test-time dependencies here commonly results
+#   in errors from mypy, which raises false positives on parsing import
+#   statements for uninstalled third-party packages (e.g., "import numpy").
+test-tox = [
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # CAUTION: Avoid constraining optional test-time dependencies to version
+    # ranges, which commonly fail for edge-case test environments -- including:
+    # * The oldest Python version still supported by @beartype, which typically
+    #   is *NOT* supported by newer versions of these dependencies.
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    # ....................{ CORE                           }....................
+    # A relatively modern version of pytest is required. Specifically:
+    # * At least version 5.4.0 or newer, which refactored the previously
+    #   defined private _pytest.capture.CaptureManager._getcapture() method
+    #   into the newly defined private _pytest.capture._getmulticapture()
+    #   function, which the "betse.lib.setuptools.command.supcmdtest" submodule
+    #   necessarily monkey-patches at test time to sanitize captured output for
+    #   long-running tests.
+    "pytest >=5.4.0",
+
+    # ....................{ GRAPH                          }....................
+    # A relatively modern version of NetworkX *EXCLUDING* 1.11, which critically
+    # broke backwards compatibility by coercing use of the unofficial inactive
+    # "pydotplus" PyDot fork rather than the official active "pydot" PyDot
+    # project, is directly required by this application. NetworkX >= 1.12
+    # reverted to supporting "pydot", thus warranting blacklisting of only
+    # NetworkX 1.11. (It is confusing, maybe? Yes!)
+    "networkx >=1.2",
+    "pydot >=1.0.28",
+]
+
+# Tox-specific test-time coverage dependencies required to measure test coverage
+# for this package.
+#
+# Note that the "extras" key of the top-level "tox.ini" file explicitly
+# references this extra.
+test-tox-coverage = [
+    "coverage >=5.5",
+]
+
+# Developer-specific test-time dependencies required to test this package via
+# the third-party "pytest" and "tox" commands at the command line.
+test = [
+    # Tox-specific test-time dependencies.
+    "betse[test-tox,test-tox-coverage]",
+
+    # A relatively modern version of "tox" is required. It's probably quite old
+    # by now. I feel depressed just reading comments like this...
+    'tox >=3.20.1',
+]
+
+# Developer-specific dependencies required to develop and contribute pull
+# requests (PRs) for this project. Notably, this includes *ALL* test- and
+# documentation-time dependencies.
+all = ["betse[doc,test]"]
+
+# ....................{ PEP 621 ~ paths                    }....................
+# Entry points
+# https://peps.python.org/pep-0621/#entry-points
+# same as console_scripts entry point
+
+# PEP 621-compliant dictionary mapping from the unqualified basenames of all
+# terminal-oriented scripts to be installed in the antiquated format for Python
+# entry points of "{module_name}:{function_name}".
+#
+# Note that:
+# * This antiquated format ignores the implicit "__main__" standard supported by
+#   all Python interpreters. Instead, an explicit function name is required --
+#   even when that function resides in the "__main__" submodule of a package.
+# * PEP 621 merely standardizes the name of the "[project.scripts]"
+#   configuration group. The contents of this group conform to the antiquated
+#   entry points format standardized literally decades ago by "setuptools".
+#
+# See also:
+# * PEP 621 standardization of entry points:
+#      https://peps.python.org/pep-0621/#entry-points
+# * Entry points specification:
+#       https://packaging.python.org/en/latest/specifications/entry-points/
+[project.scripts]
+betse = "betse.__main__:main"
+
+# ....................{ PEP 621 ~ urls                     }....................
+# Table (i.e., dictionary) mapping from the PyPI-recognized name of each
+# relevant project URL to that URL.
+[project.urls]
+
+#FIXME: Prefer a documentation-specific site, please.
+# URL of this project's homepage.
+"Homepage" = "https://github.com/betsee/betse"
+
+# URL of this project's documentation.
+"Documentation" = "https://www.dropbox.com/s/3rsbrjq2ljal8dl/BETSE_Documentation_April10th2019.pdf?dl=0"
+
+# URL of this project's source code repository.
+"Repository" = "https://github.com/betsee/betse"
+
+# URL of this project's release list.
+"Releases" = "https://github.com/betsee/betse/releases"
+
+# URL of this project's issue tracker.
+"Issues" = "https://github.com/betsee/betse/issues"
+
+# ....................{ PEP 517                            }....................
+# PEP 517-compliant section declaring the third-party build tools required to
+# install this "pyproject.toml"-based project.
+[build-system]
+
+# List of all third-party Python packages required to build (i.e., install) this
+# project from both codebase tarballs and binary wheels.
+requires = ["hatchling >=1.14.0"]
+
+# Fully-qualified name of the Python submodule of a third-party Python package
+# listed above to be imported at runtime by third-party Python package managers
+# (e.g., "pip") to build this project.
+build-backend = "hatchling.build"
+
+# ....................{ NON-PEP                            }....................
+# PEP-noncompliant sections declaring settings unique to third-party build tools
+# required to install this "pyproject.toml"-based project.
+
+# ....................{ NON-PEP ~ hatch                    }....................
+# PEP-noncompliant section declaring Hatch-specific version settings. See also:
+# * Official documentation for this section.
+#   https://hatch.pypa.io/latest/version
+[tool.hatch.version]
+
+# Relative filename of the Python submodule defining either a PEP 8-compliant
+# "__version__" dunder global *OR* a PEP-noncompliant "VERSION" global, which
+# Hatch then statically parses to obtain the current version of this project.
+path = "betse/metadata.py"
+
+# ....................{ NON-PEP ~ hatch : path             }....................
+# PEP-noncompliant section declaring Hatch-specific build settings.
+[tool.hatch.build]
+
+# PEP-noncompliant section declaring Hatch-specific build settings when
+# building binary distributions (e.g., wheels).
+[tool.hatch.build.targets.wheel]
+
+# Whitelist of one or more Bash-style glob expressions matching the relative
+# pathnames of all paths to be included in binary distributions (e.g., wheels)
+# but *NOT* source distributions (e.g., tarballs) created by Hatch.
+include = [
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # CAUTION: Synchronize with glob expressions for source distributions below.
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    # Glob expression recursively matching *ALL* Python submodules in this
+    # project's package directory.
+    "/betse/**/*.py",
+
+    # Relative dirname of this project's data subdirectory (i.e., unimportable
+    # subdirectory bundled with this project containing *ONLY* Python-agnostic
+    # media files).
+    "/betse/data/",
+]
+
+# PEP-noncompliant section declaring Hatch-specific build settings when
+# building source distributions (e.g., tarballs).
+[tool.hatch.build.targets.sdist]
+
+# Whitelist of one or more Bash-style glob expressions matching the relative
+# pathnames of all paths to be included in source distributions (e.g., tarballs)
+# but *NOT* binary distributions (e.g., wheels) created by Hatch.
+#
+# Note that:
+# * This setting is the Hatch-specific equivalent of the setuptools-specific
+#   "MANIFEST.in" file, which serves a similar (albeit non-standard, poorly
+#   documented, and obfuscatory) purpose in the setuptools community.
+# * Hatch *ALWAYS* implicitly includes at least these files in source
+#   distributions:
+#   * ".gitignore".
+#   * "AUTHORS".
+#   * "LICENSE".
+#   * "README*".
+#   * "pyproject.toml".
+#
+# Nonetheless, explicit is better than implicit. Trusting all future versions of
+# Hatch to preserve this contract is a bridge too far for us. Ergo, we
+# explicitly match *ALL* paths to be included in source distributions here.
+include = [
+    # Relative basenames of all requisite files residing in *ANY* directory.
+    ".gitignore",
+
+    # Relative basenames of all requisite top-level installation-time files.
+    "/LICENSE",
+    "/README.rst",
+    "/conftest.py",
+    "/pyproject.toml",
+    "/pytest",
+    "/pytest.ini",
+    "/tox",
+    "/tox.ini",
+
+    # Relative dirnames of all requisite top-level installation-time
+    # directories, including:
+    # * All files documenting this project.
+    "/doc/",
+
+    # Glob expression recursively matching *ALL* Python submodules in this
+    # project's test suite.
+    "/betse_test/**/*.py",
+
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # CAUTION: Synchronize with glob expressions for binary distributions above.
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    # Glob expression recursively matching *ALL* Python submodules in this
+    # project's package directory.
+    "/betse/**/*.py",
+
+    # Relative dirname of this project's data subdirectory (i.e., unimportable
+    # subdirectory bundled with this project containing *ONLY* Python-agnostic
+    # media files).
+    "/betse/data/",
+]
