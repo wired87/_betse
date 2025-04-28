@@ -68,14 +68,21 @@ if os.name == "nt":
     DEFAULT_BETSE_CONFP = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\sim_config.yaml"
     DEFAULT_BETSE_GRN = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs\grn_basic.yaml"
     EXPRP=r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs\expression_data.yaml"
+    METABOP = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs\metabo_basic.yaml"
+
 else:
     DEFAULT_BETSE_GEOP = os.path.abspath(r"betse_app/betse-1.5.0/betse/data/yaml/geo")
     DEFAULT_BETSE_CONFP = os.path.abspath(r"betse_app/betse-1.5.0/betse/data/yaml/sim_config.yaml")
     DEFAULT_BETSE_GRN = os.path.abspath("betse_app/betse-1.5.0/betse/data/yaml/extra_configs/grn_basic.yaml")
     EXPRP = os.path.abspath("betse_app/betse-1.5.0/betse/data/yaml/extra_configs/expression_data.yaml")
+    METABOP = os.path.abspath("betse_app/betse-1.5.0/betse/data/yaml/sim_config.yaml")
+
 
 DEFAULT_BETSE_GRNC = load_yaml(filepath=DEFAULT_BETSE_GRN)
 DEFAULT_BETSE_CONTENT = load_yaml(filepath=DEFAULT_BETSE_CONFP)
+DEFAULT_BETSE_EXPRC = load_yaml(filepath=EXPRP)
+METABOC = load_yaml(filepath=METABOP)
+
 
 # THESE SECTIONS KEEP STABLE -> Not include in train process
 OUTSOURCED_CONF_SECTIONS = [

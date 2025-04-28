@@ -634,11 +634,11 @@ class BetseConfigSerializer(serializers.Serializer):
         """,
         label="Custom Config File (.yaml/.yml)",
         validators=[FileExtensionValidator(allowed_extensions=['yaml', "yml"])],
-        allow_null=True,
-        required=False,
+        allow_null=False,
+        required=True,
     )
 
-    grn_config_file = serializers.FileField(
+    grn_basic = serializers.FileField(
         help_text="""
         # The BETSE basic gene regulatory network configuration file, which takes a coarse view of a
         # GNR set-up. This file reproduces the GRN results from Figure 2, page 774 of: Karlebach, G.
@@ -650,7 +650,7 @@ class BetseConfigSerializer(serializers.Serializer):
         required=False,
     )
 
-    expression_cfg_file = serializers.FileField(
+    expression_data = serializers.FileField(
         help_text="""
         # This expression_data.yaml file allows for specific expression levels of any biomolecule, reaction, 
         # channel, or transporter to be set across all tissue profiles of the model. Expression levels 
@@ -666,7 +666,7 @@ class BetseConfigSerializer(serializers.Serializer):
         allow_null=True,
         required=False,
     )
-    metabo_cfg_file = serializers.FileField(
+    metabo_basic = serializers.FileField(
         help_text="""# The BETSE basic metabolism configuration file, which takes a coarse view of cell metabolism, only
         # considering the very basic production of ATP in a general reaction and background consumption.
         # All metabolism related config files must contain biomolecules with the name 'ATP', 'ADP', and 'Pi',

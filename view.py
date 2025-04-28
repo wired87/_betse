@@ -73,30 +73,9 @@ class BetseSimulationView(APIView):
             f.write(stderr.decode("utf-8"))
             f.write("\n\n")
 
-    def validate_cfg(self, grn_config_file, dest_dir, file_name):
-        """
-        Save custom GRN cfg else retur default path
-        """
-        if grn_config_file is not None:
-            cfg_path = os.path.join(dest_dir, file_name)
-            with open(cfg_path, "w") as f:
-                f.write(yaml.dump(grn_config_file))
-            cfg_path = os.path.abspath(cfg_path)
-        else:
-            cfg_path = "grn_basic.yaml"
-        return cfg_path
 
 
-    def create_next_folder(self, base_path):
-        os.makedirs(base_path, exist_ok=True)  # Create base dir if needed
-        items = os.listdir(base_path)
-        new_folder_name = f"new_run_{len(items)+1}"
-        new_folder_path = f"{base_path}/{new_folder_name}"
-        os.makedirs(new_folder_path, exist_ok=True)
-        print("Folder created", new_folder_path)
-        return new_folder_path
-
-    def set_saving_paths(self, validated_data, user_id, grn_config_file):
+    def create_folder_structure(self, user_id):
         save_base_path = f"betse_data/{user_id}"
         os.makedirs(save_base_path, exist_ok=True)
 
@@ -110,12 +89,20 @@ class BetseSimulationView(APIView):
             geo_dest,
             dirs_exist_ok=True
         )
+        return save_base_path, geo_dest
 
 
-        # General
-        expression_data_file_path = "expression_data.yaml"
-        print("expression_data_file_path", expression_data_file_path)
-        validated_data["general network"]["expression data file"] = expression_data_file_path
+    def create_next_folder(self, base_path):
+        os.makedirs(base_path, exist_ok=True)  # Create base dir if needed
+        items = os.listdir(base_path)
+        new_folder_name = f"new_run_{len(items)+1}"
+        new_folder_path = f"{base_path}/{new_folder_name}"
+        os.makedirs(new_folder_path, exist_ok=True)
+        print("Folder created", new_folder_path)
+        return os.path.abspath(new_folder_path)
+
+    def set_saving_paths(self, validated_data, file_paths):
+        validated_data["general network"]["expression data file"] = "expression_data.yaml" # os.path.relpath(file_paths[""], start="betse_data")
 
         validated_data["sim file saving"] = {
             "directory": f"SIMS",
@@ -129,6 +116,7 @@ class BetseSimulationView(APIView):
             "file": "init_1.betse.gz",
             "worldfile": "world_1.betse.gz",
         }
+
         validated_data["results file saving"] = {
             "init directory": os.path.join(f"RESULTS","init_1"),
             "sim directory": os.path.join(f"RESULTS","sim_1"),
@@ -152,33 +140,116 @@ class BetseSimulationView(APIView):
             "sim directory": os.path.join(f"RESULTS","sim_1"),
         }
 
-        # GRN
-        grn_data_file_path = self.validate_cfg(
-            grn_config_file,
-            dest_dir=save_base_path,
-            file_name="grn_cfg.yaml"
-        )
-        print("grn_data_file_path", grn_data_file_path)
-        validated_data["gene regulatory network settings"]["gene regulatory network config"] = grn_data_file_path
-
+        validated_data["gene regulatory network settings"]["gene regulatory network config"] = "grn_basic.yaml"#os.path.relpath(file_paths["grn_basic"], start="betse_data")
         validated_data["gene regulatory network settings"]["sim-grn settings"]["save to directory"] = os.path.join(f"RESULTS","GRN")
         validated_data["gene regulatory network settings"]["sim-grn settings"]["save to file"] = f"GRN_1.betse.gz"
 
-        # Expression data file:
-        expression_data_file_path = self.validate_cfg(
-            grn_config_file,
-            dest_dir=save_base_path,
-            file_name="grn_cfg.yaml"
-        )
-        print("expression_data_file_path", expression_data_file_path)
-        validated_data["general network"]["expression data file"] = expression_data_file_path
-
         # Metabolism Config File
 
+        return validated_data
 
 
 
-        return validated_data, save_base_path, expression_data_file_path, grn_data_file_path, geo_dest
+    def get_file_paths(self, files, base_path):
+        """
+        Get al received files, save them local in final base data folder
+
+        :return: dict include file_name and
+        """
+        if os.name == "nt":
+            base_ref_file_path = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs"
+        else:
+            base_ref_file_path = os.path.abspath("betse_app/betse-1.5.0/betse/data/yaml/extra_configs")
+
+        file_paths = {}
+        for f in os.listdir(base_ref_file_path):
+            file_name = f.split("/")[-1].split(".")[0]
+            save_path = os.path.abspath(os.path.join(base_path, f"{f}"))
+            # check for missing fields
+            if files.get(file_name) is None:
+                print(f"File {f} not provided")
+                yaml_confc = load_yaml(os.path.join(base_ref_file_path, f"{f}"))
+            else:
+                print(f"Provided {f}")
+                # Write the file to dest data dir (gz folder)
+                yaml_confc = files[file_name].read()
+                save_path = os.path.abspath(os.path.join(base_path, f"{f}"))
+
+            with open(save_path, "w") as yf:
+                yf.write(yaml.dump(yaml_confc, default_flow_style=False, sort_keys=False))
+
+            file_paths[file_name] = save_path
+        return file_paths
+
+
+    def read_sim_cfg(self, uploaded_file):
+        # Read received cfg
+        try:
+            file_content = uploaded_file.read().decode('utf-8')
+            validated_data = yaml.safe_load(file_content)
+        except Exception as e:
+            error = f"Error handling provided config file: {e}"
+            # print(error)
+            return None
+        return validated_data
+
+    def post(self, request):
+        print("=======================")
+        print("Betse Request received")
+        print("=======================")
+
+        files = request.FILES
+        user_id = TEST_USER_ID
+
+        # Check if base cfg exists
+        serializer = BetseConfigSerializer(data=request.data)  # Use the serializer
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        validated_data = serializer.validated_data  # Get the validated data
+        # Check for provided config file
+        uploaded_file = validated_data.get('sim_config_file')
+        validated_data=self.read_sim_cfg(uploaded_file)
+        if validated_data is None:
+            return Response("Content not valid", status=status.HTTP_400_BAD_REQUEST)
+
+        # CREATE FOLDER, SAVE PATHS
+        save_base_path, geo_dest = self.create_folder_structure(user_id)
+        file_paths:dict = self.get_file_paths(files, base_path=save_base_path)
+
+        # Set saving pathis in cfg
+        validated_data = self.set_saving_paths(validated_data, file_paths)
+
+        # save adapted content
+        config_path = os.path.abspath(os.path.join(save_base_path, f"sim_config_file.yaml"))
+        yaml_confc = yaml.dump(validated_data, default_flow_style=False, sort_keys=False)
+        with open(config_path, "w") as yf:
+            yf.write(yaml_confc)
+
+        # 4. Execute BETSE Simulation
+        betse_runner = BetseRunner(
+            config_path=config_path,
+            save_dir=save_base_path,
+        )
+
+        zip_path = betse_runner.execute(geo_dest, zip=True)
+        bz_content = open(zip_path, "rb")
+
+        # Remove local content todo -> cloud
+        shutil.rmtree(save_base_path)
+
+        print("Process finished")
+        return FileResponse(
+            bz_content,
+            as_attachment=True,
+            filename=os.path.basename(zip_path),
+            content_type="application/zip"
+        )
+
+
+
+"""
+
 
     def convert_input_to_yaml(
             self,
@@ -227,70 +298,7 @@ class BetseSimulationView(APIView):
             )
 
         return config_path
-
-    def post(self, request):
-        print("=======================")
-        print("Betse Request received")
-        print("=======================")
-
-        #parsed_data = request.data
-        parsed_data=request.data
-        print(parsed_data)
-        user_id = TEST_USER_ID
-
-        serializer = BetseConfigSerializer(data=parsed_data)  # Use the serializer
-        if not serializer.is_valid():
-
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-        validated_data = serializer.validated_data  # Get the validated data
-
-        # Check fro provided config file
-        uploaded_file = validated_data.get('sim_config_file')
-        if uploaded_file is None:
-            validated_data = replace_underscores_in_keys(attributes=validated_data)
-        else:
-            try:
-                file_content = uploaded_file.read().decode('utf-8')
-                validated_data = yaml.safe_load(file_content)
-            except Exception as e:
-                error = f"Error handling provided config file: {e}"
-                #print(error)
-                return Response(error, status=status.HTTP_400_BAD_REQUEST)
-
-
-        # Check for custom GRN cfg
-        grn_config_file = validated_data.get('grn_config_file')
-
-        (validated_data,
-         save_base_path,
-         expression_data_file_path,
-         grn_data_file_path,
-         geo_dest) = self.set_saving_paths(validated_data, user_id, grn_config_file)
-
-        config_path = self.convert_input_to_yaml(validated_data, save_base_path, expression_data_file_path, grn_data_file_path)
-
-        # 4. Execute BETSE Simulation
-        betse_runner = BetseRunner(
-            config_path=config_path,
-            save_dir=save_base_path,
-        )
-
-        zip_path = betse_runner.execute(geo_dest, zip=True)
-        bz_content = open(zip_path, "rb")
-
-        # Remove local content todo -> cloud
-        shutil.rmtree(save_base_path)
-
-        print("Process finished")
-        return FileResponse(
-            bz_content,
-            as_attachment=True,
-            filename=os.path.basename(zip_path),
-            content_type="application/zip"
-        )
-
-
+"""
 
 
 

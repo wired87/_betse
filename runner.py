@@ -2,6 +2,9 @@
 import shutil
 import subprocess
 
+import yaml
+
+
 #from utils.ggoogle.vertexai import ask_gem
 #from utils.utils import GraphUtils
 
@@ -44,7 +47,8 @@ class BetseRunner:
 
                 with open(save_logs_path, "w") as f:
                     print(v)
-                    f.write(v)
+                    wcontent=yaml.dump(v, default_flow_style=False, sort_keys=False)
+                    f.write(wcontent)
 
         if zip is True:
             # Rm geo folder
