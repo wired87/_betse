@@ -101,7 +101,7 @@ class BetseSimulationView(APIView):
         print("Folder created", new_folder_path)
         return os.path.abspath(new_folder_path)
 
-    def set_saving_paths(self, validated_data, file_paths):
+    def set_saving_paths(self, validated_data):
         validated_data["general network"]["expression data file"] = "expression_data.yaml" # os.path.relpath(file_paths[""], start="betse_data")
 
         validated_data["sim file saving"] = {
@@ -199,8 +199,8 @@ class BetseSimulationView(APIView):
         print("=======================")
         user_id = TEST_USER_ID
         files = request.FILES
-        sim_data_json:dict = request.data.get("sim_config_file")
-        sim_data_file = request.data.get("sim_config_file")
+        sim_data_json:dict = request.data.get("sim_config_data")
+        sim_data_file = files.get("sim_config_file")
 
         if sim_data_json is None and sim_data_file is None:
             return Response("Super bad request", status=status.HTTP_400_BAD_REQUEST)
@@ -208,10 +208,11 @@ class BetseSimulationView(APIView):
         if sim_data_json is not None:
 
             validated_data = sim_data_json
-
+            print("Vkeys sim_data_json", [key for key in validated_data.keys()])
         else:
 
             validated_data=self.read_sim_cfg(sim_data_file)
+            print("Vkeys", [key for key in validated_data.keys()])
 
         if validated_data is None:
             return Response("Content not valid", status=status.HTTP_400_BAD_REQUEST)
@@ -221,7 +222,7 @@ class BetseSimulationView(APIView):
         file_paths:dict = self.get_file_paths(files, base_path=save_base_path)
 
         # Set saving pathis in cfg
-        validated_data = self.set_saving_paths(validated_data, file_paths)
+        validated_data = self.set_saving_paths(validated_data)
 
         # save adapted content
         config_path = os.path.abspath(os.path.join(save_base_path, f"sim_config_file.yaml"))
