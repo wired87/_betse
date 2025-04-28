@@ -232,7 +232,7 @@ class BetseSimulationView(APIView):
         """
         # 1. Serialize and Validate Input Data
         #base_betse_confp = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\betse_app\betse\data\yaml\sim_config.yaml"
-
+        print(request.body)
         user_id = TEST_USER_ID
 
         #base_betse_conc = load_yaml(base_betse_confp).copy()
