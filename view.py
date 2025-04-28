@@ -1,4 +1,5 @@
 import datetime
+import json
 import os
 import shutil
 
@@ -232,12 +233,20 @@ class BetseSimulationView(APIView):
         """
         # 1. Serialize and Validate Input Data
         #base_betse_confp = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\betse_app\betse\data\yaml\sim_config.yaml"
-        print(request.body)
+        if os.name == "nt":
+            parsed_data = request.data
+        else:
+            try:
+                parsed_data = json.loads(request.body)
+            except Exception as e:
+                return Response({"error": f"Invalid JSON: {str(e)}"}, status=400)
+
+        print(parsed_data)
         user_id = TEST_USER_ID
 
         #base_betse_conc = load_yaml(base_betse_confp).copy()
 
-        serializer = BetseConfigSerializer(data=request.data)  # Use the serializer
+        serializer = BetseConfigSerializer(data=parsed_data)  # Use the serializer
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
