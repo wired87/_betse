@@ -1,0 +1,25 @@
+
+    "results_options": [
+        "This field is required."
+    ],
+    "variable_settings": [
+        "This field is required."
+    ],
+    "solver_settings": [
+        "This field is required."
+    ],
+    "file_handling": [
+        "This field is required."
+    ],
+    "general_options": [
+        "This field is required."
+    ],
+    "world_options": [
+        "This field is required."
+    ],
+    "tissue_profile_definition": [
+        "This field is required."
+    ],
+    "modulator_function_properties": [
+        "This field is required."
+    ]

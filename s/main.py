@@ -666,8 +666,13 @@ class BetseConfigSerializer(serializers.Serializer):
         required=False,
     )
 
-    results_options = ResultsOptionsSerializer()
-    variable_settings = VariableSettingsSerializer()
+    results_options = ResultsOptionsSerializer(
+        default=lambda: ResultsOptionsSerializer().to_internal_value({}),
+
+    )
+    variable_settings = VariableSettingsSerializer(
+        default=lambda: VariableSettingsSerializer().to_internal_value({}),
+    )
 
     internal_parameters = InternalParametersSerializer(
         default=lambda: InternalParametersSerializer().to_internal_value({}),
@@ -678,8 +683,15 @@ class BetseConfigSerializer(serializers.Serializer):
         )
     )
 
-    solver_settings = SolverSettingsSerializer(help_text='Solver settings.')
-    file_handling = FileHandlingSerializer(help_text='File handling settings.')
+    solver_settings = SolverSettingsSerializer(
+        help_text='Solver settings.',
+        default=lambda: SolverSettingsSerializer().to_internal_value({}),
+
+    )
+    file_handling = FileHandlingSerializer(
+        help_text='File handling settings.',
+        default=lambda: FileHandlingSerializer().to_internal_value({}),
+    )
 
     init_time_settings = InitTimeSettingsSerializer(
         help_text='Initialization time settings.',
@@ -697,9 +709,20 @@ class BetseConfigSerializer(serializers.Serializer):
 
     )
 
-    general_options = GeneralOptionsSerializer(help_text='General simulation options.')
-    world_options = WorldOptionsSerializer(help_text='World options.')
-    tissue_profile_definition = TissueProfileDefinitionSerializer(help_text='Tissue profile definition.')
+    general_options = GeneralOptionsSerializer(
+        help_text='General simulation options.',
+        default = lambda: GeneralOptionsSerializer().to_internal_value({}),
+
+    )
+    world_options = WorldOptionsSerializer(
+        help_text='World options.',
+        default=lambda: WorldOptionsSerializer().to_internal_value({}),
+
+    )
+    tissue_profile_definition = TissueProfileDefinitionSerializer(
+        help_text='Tissue profile definition.',
+        default=lambda: TissueProfileDefinitionSerializer().to_internal_value({}),
+    )
 
     # -----------------------------------------------------------------------------------------------------------------------
     # TARGETED INTERVENTIONS
@@ -776,7 +799,10 @@ class BetseConfigSerializer(serializers.Serializer):
     )
     # ----------------------------------------------------------------------------------------------------------------------
     # MODULATOR FUNCTION PROPERTIES
-    modulator_function_properties = ModulatorFunctionPropertiesSerializer(help_text='Modulator function properties.')
+    modulator_function_properties = ModulatorFunctionPropertiesSerializer(
+        help_text='Modulator function properties.',
+        default=lambda: ModulatorFunctionPropertiesSerializer().to_internal_value({}),
+    )
     # ----------------------------------------------------------------------------------------------------------------------
     #  GENERAL NETWORK
     general_network = GeneralNetworkSerializer(
