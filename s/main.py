@@ -678,7 +678,9 @@ class BetseConfigSerializer(serializers.Serializer):
         required=False,
     )
 
-    results_options = ResultsOptionsSerializer(
+
+
+"""results_options = ResultsOptionsSerializer(
         default=lambda: ResultsOptionsSerializer().to_internal_value({}),
 
     )
@@ -825,18 +827,7 @@ class BetseConfigSerializer(serializers.Serializer):
     gene_regulatory_network_settings = GeneRegulatoryNetworkSettingsSerializer(
         help_text="Define an auxillary network in an external config file and read it in and run from that extra file.",
         default=lambda: GeneRegulatoryNetworkSettingsSerializer().to_internal_value({}),
-    )
-    """results_file_saving = ResultsFileSavingSerializer(
-        help_text="Initialization and simulation exports to save.",
-        default=lambda: ResultsFileSavingSerializer().to_internal_value({}),
-    )
-    init_file_saving = InitFileSavingSerializer(
-        help_text="Initialization paths to save and load.",
-        default=lambda: InitFileSavingSerializer().to_internal_value({}),
-    )
-
-    sim_file_saving = SimFileSavingSerializer(
-        help_text="Simulation paths to save and load.",
-        default=lambda: SimFileSavingSerializer().to_internal_value({}),
     )"""
+
     # run_config = RunConfigS(help_text="Min one of the following subcommands must be passed")
+

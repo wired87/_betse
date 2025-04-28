@@ -238,7 +238,6 @@ class BetseSimulationView(APIView):
         print(parsed_data)
         user_id = TEST_USER_ID
 
-
         serializer = BetseConfigSerializer(data=parsed_data)  # Use the serializer
         if not serializer.is_valid():
 

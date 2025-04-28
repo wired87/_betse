@@ -40,7 +40,10 @@ class WhileSolvingAnimationsSerializer(serializers.Serializer):
     colorbar = AnimationColorbarSerializer(help_text="Animation colorbar settings.")
 
 class WhileSolvingSerializer(serializers.Serializer):
-    animations = WhileSolvingAnimationsSerializer(help_text="Animations exported during simulation computation.")
+    animations = WhileSolvingAnimationsSerializer(
+        help_text="Animations exported during simulation computation.",
+        default=lambda: WhileSolvingAnimationsSerializer().to_internal_value({}),
+    )
 
 ### !!! WHILE SOLVING
 
