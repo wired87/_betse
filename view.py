@@ -15,6 +15,8 @@ from betse_app.s.main import BetseConfigSerializer
 from bm.settings import TEST_USER_ID
 from file.yaml import load_yaml
 
+import logging
+logger = logging.getLogger(__name__)
 
 def replace_underscores_in_keys(attributes):
     """Recursively replaces underscores with spaces in all dict keys, including nested ones."""
@@ -227,15 +229,12 @@ class BetseSimulationView(APIView):
         return config_path
 
     def post(self, request):
-        """
-        Handles POST requests to run BETSE simulations.
-        save logs
-        """
-        # 1. Serialize and Validate Input Data
-        #base_betse_confp = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\betse_app\betse\data\yaml\sim_config.yaml"
         print("=======================")
         print("Betse Request received")
         print("=======================")
+        logger.info("=======================")
+        logger.info("Betse Request received")
+        logger.info("=======================")
 
         parsed_data = request.data
 
