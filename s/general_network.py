@@ -93,7 +93,7 @@ class GeneralNetworkSerializer(serializers.Serializer):
     )
     expression_data_file = serializers.CharField(
         help_text="Path to expression data file.",
-        default="_betse/betse/data/yaml/extra_configs/expression_data.yaml"
+        default="betse_app/betse/data/yaml/extra_configs/expression_data.yaml"
     )
     biomolecules = BiomoleculeSerializer(
         many=True,

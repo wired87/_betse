@@ -1,12 +1,12 @@
 from django.core.validators import FileExtensionValidator
 from rest_framework import serializers
 
-from _betse import DEFAULT_BETSE_CONTENT
-from _betse.s.general_network import GeneralNetworkSerializer
-from _betse.s.grn import GeneRegulatoryNetworkSettingsSerializer
-from _betse.s.internal_params import InternalParametersSerializer
-from _betse.s.results import ResultsOptionsSerializer
-from _betse.s.variables import VariableSettingsSerializer
+from betse_app import DEFAULT_BETSE_CONTENT
+from betse_app.s.general_network import GeneralNetworkSerializer
+from betse_app.s.grn import GeneRegulatoryNetworkSettingsSerializer
+from betse_app.s.internal_params import InternalParametersSerializer
+from betse_app.s.results import ResultsOptionsSerializer
+from betse_app.s.variables import VariableSettingsSerializer
 
 
 def profile_values(serializer_class):

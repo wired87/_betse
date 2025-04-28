@@ -1,6 +1,6 @@
 from django.urls import path
 
-from _betse.grn_predictor.view import CreatGrnView
+from betse_app.grn_predictor.view import CreatGrnView
 
 name = "grn"
 

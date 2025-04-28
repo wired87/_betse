@@ -8,9 +8,9 @@ from rest_framework.response import Response
 from rest_framework import status
 import yaml
 
-from _betse import DEFAULT_BETSE_GEOP, EXPRP, DEFAULT_BETSE_GRN
-from _betse.runner import BetseRunner
-from _betse.s.main import BetseConfigSerializer
+from betse_app import DEFAULT_BETSE_GEOP, EXPRP, DEFAULT_BETSE_GRN
+from betse_app.runner import BetseRunner
+from betse_app.s.main import BetseConfigSerializer
 from bm.settings import TEST_USER_ID
 from file.yaml import load_yaml
 
@@ -231,7 +231,7 @@ class BetseSimulationView(APIView):
         save logs
         """
         # 1. Serialize and Validate Input Data
-        #base_betse_confp = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\_betse\betse\data\yaml\sim_config.yaml"
+        #base_betse_confp = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\betse_app\betse\data\yaml\sim_config.yaml"
 
         user_id = TEST_USER_ID
 

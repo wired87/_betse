@@ -43,7 +43,7 @@ from file.yaml import load_yaml
 import os
 
 # Load whole Betse YAML configs
-yaml_dir = os.path.abspath(r"_betse/betse-1.5.0/betse/data/yaml")
+yaml_dir = os.path.abspath(r"betse_app/betse-1.5.0/betse/data/yaml")
 extra_configs_dir = os.path.join(yaml_dir, "extra_configs")
 
 DATAP = {
@@ -64,15 +64,15 @@ DATAC["sim_config"] = load_yaml(filepath=os.path.join(yaml_dir, "sim_config.yaml
 
 
 if os.name == "nt":
-    DEFAULT_BETSE_GEOP = r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\geo"
-    DEFAULT_BETSE_CONFP = r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\sim_config.yaml"
-    DEFAULT_BETSE_GRN = r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\extra_configs\grn_basic.yaml"
-    EXPRP=r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\extra_configs\expression_data.yaml"
+    DEFAULT_BETSE_GEOP = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\geo"
+    DEFAULT_BETSE_CONFP = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\sim_config.yaml"
+    DEFAULT_BETSE_GRN = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs\grn_basic.yaml"
+    EXPRP=r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs\expression_data.yaml"
 else:
-    DEFAULT_BETSE_GEOP = os.path.abspath(r"_betse/betse-1.5.0/betse/data/yaml/geo")
-    DEFAULT_BETSE_CONFP = os.path.abspath(r"_betse/betse-1.5.0/betse/data/yaml/sim_config.yaml")
-    DEFAULT_BETSE_GRN = os.path.abspath("_betse/betse-1.5.0/betse/data/yaml/extra_configs/grn_basic.yaml")
-    EXPRP = os.path.abspath("_betse/betse-1.5.0/betse/data/yaml/extra_configs/expression_data.yaml")
+    DEFAULT_BETSE_GEOP = os.path.abspath(r"betse_app/betse-1.5.0/betse/data/yaml/geo")
+    DEFAULT_BETSE_CONFP = os.path.abspath(r"betse_app/betse-1.5.0/betse/data/yaml/sim_config.yaml")
+    DEFAULT_BETSE_GRN = os.path.abspath("betse_app/betse-1.5.0/betse/data/yaml/extra_configs/grn_basic.yaml")
+    EXPRP = os.path.abspath("betse_app/betse-1.5.0/betse/data/yaml/extra_configs/expression_data.yaml")
 
 DEFAULT_BETSE_GRNC = load_yaml(filepath=DEFAULT_BETSE_GRN)
 DEFAULT_BETSE_CONTENT = load_yaml(filepath=DEFAULT_BETSE_CONFP)

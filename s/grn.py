@@ -44,7 +44,7 @@ class GeneRegulatoryNetworkSettingsSerializer(serializers.Serializer):
         help_text='Enable gene regulatory network (GRN)?'
     )
     gene_regulatory_network_config = serializers.CharField(
-        default="_betse/extra_configs/grn_basic.yaml",
+        default="betse_app/extra_configs/grn_basic.yaml",
         help_text='Config file path. Ignored if GRN is disabled.'
     )
     sim_grn_settings = SimGRNSettingsSerializer(

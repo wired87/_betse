@@ -1,9 +1,9 @@
 from django.urls import path
 
-from _betse.grn_predictor.view import CreatGrnView
-from _betse.view import BetseSimulationView
+from betse_app.grn_predictor.view import CreatGrnView
+from betse_app.view import BetseSimulationView
 
-app_name = "_betse"
+app_name = "betse_app"
 urlpatterns = [
     path('run/', BetseSimulationView.as_view()),
     path('grn-create/', CreatGrnView.as_view()),
