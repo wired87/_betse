@@ -232,20 +232,18 @@ class BetseSimulationView(APIView):
         print("=======================")
         print("Betse Request received")
         print("=======================")
-        logger.info("=======================")
-        logger.info("Betse Request received")
-        logger.info("=======================")
 
         parsed_data = request.data
 
         print(parsed_data)
         user_id = TEST_USER_ID
 
-        #base_betse_conc = load_yaml(base_betse_confp).copy()
 
         serializer = BetseConfigSerializer(data=parsed_data)  # Use the serializer
         if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            serializer = BetseConfigSerializer(data=json.loads(request.body.decode('utf-8')))
+            if not serializer.is_valid():
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         validated_data = serializer.validated_data  # Get the validated data
 
