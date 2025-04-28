@@ -104,7 +104,7 @@ class VariableSettingsSerializer(serializers.Serializer):
 
     pressures = PressuresSerializer(
         help_text="Pressure-related simulation parameters.",
-
+        default=lambda: PressuresSerializer().to_internal_value({}),
     )
     noise = NoiseSerializer(
         help_text="Membrane noise simulation options.",

@@ -52,7 +52,10 @@ class SolverOptionsSerializer(serializers.Serializer):
 
 
 class SolverSettingsSerializer(serializers.Serializer):
-    solver_options = SolverOptionsSerializer(help_text='Settings specific to simulation solvers.')
+    solver_options = SolverOptionsSerializer(
+        help_text='Settings specific to simulation solvers.',
+        default=lambda: SolverOptionsSerializer().to_internal_value({}),
+    )
 
 
 # ------------------------------------------------------------------------------
@@ -94,9 +97,18 @@ class ResultsFileSavingSerializer(serializers.Serializer):
 
 
 class FileHandlingSerializer(serializers.Serializer):
-    init_file_saving = InitFileSavingSerializer(help_text='Initialization file saving settings.')
-    sim_file_saving = SimFileSavingSerializer(help_text='Simulation file saving settings.')
-    results_file_saving = ResultsFileSavingSerializer(help_text='Results file saving settings.')
+    init_file_saving = InitFileSavingSerializer(
+        help_text='Initialization file saving settings.',
+        default=lambda: InitFileSavingSerializer().to_internal_value({}),
+    )
+    sim_file_saving = SimFileSavingSerializer(
+        help_text='Simulation file saving settings.',
+        default=lambda: SimFileSavingSerializer().to_internal_value({}),
+    )
+    results_file_saving = ResultsFileSavingSerializer(
+        help_text='Results file saving settings.',
+        default=lambda: ResultsFileSavingSerializer().to_internal_value({}),
+    )
 
 
 # ------------------------------------------------------------------------------

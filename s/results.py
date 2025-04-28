@@ -424,10 +424,17 @@ class ResultsOptionsSerializer(serializers.Serializer):
         default=True,
         help_text="export regulatory networks for single cell to\ninterconnected graph images?"
     )
-    while_solving=WhileSolvingSerializer(help_text="Results exported during simulation computation.")
+    while_solving=WhileSolvingSerializer(
+        help_text="Results exported during simulation computation.",
+        default=lambda: WhileSolvingSerializer().to_internal_value({}),
+
+    )
     after_solving = AfterSolvingSerializer(
         default=lambda: AfterSolvingSerializer().to_internal_value({}),
         help_text="Results exported after simulation computation.",
     )
-    save=SaveSerializer(help_text="Saving options for export types enabled above.")
+    save=SaveSerializer(
+        help_text="Saving options for export types enabled above.",
+        default=lambda: SaveSerializer().to_internal_value({}),
+    )
     plot_cluster_mask= serializers.BooleanField(default=True, help_text="'plot seed' creates a plot showing the logarithm of environmental diffusion")
