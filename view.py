@@ -197,19 +197,22 @@ class BetseSimulationView(APIView):
         print("=======================")
         print("Betse Request received")
         print("=======================")
-
-        files = request.FILES
         user_id = TEST_USER_ID
+        files = request.FILES
+        sim_data_json:dict = request.data.get("sim_config_file")
+        sim_data_file = request.data.get("sim_config_file")
 
-        # Check if base cfg exists
-        serializer = BetseConfigSerializer(data=request.data)  # Use the serializer
-        if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if sim_data_json is None and sim_data_file is None:
+            return Response("Super bad request", status=status.HTTP_400_BAD_REQUEST)
 
-        validated_data = serializer.validated_data  # Get the validated data
-        # Check for provided config file
-        uploaded_file = validated_data.get('sim_config_file')
-        validated_data=self.read_sim_cfg(uploaded_file)
+        if sim_data_json is not None:
+
+            validated_data = sim_data_json
+
+        else:
+
+            validated_data=self.read_sim_cfg(sim_data_file)
+
         if validated_data is None:
             return Response("Content not valid", status=status.HTTP_400_BAD_REQUEST)
 

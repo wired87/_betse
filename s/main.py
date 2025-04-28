@@ -634,8 +634,8 @@ class BetseConfigSerializer(serializers.Serializer):
         """,
         label="Custom Config File (.yaml/.yml)",
         validators=[FileExtensionValidator(allowed_extensions=['yaml', "yml"])],
-        allow_null=False,
-        required=True,
+        allow_null=True,
+        required=False,
     )
 
     grn_basic = serializers.FileField(
