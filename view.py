@@ -233,13 +233,11 @@ class BetseSimulationView(APIView):
         """
         # 1. Serialize and Validate Input Data
         #base_betse_confp = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\betse_app\betse\data\yaml\sim_config.yaml"
-        if os.name == "nt":
-            parsed_data = request.data
-        else:
-            try:
-                parsed_data = json.loads(request.body)
-            except Exception as e:
-                return Response({"error": f"Invalid JSON: {str(e)}"}, status=400)
+        print("=======================")
+        print("Betse Request received")
+        print("=======================")
+
+        parsed_data = request.data
 
         print(parsed_data)
         user_id = TEST_USER_ID
@@ -249,7 +247,6 @@ class BetseSimulationView(APIView):
         serializer = BetseConfigSerializer(data=parsed_data)  # Use the serializer
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
         validated_data = serializer.validated_data  # Get the validated data
 
