@@ -234,7 +234,7 @@ class BetseSimulationView(APIView):
         print("=======================")
 
         #parsed_data = request.data
-        parsed_data=json.loads(request.body.decode('utf-8'))
+        parsed_data=request.data
         print(parsed_data)
         user_id = TEST_USER_ID
 
