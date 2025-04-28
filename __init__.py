@@ -33,13 +33,41 @@ Betse funktioniert zwar aber du wolltest von anfang an dein gehirn verbessern  !
 """
 import os
 
-from utils.file.yaml import load_yaml
+from file.yaml import load_yaml
+
+"""
+
+
+from file.yaml import load_yaml
+
+import os
+
+# Load whole Betse YAML configs
+yaml_dir = os.path.abspath(r"_betse/betse-1.5.0/betse/data/yaml")
+extra_configs_dir = os.path.join(yaml_dir, "extra_configs")
+
+DATAP = {
+    file: os.path.join(yaml_dir, file)
+    for file in os.listdir(yaml_dir)
+    if os.path.isfile(os.path.join(yaml_dir, file))
+}
+
+DATAC = {
+    file: load_yaml(filepath=os.path.join(extra_configs_dir, file))
+    for file in os.listdir(extra_configs_dir)
+    if os.path.isfile(os.path.join(extra_configs_dir, file))
+}
+
+DATAC["sim_config"] = load_yaml(filepath=os.path.join(yaml_dir, "sim_config.yaml"))
+
+"""
+
 
 if os.name == "nt":
-    DEFAULT_BETSE_GEOP = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\_betse\betse-1.5.0\betse\data\yaml\geo"
-    DEFAULT_BETSE_CONFP = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\_betse\betse-1.5.0\betse\data\yaml\sim_config.yaml"
-    DEFAULT_BETSE_GRN = r"C:\Users\wired\OneDrive\Desktop\Projects\bm\_betse\betse-1.5.0\betse\data\yaml\extra_configs\grn_basic.yaml"
-    EXPRP=r"C:\Users\wired\OneDrive\Desktop\Projects\bm\_betse\betse-1.5.0\betse\data\yaml\extra_configs\expression_data.yaml"
+    DEFAULT_BETSE_GEOP = r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\geo"
+    DEFAULT_BETSE_CONFP = r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\sim_config.yaml"
+    DEFAULT_BETSE_GRN = r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\extra_configs\grn_basic.yaml"
+    EXPRP=r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\extra_configs\expression_data.yaml"
 else:
     DEFAULT_BETSE_GEOP = os.path.abspath(r"_betse/betse-1.5.0/betse/data/yaml/geo")
     DEFAULT_BETSE_CONFP = os.path.abspath(r"_betse/betse-1.5.0/betse/data/yaml/sim_config.yaml")

@@ -2,8 +2,8 @@
 import shutil
 import subprocess
 
-from utils.ggoogle.vertexai import ask_gem
-from utils.utils import GraphUtils
+#from utils.ggoogle.vertexai import ask_gem
+#from utils.utils import GraphUtils
 
 
 class BetseRunner:
@@ -24,7 +24,6 @@ class BetseRunner:
             "plot init",
             "plot sim"
         ]
-        self.g = GraphUtils(upload_to="sp")
 
         self.config_path = config_path or "sample_sim.yaml"
         self.save_dir = save_dir
@@ -40,31 +39,9 @@ class BetseRunner:
         for k, v in phase_stats.items():
             if v["status"] == "failed":
                 save_logs_path = f"{self.save_dir}/{k}_fail_logs.txt"
-                cfg_content = open(self.config_path, "r")
-                prompt = f"""
-                You receive a config file for BETSE (Tiisue stimmulation engine) AND an error message that includes 
-                information why the simmulatiino was faield.
-                Formulate a short and easy to understand reason why the simulation might faield.
+                # todo get from utils
+                #v = self.sum_content_ai(v)
 
-                Extend theis explanation with suggestions on how to adapt the config file to solve the issue by analyzing each line.
-                Return nothing but a formell written text of max 3 sentences that best possible describes solution steps in max 3 precise points
-
-                YAML CONFIG CONTENT:
-                 {cfg_content}
-
-                ERROR MESSAGE:
-                {v}
-                """
-
-                response = ask_gem(prompt)
-
-                v = f"""
-                {response}
-                ================
-                OUT
-                ===                
-                {v}
-                """
                 with open(save_logs_path, "w") as f:
                     print(v)
                     f.write(v)
@@ -150,3 +127,33 @@ class BetseRunner:
         print("Run sum")
         # pprint.pp(phase_stats)
         return phase_stats
+
+
+    def sum_content_ai(self, v):
+        cfg_content = open(self.config_path, "r")
+        prompt = f"""
+                        You receive a config file for BETSE (Tiisue stimmulation engine) AND an error message that includes 
+                        information why the simmulatiino was faield.
+                        Formulate a short and easy to understand reason why the simulation might faield.
+
+                        Extend theis explanation with suggestions on how to adapt the config file to solve the issue by analyzing each line.
+                        Return nothing but a formell written text of max 3 sentences that best possible describes solution steps in max 3 precise points
+
+                        YAML CONFIG CONTENT:
+                         {cfg_content}
+
+                        ERROR MESSAGE:
+                        {v}
+                        """
+
+        response = None #ask_gem(prompt)
+
+        v = f"""
+                        {response}
+                        ================
+                        OUT
+                        ===                
+                        {v}
+                        """
+
+        return response

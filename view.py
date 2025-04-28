@@ -12,7 +12,7 @@ from _betse import DEFAULT_BETSE_GEOP, EXPRP, DEFAULT_BETSE_GRN
 from _betse.runner import BetseRunner
 from _betse.s.main import BetseConfigSerializer
 from bm.settings import TEST_USER_ID
-from utils.file.yaml import load_yaml
+from file.yaml import load_yaml
 
 
 def replace_underscores_in_keys(attributes):
