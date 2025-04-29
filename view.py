@@ -242,7 +242,7 @@ class BetseSimulationView(APIView):
         validated_data = self.set_saving_paths(validated_data, file_paths)
 
         # save adapted content
-        config_path = os.path.join(save_base_path, f"sim_config_file.yaml")
+        config_path = os.path.abspath(os.path.join(save_base_path, f"sim_config_file.yaml"))
         yaml_confc = yaml.dump(validated_data, default_flow_style=False, sort_keys=False)
         with open(config_path, "w") as yf:
             yf.write(yaml_confc)

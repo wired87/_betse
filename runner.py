@@ -101,6 +101,8 @@ class BetseRunner:
                     check=False,
                     text=True,  # auto-decodes stdout/stderr to strings
                     cwd=self.save_dir,
+                    executable="/home/derbenedikt_sterra/workenv/bin/betse",
+
                 )
                 print("Process finished", result)
 
