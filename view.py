@@ -100,7 +100,7 @@ class BetseSimulationView(APIView):
         new_folder_path = f"{base_path}/{new_folder_name}"
         os.makedirs(new_folder_path, exist_ok=True)
         print("Folder created", new_folder_path)
-        return os.path.abspath(new_folder_path)
+        return new_folder_path
 
     def set_saving_paths(self, validated_data, file_paths):
         """
@@ -174,7 +174,7 @@ class BetseSimulationView(APIView):
         file_paths = {}
         for f in os.listdir(base_ref_file_path):
             file_name = f.split("/")[-1].split(".")[0]
-            save_path = os.path.abspath(os.path.join(base_path, f"{f}"))
+            save_path = os.path.join(base_path, f"{f}")
             # check for missing fields
             if files.get(file_name) is None:
                 print(f"File {f} not provided")
