@@ -103,7 +103,13 @@ class BetseSimulationView(APIView):
         return os.path.abspath(new_folder_path)
 
     def set_saving_paths(self, validated_data, file_paths):
-        validated_data["general network"]["expression data file"] = os.path.relpath(file_paths[""], start="betse_data")
+        """
+
+        :param validated_data:
+        :param file_paths:
+        :return:
+        """
+        validated_data["general network"]["expression data file"] = os.path.relpath(file_paths["expression_data"], start="betse_data")
 
         validated_data["sim file saving"] = {
             "directory": f"SIMS",
