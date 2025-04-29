@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import status
 import yaml
 
-from betse_app import DEFAULT_BETSE_GEOP, EXPRP, DEFAULT_BETSE_GRN
+from betse_app import DEFAULT_BETSE_GEOP
 from betse_app.runner import BetseRunner
 from betse_app.s.main import BetseConfigSerializer
 from bm.settings import TEST_USER_ID
@@ -108,7 +108,8 @@ class BetseSimulationView(APIView):
         does not work:
         - file name
         - rel from betse_data
-        -
+        - abs
+
 
         """
         validated_data["general network"]["expression data file"] = "expression_data.yaml" #file_paths["expression_data"]
@@ -127,8 +128,8 @@ class BetseSimulationView(APIView):
         }
 
         validated_data["results file saving"] = {
-            "init directory": os.path.join(f"RESULTS","init_1"),
-            "sim directory": os.path.join(f"RESULTS","sim_1"),
+            "init directory": os.path.join(f"RESULTS", "init_1"),
+            "sim directory": os.path.join(f"RESULTS", "sim_1"),
         }
 
         # File handling

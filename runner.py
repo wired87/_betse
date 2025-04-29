@@ -116,10 +116,10 @@ class BetseRunner:
                         "details": result.stdout.strip(),
                     }
 
-            except FileNotFoundError:
+            except FileNotFoundError as e:
                 phase_stats[phase] = {
                     "status": "failed",
-                    "details": "BETSE FileNotFoundError",
+                    "details": f"BETSE FileNotFoundError: {e}",
                 }
             except subprocess.TimeoutExpired:
                 phase_stats[phase] = {"status": "failed", "details": "BETSE simulation timed out. 120s"}
