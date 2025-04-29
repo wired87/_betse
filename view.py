@@ -183,7 +183,7 @@ class BetseSimulationView(APIView):
                 print(f"Provided {f}")
                 # Write the file to dest data dir (gz folder)
                 yaml_confc = files[file_name].read()
-                save_path = os.path.abspath(os.path.join(base_path, f"{f}"))
+                save_path = os.path.join(base_path, f"{f}")
 
             with open(save_path, "w") as yf:
                 yf.write(yaml.dump(yaml_confc, default_flow_style=False, sort_keys=False))
