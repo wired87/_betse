@@ -198,11 +198,17 @@ class BetseSimulationView(APIView):
         print("Betse Request received")
         print("=======================")
         user_id = TEST_USER_ID
+        print("TEST_USER_ID", user_id)
+
         files = request.FILES
+        print("files", files)
+
         sim_data_json:dict = request.data.get("sim_config_data")
         sim_data_file = files.get("sim_config_file")
-
+        print("sim_data_json", sim_data_json)
+        print("sim_data_file", sim_data_file)
         if sim_data_json is None and sim_data_file is None:
+            print("Nothing received -> return")
             return Response("Super bad request", status=status.HTTP_400_BAD_REQUEST)
 
         if sim_data_json is not None:
