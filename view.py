@@ -109,7 +109,7 @@ class BetseSimulationView(APIView):
         :param file_paths:
         :return:
         """
-        validated_data["general network"]["expression data file"] = os.path.relpath(file_paths["expression_data"], start="betse_data")
+        validated_data["general network"]["expression data file"] = file_paths["expression_data"]
 
         validated_data["sim file saving"] = {
             "directory": f"SIMS",
@@ -147,7 +147,7 @@ class BetseSimulationView(APIView):
             "sim directory": os.path.join(f"RESULTS","sim_1"),
         }
 
-        validated_data["gene regulatory network settings"]["gene regulatory network config"] = os.path.relpath(file_paths["grn_basic"], start="betse_data")
+        validated_data["gene regulatory network settings"]["gene regulatory network config"] = file_paths["grn_basic"]
         validated_data["gene regulatory network settings"]["sim-grn settings"]["save to directory"] = os.path.join(f"RESULTS","GRN")
         validated_data["gene regulatory network settings"]["sim-grn settings"]["save to file"] = f"GRN_1.betse.gz"
 
