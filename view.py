@@ -225,13 +225,11 @@ class BetseSimulationView(APIView):
             return Response("Super bad request", status=status.HTTP_400_BAD_REQUEST)
 
         if sim_data_json is not None:
-
             validated_data = sim_data_json
-            print("Vkeys sim_data_json", [key for key in validated_data.keys()])
+            #print("Vkeys sim_data_json", [key for key in validated_data.keys()])
         else:
-
             validated_data=self.read_sim_cfg(sim_data_file)
-            print("Vkeys", [key for key in validated_data.keys()])
+            #print("Vkeys", [key for key in validated_data.keys()])
 
         if validated_data is None:
             return Response("Content not valid", status=status.HTTP_400_BAD_REQUEST)
@@ -244,7 +242,7 @@ class BetseSimulationView(APIView):
         validated_data = self.set_saving_paths(validated_data, file_paths)
 
         # save adapted content
-        config_path = os.path.abspath(os.path.join(save_base_path, f"sim_config_file.yaml"))
+        config_path = os.path.join(save_base_path, f"sim_config_file.yaml")
         yaml_confc = yaml.dump(validated_data, default_flow_style=False, sort_keys=False)
         with open(config_path, "w") as yf:
             yf.write(yaml_confc)
