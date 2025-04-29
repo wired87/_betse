@@ -1,6 +1,7 @@
 import datetime
 import json
 import os
+import pprint
 import shutil
 
 from django.http import FileResponse
@@ -101,8 +102,8 @@ class BetseSimulationView(APIView):
         print("Folder created", new_folder_path)
         return os.path.abspath(new_folder_path)
 
-    def set_saving_paths(self, validated_data):
-        validated_data["general network"]["expression data file"] = "expression_data.yaml" # os.path.relpath(file_paths[""], start="betse_data")
+    def set_saving_paths(self, validated_data, file_paths):
+        validated_data["general network"]["expression data file"] = os.path.relpath(file_paths[""], start="betse_data")
 
         validated_data["sim file saving"] = {
             "directory": f"SIMS",
@@ -140,7 +141,7 @@ class BetseSimulationView(APIView):
             "sim directory": os.path.join(f"RESULTS","sim_1"),
         }
 
-        validated_data["gene regulatory network settings"]["gene regulatory network config"] = "grn_basic.yaml"#os.path.relpath(file_paths["grn_basic"], start="betse_data")
+        validated_data["gene regulatory network settings"]["gene regulatory network config"] = os.path.relpath(file_paths["grn_basic"], start="betse_data")
         validated_data["gene regulatory network settings"]["sim-grn settings"]["save to directory"] = os.path.join(f"RESULTS","GRN")
         validated_data["gene regulatory network settings"]["sim-grn settings"]["save to file"] = f"GRN_1.betse.gz"
 
@@ -179,6 +180,9 @@ class BetseSimulationView(APIView):
                 yf.write(yaml.dump(yaml_confc, default_flow_style=False, sort_keys=False))
 
             file_paths[file_name] = save_path
+
+        print("File Paths")
+        pprint.pp(file_paths)
         return file_paths
 
 
@@ -228,7 +232,7 @@ class BetseSimulationView(APIView):
         file_paths:dict = self.get_file_paths(files, base_path=save_base_path)
 
         # Set saving pathis in cfg
-        validated_data = self.set_saving_paths(validated_data)
+        validated_data = self.set_saving_paths(validated_data, file_paths)
 
         # save adapted content
         config_path = os.path.abspath(os.path.join(save_base_path, f"sim_config_file.yaml"))
