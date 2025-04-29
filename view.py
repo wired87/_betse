@@ -4,6 +4,7 @@ import pprint
 import shutil
 
 from django.http import FileResponse
+from django_ratelimit.decorators import ratelimit
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -56,6 +57,8 @@ def replace_key(key):
                 key = key.replace(ion, ion_with_charge, 1)
     return key.replace('_', ' ')
 
+
+@ratelimit(key='ip', rate='10/m', block=True)
 class BetseSimulationView(APIView):
     """
     API view to handle BETSE simulation requests.  It expects a full

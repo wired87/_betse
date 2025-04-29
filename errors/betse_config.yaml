@@ -1,12 +1,12 @@
-sim config file: null
+sim config file: everythoing
 results options:
-  enumerate cells: false
+  enumerate cells: everythoing
   plot cell index: 0
-  show cells: true
-  overlay currents: false
+  show cells: everythoing
+  overlay currents: everythoing
   streamline density: 2.0
-  plot total current: true
-  plot cutlines: true
+  plot total current: everythoing
+  plot cutlines: everythoing
   plot masked geometry: true
   default colormap: RdBu_r
   background colormap: RdBu_r
