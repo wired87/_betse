@@ -105,9 +105,12 @@ class BetseSimulationView(APIView):
     def set_saving_paths(self, validated_data, file_paths):
         """
 
-        :param validated_data:
-        :param file_paths:
-        :return:
+        path handling
+        does not work:
+        - file name
+        - rel from betse_data
+        -
+
         """
         validated_data["general network"]["expression data file"] = file_paths["expression_data"]
 
@@ -166,7 +169,7 @@ class BetseSimulationView(APIView):
         if os.name == "nt":
             base_ref_file_path = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs"
         else:
-            base_ref_file_path = os.path.abspath("betse_app/betse-1.5.0/betse/data/yaml/extra_configs")
+            base_ref_file_path = "betse_app/betse-1.5.0/betse/data/yaml/extra_configs"
 
         file_paths = {}
         for f in os.listdir(base_ref_file_path):
