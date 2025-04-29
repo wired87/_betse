@@ -644,7 +644,7 @@ class BetseConfigSerializer(serializers.Serializer):
         # GNR set-up. This file reproduces the GRN results from Figure 2, page 774 of: Karlebach, G.
         # & Shamir, R. Modelling and analysis of gene regulatory networks Nature Reviews Molecular
         """,
-        label="GRN config (.yaml/.yml)",
+        label="GRN Config (.yaml/.yml)",
         validators=[FileExtensionValidator(allowed_extensions=['yaml', "yml"])],
         allow_null=True,
         required=False,
@@ -661,7 +661,7 @@ class BetseConfigSerializer(serializers.Serializer):
         # rate (for transporters)
         # Use the expression data 
         """,
-        label="GRN config (.yaml/.yml)",
+        label="Expression Data Config (.yaml/.yml)",
         validators=[FileExtensionValidator(allowed_extensions=['yaml', "yml"])],
         allow_null=True,
         required=False,
@@ -672,7 +672,7 @@ class BetseConfigSerializer(serializers.Serializer):
         # All metabolism related config files must contain biomolecules with the name 'ATP', 'ADP', and 'Pi',
         # otherwise, the level of complexity/detail can be high or low.
         """,
-        label="GRN config (.yaml/.yml)",
+        label="Metabo Base Config (.yaml/.yml)",
         validators=[FileExtensionValidator(allowed_extensions=['yaml', "yml"])],
         allow_null=True,
         required=False,
