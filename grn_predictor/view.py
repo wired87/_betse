@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import serializers
 
-from betse_app.grn_predictor.s import GRNConfigSerializer
+from _betse.grn_predictor.s import GRNConfigSerializer
 
 
 class S(serializers.Serializer):

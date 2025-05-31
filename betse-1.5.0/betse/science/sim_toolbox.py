@@ -1318,7 +1318,7 @@ def div_free(Fxo, Fyo, cells):
 def smooth_flux(Fxo, Fyo, cells):
 
     """
-    Uses the Helmholtz-Hodge decomposition to smooth a vector field in a manner that does not change the physics.
+    Uses the Helmholtz-Hodge decomposition to smooth a vector field in a manner that does not change the qf_sim.physics.
     Fxo, Fyo must be arrays defined on the environmental grid
 
     """

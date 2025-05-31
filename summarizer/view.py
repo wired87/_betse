@@ -3,7 +3,7 @@
 
 from rest_framework.views import APIView
 
-from betse_app.s.main import BetseConfigSerializer
+from _betse.s.main import BetseConfigSerializer
 
 r"""
 

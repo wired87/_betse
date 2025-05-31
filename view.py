@@ -10,13 +10,16 @@ from rest_framework.response import Response
 from rest_framework import status
 import yaml
 
-from betse_app import DEFAULT_BETSE_GEOP
-from betse_app.runner import BetseRunner
-from betse_app.s.main import BetseConfigSerializer
+from _betse import DEFAULT_BETSE_GEOP
+from _betse.runner import BetseRunner
+from _betse.s.main import BetseConfigSerializer
 from bm.settings import TEST_USER_ID
 from file.yaml import load_yaml
 
 import logging
+
+
+
 logger = logging.getLogger(__name__)
 
 def replace_underscores_in_keys(attributes):
@@ -58,8 +61,10 @@ def replace_key(key):
     return key.replace('_', ' ')
 
 
-@ratelimit(key='ip', rate='10/m', block=True)
 class BetseSimulationView(APIView):
+    ratelimit_key = 'ip'
+    ratelimit_rate = '10/m'
+    ratelimit_block = True
     """
     API view to handle BETSE simulation requests.  It expects a full
     BETSE configuration as input, serializes it, saves it to a YAML
@@ -170,9 +175,9 @@ class BetseSimulationView(APIView):
         :return: dict include file_name and
         """
         if os.name == "nt":
-            base_ref_file_path = r"C:\Users\wired\OneDrive\Desktop\base_dj\betse_app\betse-1.5.0\betse\data\yaml\extra_configs"
+            base_ref_file_path = r"C:\Users\wired\OneDrive\Desktop\base_dj\_betse\betse-1.5.0\betse\data\yaml\extra_configs"
         else:
-            base_ref_file_path = "betse_app/betse-1.5.0/betse/data/yaml/extra_configs"
+            base_ref_file_path = "_betse/betse-1.5.0/betse/data/yaml/extra_configs"
 
         file_paths = {}
         for f in os.listdir(base_ref_file_path):

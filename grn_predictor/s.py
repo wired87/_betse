@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from betse_app import DEFAULT_BETSE_GRNC
+from _betse import DEFAULT_BETSE_GRNC
 
 
 class GrowthDecaySerializer(serializers.Serializer):
