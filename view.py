@@ -4,7 +4,6 @@ import pprint
 import shutil
 
 from django.http import FileResponse
-from django_ratelimit.decorators import ratelimit
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -17,8 +16,6 @@ from bm.settings import TEST_USER_ID
 from file.yaml import load_yaml
 
 import logging
-
-
 
 logger = logging.getLogger(__name__)
 

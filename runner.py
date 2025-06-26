@@ -87,6 +87,9 @@ class BetseRunner:
         pass
 
     def run_batch(self):
+        """
+        RUN BETSE
+        """
         phase_stats = {}
 
         for phase in self.phases:
