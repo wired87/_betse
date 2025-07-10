@@ -268,7 +268,7 @@ class BetseSimulationView(APIView):
         return FileResponse(
             bz_content,
             as_attachment=True,
-            filename=os.path.basename(zip_path),
+            filename=user_id,
             content_type="application/zip"
         )
 
