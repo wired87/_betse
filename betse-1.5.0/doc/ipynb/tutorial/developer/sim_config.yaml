@@ -54,7 +54,7 @@ solver options:
 
 init file saving:              # Initialization paths to save and load.
   directory: INITS             # Directory containing the following files.
-  worldfile: world_1.betse.gz  # File with cell cluster created by "betse seed".
+  worldfile: world_1.betse.gz  # File with cell _qfn_cluster_node created by "betse seed".
                                # Supported filetypes include (ordered by decreasing filesize):
                                # ".betse" (no compression),
                                # ".betse.gz" (very fast minimal compression),
@@ -138,7 +138,7 @@ general options:
 # --------------------------------------------------------------------------------------------------
 # WORLD OPTIONS
 # --------------------------------------------------------------------------------------------------
-# The 'world' refers to cell geometric properties, the size of the cluster, and the properties of
+# The 'world' refers to cell geometric properties, the size of the _qfn_cluster_node, and the properties of
 # the environment, such as size and temperature. These variables are common to both init and sim
 # runs. All of these world variables will be created in the init and apply to all sims running from
 # the init.
@@ -194,7 +194,7 @@ world options:
 #---------------------------------------------------------------------------------------------------
 # TISSUE PROFILE DESIGNATION
 #---------------------------------------------------------------------------------------------------
-# Tissue profiles are user-defined regions within the cluster to which specific base membrane
+# Tissue profiles are user-defined regions within the _qfn_cluster_node to which specific base membrane
 # diffusion profiles, interventions, and individualized dynamics (e.g., voltage gated channels) can
 # be applied. Tissue profiles can be gap-junction connected or separated (isolated) from other
 # tissue profiles. Cluster shape and individual tissues can be defined by images, or specified via
@@ -219,7 +219,7 @@ tissue profile definition:
              # tissue profile defined below. Never ignored, even if "profiles enabled" is False.
       name: base # Arbitrary unique profile name.
       image: geo/circle/circle_base.png # Absolute or relative filename of the image whose
-                                        # pure-black pixels define the cell cluster shape.
+                                        # pure-black pixels define the cell _qfn_cluster_node shape.
       diffusion constants: # Membrane diffusion constants applied to all unprofiled cells.
         Dm_Na: 1.0e-18     # Na+ membrane diffusion constant [m2/s]
         Dm_K: 50.0e-18     # K+ membrane diffusion constant [m2/s]
@@ -230,7 +230,7 @@ tissue profile definition:
 
     profiles: # List of all non-default tissue profiles. Ignored if "profiles enabled" is False.
 
-      # Example tissue profile for a depolarized patch of cells at the cell cluster centre.
+      # Example tissue profile for a depolarized patch of cells at the cell _qfn_cluster_node centre.
       - name: spot
         insular: False
         diffusion constants:
@@ -254,17 +254,17 @@ tissue profile definition:
                                        # vector image.
           image: geo/circle/spot_3.png # Absolute or relative filename of this raster image.
           indices: [3, 14, 15, 9, 265] # List of all positive integers uniquely identifying each
-                                       # cell in this cluster to apply this tissue profile to.
+                                       # cell in this _qfn_cluster_node to apply this tissue profile to.
                                        # Ignored unless "type: indices" specified above.
-          percent: 50  # Percentage of all cells in this cluster to randomly apply this tissue
+          percent: 50  # Percentage of all cells in this _qfn_cluster_node to randomly apply this tissue
                        # profile to in the range [0, 100] (e.g., 50 selects 50% of all cells).
                        # Ignored unless "type: random" specified above,
 
 
-  cut profiles: # List of all cut profiles (i.e., cell cluster regions to be permanently
+  cut profiles: # List of all cut profiles (i.e., cell _qfn_cluster_node regions to be permanently
                 # removed by a cutting event triggered during the simulation phase).
                 # Ignored if "profiles enabled" is False or cutting event is disabled.
-    # Example cut profile removing a depolarized wedge of cells from a cell cluster boundary.
+    # Example cut profile removing a depolarized wedge of cells from a cell _qfn_cluster_node boundary.
     - name: surgery # Arbitrary unique profile name.
       image: geo/circle/wedge.png # Absolute or relative filename of the raster image whose
                                   # pure-black pixels define the region of cells to remove.
@@ -273,7 +273,7 @@ tissue profile definition:
 # TARGETED INTERVENTIONS
 #-----------------------------------------------------------------------------------------------------------------------
 # Targeted interventions are scheduled changes that can be applied to cells in
-# the cluster by linking to a defined tissue profile. Targeted interventions
+# the _qfn_cluster_node by linking to a defined tissue profile. Targeted interventions
 # only occur during sim runs, not during an init.
 #
 # No file synch issues: Targeted intervention settings can be altered after seed
@@ -405,7 +405,7 @@ modulator function properties:   # set properties of modulating functions which 
 # pump and gap junction function and environmental concentrations of ions.
 # No file synch issues: Global intervention settings can be changed at any time between seed, init and sim.
 
-# The following global changes affect the entire cluster during a sim run (not an init):
+# The following global changes affect the entire _qfn_cluster_node during a sim run (not an init):
 
 change K env:       # Change the environmental concentration of K+
   event happens: False      # turn the event on (True) or off (False)
@@ -452,7 +452,7 @@ block NaKATP pump:
 # INTERVENTIONS
 # ------------------------------------------------------------------------------
 # Interventions are scheduled changes externally applied to some or all cells
-# in the cell cluster for some or all time steps of the simulation. All settings
+# in the cell _qfn_cluster_node for some or all time steps of the simulation. All settings
 # in this section are safely modifiable at any time, including between the seed,
 # initialization, and simulation phases.
 interventions:
@@ -592,11 +592,11 @@ gene regulatory network settings:
     run as sim: False    # Run network as an initialization (False) or simulation (True)?
     run network on: seed # Type of previously run simulation phase to "piggyback" (i.e.,
                          # restart) the current network from, as any following string:
-                         # * "seed", networking an uninitialized, unsimulated cell cluster
+                         # * "seed", networking an uninitialized, unsimulated cell _qfn_cluster_node
                          #   (i.e., neither initialized to steady-state concentrations nor
                          #   simulated with non-steady-state bioelectrical phenomena).
-                         # * "init", networking an initialized, unsimulated cell cluster.
-                         # * "sim", networking an initialized, simulated cell cluster.
+                         # * "init", networking an initialized, unsimulated cell _qfn_cluster_node.
+                         # * "sim", networking an initialized, simulated cell _qfn_cluster_node.
     save to directory: RESULTS/GRN # Directory containing the following file.
     save to file: GRN_1.betse.gz   # File of networking results created by "betse sim-grn".
                                    # Supported filetypes are as above.
@@ -641,7 +641,7 @@ variable settings:
     turn on: False       # include deformation under the osmotic pressure influx and electric fields?
     galvanotropism: 1.0e-9      # factor by which cells change shape to global electric field (can be 0.0 or negative)
     viscous damping: 0.01        # viscous damping of elastic waves in tissue (0.0 to 1.0; larger = higher damping)
-    fixed cluster boundary: True   # Exterior cells of the cluster are fixed (True) or free to move (False)
+    fixed cluster boundary: True   # Exterior cells of the _qfn_cluster_node are fixed (True) or free to move (False)
     young modulus: 1.0e3         # Young's modulus (elastic modulus) of individual cell [Pa] (1 kPa to 10 e6 Pa)
 
 # FIXME: FIX THESE
@@ -736,7 +736,7 @@ results options:
   plot total current: True      # for currents and morphgen fluxing, if simululating extracellular spaces, plot
                                   # total current if true, plot gap junction current if false
 
-  plot cutlines: True            # plot any scheduled cut-lines on the cell cluster plot as black regions
+  plot cutlines: True            # plot any scheduled cut-lines on the cell _qfn_cluster_node plot as black regions
 
   plot masked geometry: True      # plot the geometry using the overall shape as a mask
 
@@ -845,12 +845,12 @@ results options:
         - type: currents_membrane
           enabled: True
 
-      cell cluster pipeline:   # List of all cell cluster plots for all cells
+      cell cluster pipeline:   # List of all cell _qfn_cluster_node plots for all cells
                                # at the last time step. Ignored if "show" and
                                # "save" are False.
-        # Example final cell cluster transmembrane voltage (Vmem) plot.
+        # Example final cell _qfn_cluster_node transmembrane voltage (Vmem) plot.
         - type: voltage_membrane   # Plot type, as any following string:
-          # * "cluster_mask" for the all-cells image mask defining the cell cluster shape.
+          # * "cluster_mask" for the all-cells image mask defining the cell _qfn_cluster_node shape.
           # * "currents_intra" for final all-cells intracellular current density.
           #   Ignored if full solver disabled.
           # * "currents_extra" for final all-cells extracellular current density.
@@ -901,7 +901,7 @@ results options:
                               # "autoscale" is True.
             maximum:  10.0    # Maximum fixed colorbar value. Ignored if
                               # "autoscale" is True.
-        # Example final cell cluster intracellular electric field plot.
+        # Example final cell _qfn_cluster_node intracellular electric field plot.
         - type: electric_intra
           enabled: True
           colorbar:

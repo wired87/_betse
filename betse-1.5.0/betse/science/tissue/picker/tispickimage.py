@@ -80,7 +80,7 @@ class TissuePickerImageMask(object):
         pixel (i.e., with red, green, and blue color components all 0) of this
         image collectively defines either:
 
-        * The area to be used as the clipping mask for the cell cluster.
+        * The area to be used as the clipping mask for the cell _qfn_cluster_node.
         * The area for a tissue, cut, or boundary profile.
 
         This image *must* additionally:
@@ -297,7 +297,7 @@ class TissuePickerImage(TissuePickerABC):
         Parameters
         ----------
         cells : Cells
-            Current cell cluster.
+            Current cell _qfn_cluster_node.
 
         Returns
         ----------

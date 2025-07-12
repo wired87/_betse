@@ -808,7 +808,7 @@ class MasterOfNetworks(object):
         if p.visual.single_cell_index not in cells.cell_i:
             raise BetseSimConfException(
                 'The "plot cell" defined in the "results" section of your '
-                'configuration file does not exist in your cluster. '
+                'configuration file does not exist in your _qfn_cluster_node. '
                 'Choose a plot cell number smaller than the maximum cell number.')
 
     def read_reactions(self, config_reactions, sim, cells, p):
@@ -4021,7 +4021,7 @@ class MasterOfNetworks(object):
     ):
         '''
         Modify this gene regulatory network (GRN) to account for the removal of
-        the passed cells and cell membranes from the current cell cluster in
+        the passed cells and cell membranes from the current cell _qfn_cluster_node in
         the wake of a recent cutting event under the passed simulation phase.
 
         Parameters

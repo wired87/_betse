@@ -3,7 +3,7 @@
 # See "LICENSE" for further details.
 
 '''
-High-level pickling facilities for saving and loading cell cluster and
+High-level pickling facilities for saving and loading cell _qfn_cluster_node and
 simulation objects.
 '''
 
@@ -61,7 +61,7 @@ def saveSim(savePath: str, datadump: Sequence) -> None:
 def loadSim(loadPath) -> tuple:
     '''
     Unpickle the 3-tuple `(sim, cells, p)` describing a previously initialized
-    or simulated cell cluster from the file with the passed path.
+    or simulated cell _qfn_cluster_node from the file with the passed path.
 
     For safety, the simulation object in this tuple has been sanitized by
     calling the `safe_pickle()` function and hence may _not_ be usable as is.
@@ -93,7 +93,7 @@ def loadSim(loadPath) -> tuple:
 def loadWorld(loadPath) -> tuple:
     '''
     Unpickle the 2-tuple ``(cells, p)`` describing a previously seeded cell
-    cluster from the file with the passed path.
+    _qfn_cluster_node from the file with the passed path.
 
     Parameters
     ----------

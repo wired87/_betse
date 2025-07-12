@@ -27,7 +27,7 @@ class AnimCellsWhileSolving(AnimCellsABC):
     Context manager animating a mid-simulation animation.
 
     This manager animates arbitrary cell data as a time series plotted over the
-    cell cluster (e.g., cell membrane voltage as a function of time) *while*
+    cell _qfn_cluster_node (e.g., cell membrane voltage as a function of time) *while*
     rather than *after* solving a simulation phase.
 
     Caveats
@@ -51,7 +51,7 @@ class AnimCellsWhileSolving(AnimCellsABC):
         Retaining this identifier permits the `_plot_frame_figure()` method to
         efficiently detect and respond to physical changes (e.g., deformation
         forces, cutting events) in the fundamental structure of the previously
-        plotted cell cluster.
+        plotted cell _qfn_cluster_node.
     _is_colorbar_autoscaling_telescoped : bool
         ``True`` if colorbar autoscaling is permitted to increase but not
         decrease the colorbar range *or* ``False`` otherwise (i.e., if
@@ -231,23 +231,23 @@ class AnimCellsWhileSolving(AnimCellsABC):
         #manner callable both here and above. Rays of deluded beaming sunspray!
 
         # If the unique identifier for the array of cell vertices has *NOT*
-        # changed, the cell cluster has *NOT* fundamentally changed and need
+        # changed, the cell _qfn_cluster_node has *NOT* fundamentally changed and need
         # only be updated with this time step's cell data.
         if self._cell_verts_id == id(self._phase.cells.cell_verts):
             # loggers.log_info(
             #     'Updating animation "{}" cell plots...'.format(self._type))
             self._update_cell_plots(cell_data)
-        # Else, the cell cluster has fundamentally changed (e.g., due to
+        # Else, the cell _qfn_cluster_node has fundamentally changed (e.g., due to
         # physical deformations or cutting events) and must be recreated.
         else:
             # loggers.log_info(
             #     'Reviving animation "{}" cell plots...'.format(self._type))
 
             # Prevent subsequent calls to this method from erroneously
-            # recreating the cell cluster again.
+            # recreating the cell _qfn_cluster_node again.
             self._cell_verts_id = id(self._phase.cells.cell_verts)
 
-            # Recreate the cell cluster.
+            # Recreate the cell _qfn_cluster_node.
             self._revive_cell_plots(cell_data)
 
         # Update the color bar with the content of the cell body plot *AFTER*
@@ -289,7 +289,7 @@ class AnimCellsWhileSolving(AnimCellsABC):
 
         This method is intended to be called *unless* physical changes
         (e.g., deformation forces, cutting events) in the underlying structure
-        of the cell cluster have occurred for this simulation time step.
+        of the cell _qfn_cluster_node have occurred for this simulation time step.
 
         Parameters
         -----------
@@ -310,7 +310,7 @@ class AnimCellsWhileSolving(AnimCellsABC):
 
         This method is intended to be called in response to physical changes
         (e.g., deformation forces, cutting events) in the underlying structure
-        of the cell cluster for this simulation time step. This method is both
+        of the cell _qfn_cluster_node for this simulation time step. This method is both
         inefficient and destructive, and should be called only when needed.
 
         Parameters

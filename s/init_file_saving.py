@@ -7,7 +7,7 @@ class InitFileSavingSerializer(serializers.Serializer):
     )
     worldfile = serializers.CharField(
         default='world_1.betse.gz',
-        help_text='File with cell cluster from "betse seed". Supported extensions: '
+        help_text='File with cell _qfn_cluster_node from "betse seed". Supported extensions: '
                   '".betse", ".betse.gz", ".betse.bz2", ".betse.xz".'
     )
     file = serializers.CharField(

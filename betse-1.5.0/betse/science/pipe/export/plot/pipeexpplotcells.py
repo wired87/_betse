@@ -4,8 +4,8 @@
 # See "LICENSE" for further details.
 
 '''
-**Post-simulation cell cluster plot pipelines** (i.e., pipelines plotting
-simulated data of all cells in the cell cluster).
+**Post-simulation cell _qfn_cluster_node plot pipelines** (i.e., pipelines plotting
+simulated data of all cells in the cell _qfn_cluster_node).
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -29,8 +29,8 @@ from matplotlib.collections import LineCollection, PolyCollection
 # ....................{ SUBCLASSES                         }....................
 class SimPipeExportPlotCells(SimPipeExportPlotABC):
     '''
-    **Post-simulation cell cluster plot pipeline** (i.e., object iteratively
-    displaying and/or saving all plots depicting all cells of the cell cluster,
+    **Post-simulation cell _qfn_cluster_node plot pipeline** (i.e., object iteratively
+    displaying and/or saving all plots depicting all cells of the cell _qfn_cluster_node,
     produced after initialization and simulation as specified by the current
     simulation configuration).
     '''
@@ -38,7 +38,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     # ..................{ SUPERCLASS ~ properties            }..................
     @classproperty_readonly
     def _NOUN_SINGULAR(cls) -> str:
-        return 'cell cluster plot'
+        return 'cell _qfn_cluster_node plot'
 
     # ..................{ SUPERCLASS                         }..................
     @type_check
@@ -52,7 +52,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     # )
     # def export_channel_density(self, conf: SimConfExportPlotCells) -> None:
     #     '''
-    #     Plot all cell membrane ion channel density factors for the cell cluster
+    #     Plot all cell membrane ion channel density factors for the cell _qfn_cluster_node
     #     at the last time step.
     #     '''
     #
@@ -72,15 +72,15 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     #     # Export this plot to disk and/or display.
     #     self._export(basename='final_channels_2D')
 
-    # ..................{ EXPORTERS ~ cluster                }..................
+    # ..................{ EXPORTERS ~ _qfn_cluster_node                }..................
     # This exporter is solver- and feature-agnostic.
 
     @piperunner(categories=('Cell Cluster', 'Mask',))
     def export_cluster_mask(
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
-        Plot the **cell cluster image mask** (i.e., user-defined image whose
-        pure-black pixels exactly correspond to the shape of the cell cluster).
+        Plot the **cell _qfn_cluster_node image mask** (i.e., user-defined image whose
+        pure-black pixels exactly correspond to the shape of the cell _qfn_cluster_node).
 
         This plot is irrespective of time step.
         '''
@@ -101,7 +101,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         # Export this plot to disk and/or display.
         self._export(phase=phase, basename='cluster_mask')
 
-    # ..................{ EXPORTERS ~ cluster : tissue       }..................
+    # ..................{ EXPORTERS ~ _qfn_cluster_node : tissue       }..................
     # This exporter is solver- and feature-agnostic.
     @piperunner(categories=('Cell Cluster', 'Tissue and Cut Profiles',))
     def export_tissue_cuts(
@@ -110,7 +110,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         Plot a **tissue and cut profile tessellation** (i.e., tiled mosaic of
         all cells spatially subdivided into tissue and cut profile regions such
         that all cells in the same region share the same arbitrary color) for
-        the cell cluster.
+        the cell _qfn_cluster_node.
 
         This plot is irrespective of time step.
         '''
@@ -133,10 +133,10 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         # all cells owned by this profile.
         #
         # Note that order is absolutely significant. The first tissue profile
-        # is a pseudo-tissue defining the cell cluster itself. If order were
+        # is a pseudo-tissue defining the cell _qfn_cluster_node itself. If order were
         # *NOT* preserved here, this tissue would be assigned an arbitrary
         # z-order, in which case all tissues assigned smaller z-orders would be
-        # entirely obscured by that pseudo-tissue covering the cell cluster.
+        # entirely obscured by that pseudo-tissue covering the cell _qfn_cluster_node.
         profile_name_to_cells_index = OrderedDict()
 
         fig = pyplot.figure()
@@ -161,7 +161,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         #
         #* Remove the "p.plot_cutlines" boolean and corresponding
         #  YAML-formetted default configuration option.
-        #* Split the existing "tissue_cuts" plot type in the "cell cluster
+        #* Split the existing "tissue_cuts" plot type in the "cell _qfn_cluster_node
         #  pipeline" into the following two types:
         #  * "tissue", unconditionally plotting *ONLY* tissue profiles.
         #  * "tissue_cuts", unconditionally plotting both tissue and cut
@@ -263,7 +263,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     def export_currents_intra(
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
-        Plot all intracellular current densities for the cell cluster at the
+        Plot all intracellular current densities for the cell _qfn_cluster_node at the
         last time step.
         '''
 
@@ -337,7 +337,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         '''
         Plot all **total cellular displacements** (i.e., summations of all
         cellular deformations due to galvanotropic and osmotic pressure body
-        forces) for the cell cluster at the last time step.
+        forces) for the cell _qfn_cluster_node at the last time step.
         '''
 
         # Prepare to export the current plot.
@@ -404,7 +404,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     def export_electric_intra(
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
-        Plot all intracellular electric field lines for the cell cluster at the
+        Plot all intracellular electric field lines for the cell _qfn_cluster_node at the
         last time step.
         '''
 
@@ -466,7 +466,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     def export_fluid_intra(
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
-        Plot all intracellular fluid flow field lines for the cell cluster at
+        Plot all intracellular fluid flow field lines for the cell _qfn_cluster_node at
         the last time step.
         '''
 
@@ -527,7 +527,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
         Plot all intracellular calcium (i.e., Ca2+) ion concentrations for the
-        cell cluster at the last time step.
+        cell _qfn_cluster_node at the last time step.
         '''
 
         # Prepare to export the current plot.
@@ -590,7 +590,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
         Plot the **gap junction connectivity network** (i.e., graph of all gap
-        junctions connecting cell membranes) for the cell cluster.
+        junctions connecting cell membranes) for the cell _qfn_cluster_node.
 
         This plot is irrespective of time step.
         '''
@@ -629,7 +629,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         '''
         Plot all **gap junction connectivity states** (i.e., relative
         permeabilities of all gap junctions connecting cell membranes) for the
-        cell cluster at the last time step.
+        cell _qfn_cluster_node at the last time step.
         '''
 
         # Prepare to export the current plot.
@@ -670,7 +670,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     # def export_microtubule(
     #     self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
     #     '''
-    #     Plot the coherence of all cellular microtubules for the cell cluster at
+    #     Plot the coherence of all cellular microtubules for the cell _qfn_cluster_node at
     #     the last time step.
     #     '''
     #
@@ -723,7 +723,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     # )
     # def export_pump_density(self, conf: SimConfExportPlotCells) -> None:
     #     '''
-    #     Plot all cell membrane ion pump density factors for the cell cluster at
+    #     Plot all cell membrane ion pump density factors for the cell _qfn_cluster_node at
     #     the last time step.
     #     '''
     #
@@ -749,7 +749,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     def export_pump_nakatpase(
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
-        Plot all cell membrane Na-K-ATPase pump rates for the cell cluster at
+        Plot all cell membrane Na-K-ATPase pump rates for the cell _qfn_cluster_node at
         the last time step.
         '''
 
@@ -782,7 +782,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
         Plot all **cellular pressure totals** (i.e., summations of all cellular
-        mechanical and osmotic pressures) for the cell cluster at the last time
+        mechanical and osmotic pressures) for the cell _qfn_cluster_node at the last time
         step.
         '''
 
@@ -845,7 +845,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     def export_voltage_polarity(
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
-        Plot all cellular voltage polarities for the cell cluster at the last
+        Plot all cellular voltage polarities for the cell _qfn_cluster_node at the last
         time step.
         '''
 
@@ -894,7 +894,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
     def export_voltage_membrane(
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
-        Plot all transmembrane voltages (Vmem) for the cell cluster at the last
+        Plot all transmembrane voltages (Vmem) for the cell _qfn_cluster_node at the last
         time step.
         '''
 
@@ -927,7 +927,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
         Plot the averages of all transmembrane voltages (Vmem) for the cell
-        cluster at the last time step.
+        _qfn_cluster_node at the last time step.
         '''
 
         # Prepare to export the current plot.
@@ -966,7 +966,7 @@ class SimPipeExportPlotCells(SimPipeExportPlotABC):
         self, phase: SimPhase, conf: SimConfExportPlotCells) -> None:
         '''
         Plot all transmembrane voltages (Vmem) calculated by the
-        Goldman-Hodgkin-Katz (GHK) equation for the cell cluster at the last
+        Goldman-Hodgkin-Katz (GHK) equation for the cell _qfn_cluster_node at the last
         time step.
         '''
 

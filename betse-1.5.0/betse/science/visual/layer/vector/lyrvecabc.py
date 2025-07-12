@@ -4,7 +4,7 @@
 
 '''
 Abstract base classes of all matplotlib-based layer subclasses spatially
-plotting vectors onto the cell cluster.
+plotting vectors onto the cell _qfn_cluster_node.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -17,7 +17,7 @@ from betse.util.type.types import type_check
 class LayerCellsVectorColorfulABC(LayerCellsColorfulABC):
     '''
     Abstract base class of all classes spatially plotting vectors of arbitrary
-    one-dimensional data (e.g., transmembrane voltage) onto the cell cluster
+    one-dimensional data (e.g., transmembrane voltage) onto the cell _qfn_cluster_node
     such that the elements of these vectors are mappable as colors onto the
     colorbars of parent visuals.
 
@@ -53,7 +53,7 @@ def make_layer(phase: SimPhase, *args, **kwargs) -> LayerCellsVectorColorfulABC:
     '''
     Vector Layer suitable for spatially plotting the passed vector of arbitrary
     one-dimensional data (e.g., transmembrane voltage) for the passed simulation
-    phase onto the cell cluster such that the elements of this vector are
+    phase onto the cell _qfn_cluster_node such that the elements of this vector are
     mappable as colors onto the colorbars of parent visuals.
 
     The type of layer instantiated and returned by this factory function
@@ -86,7 +86,7 @@ def make_layer(phase: SimPhase, *args, **kwargs) -> LayerCellsVectorColorfulABC:
     layer_type = None
 
     # If this simulation configuration requests that each cell in the cell
-    # cluster be plotted...
+    # _qfn_cluster_node be plotted...
     if phase.p.showCells:
         # If this phase enables deformations, dynamically plot these cells
         # in a manner redrawing cell boundaries each time step.
@@ -98,7 +98,7 @@ def make_layer(phase: SimPhase, *args, **kwargs) -> LayerCellsVectorColorfulABC:
         # steps.
         else:
             layer_type = LayerCellsVectorDiscreteMembranesFixed
-    # Else, this simulation configuration requests that the cell cluster be
+    # Else, this simulation configuration requests that the cell _qfn_cluster_node be
     # plotted as a smooth continuum. In this case, do so.
     else:
         layer_type = LayerCellsVectorSmoothRegions

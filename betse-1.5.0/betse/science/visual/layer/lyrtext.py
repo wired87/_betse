@@ -3,7 +3,7 @@
 # See "LICENSE" for further details.
 
 '''
-Layer subclasses printing text over the current cell cluster.
+Layer subclasses printing text over the current cell _qfn_cluster_node.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -13,7 +13,7 @@ from betse.science.visual.layer.lyrabc import LayerCellsABC
 # ....................{ CLASSES                            }....................
 class LayerCellsIndex(LayerCellsABC):
     '''
-    Layer printing the 0-based index of each cell in the cell cluster as a text
+    Layer printing the 0-based index of each cell in the cell _qfn_cluster_node as a text
     label centered on that cell.
     '''
 

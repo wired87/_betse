@@ -4,7 +4,7 @@
 
 '''
 Layer subclasses spatially overlaying vector components as quiver plots onto the
-cell cluster.
+cell _qfn_cluster_node.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -20,7 +20,7 @@ class LayerCellsFieldQuiverABC(LayerCellsFieldColorlessABC):
     '''
     Layer abstract subclass plotting the most significant X and Y components of
     a single vector field spatially situated according to this layer subclass
-    onto the cell cluster for one on more time steps.
+    onto the cell _qfn_cluster_node for one on more time steps.
 
     Attributes
     ----------
@@ -72,7 +72,7 @@ class LayerCellsFieldQuiverCells(LayerCellsFieldQuiverABC):
     '''
     Layer subclass plotting the most significant X and Y components of a single
     vector field spatially situated at cell centres (e.g., intracellular
-    electric field) onto the cell cluster for one on more time steps.
+    electric field) onto the cell _qfn_cluster_node for one on more time steps.
     '''
 
     # ..................{ SUPERCLASS                         }..................
@@ -134,7 +134,7 @@ class LayerCellsFieldQuiverGrids(LayerCellsFieldQuiverABC):
     '''
     Layer subclass plotting the most significant X and Y components of a single
     vector field spatially situated at environmental grid space centres (e.g.,
-    extracellular electric field) onto the cell cluster for one on more time
+    extracellular electric field) onto the cell _qfn_cluster_node for one on more time
     steps.
     '''
 
@@ -210,7 +210,7 @@ class LayerCellsFieldQuiverMembranes(LayerCellsFieldQuiverABC):
     '''
     Layer subclass plotting the most significant X and Y components of a single
     vector field spatially situated at cell membrane midpoints (e.g.,
-    microtubules) onto the cell cluster for one on more time steps.
+    microtubules) onto the cell _qfn_cluster_node for one on more time steps.
 
     Attributes
     ----------

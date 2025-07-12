@@ -21,7 +21,7 @@ from betse.util.type.types import type_check, NumericSimpleTypes
 #FIXME: Rename to "SimConfColorbarABC" for clarity.
 class SimConfVisualCellsABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all cell cluster visual subconfiguration subclasses,
+    Abstract base class of all cell _qfn_cluster_node visual subconfiguration subclasses,
     YAML-backed or otherwise.
 
     Attributes (Colorbar)
@@ -56,7 +56,7 @@ class SimConfVisualCellsABC(object, metaclass=ABCMeta):
 #FIXME: Rename to "SimConfColorbarMixin" for clarity.
 class SimConfVisualCellsYAMLMixin(SimConfVisualCellsABC):
     '''
-    Mixin of all **YAML-backed cell cluster visual subconfiguration** (i.e.,
+    Mixin of all **YAML-backed cell _qfn_cluster_node visual subconfiguration** (i.e.,
     configuration of a single visual export parsed from the current
     YAML-formatted simulation configuration file) subclasses.
     '''
@@ -71,10 +71,10 @@ class SimConfVisualCellsYAMLMixin(SimConfVisualCellsABC):
 #should be YAML-backed.
 class SimConfVisualCellsNonYAML(SimConfVisualCellsABC):
     '''
-    Cell cluster visual subconfiguration specific to the
+    Cell _qfn_cluster_node visual subconfiguration specific to the
     :mod:`betse.science.networks` package.
 
-    Unlike all cell cluster visual subconfigurations, this class preserves
+    Unlike all cell _qfn_cluster_node visual subconfigurations, this class preserves
     backward compatibility by implementing superclass properties *without*
     calling the :func:`yaml_alias` function returning YAML-backed data
     descriptors. Subconfiguration changes are *not* propagated back to disk.

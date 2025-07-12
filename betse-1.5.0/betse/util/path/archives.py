@@ -40,7 +40,7 @@ directories _and_ non-directory files) facilities.
 #path:
 #  seed:
 #    object:
-#      file: SEEDS/world_1.betse  # File containing all cell cluster objects.
+#      file: SEEDS/world_1.betse  # File containing all cell _qfn_cluster_node objects.
 #
 #  init:             # Paths for initialization saving and loading.
 #    object:

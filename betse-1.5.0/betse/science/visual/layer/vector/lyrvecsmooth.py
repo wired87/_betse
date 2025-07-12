@@ -3,7 +3,7 @@
 # See "LICENSE" for further details.
 
 '''
-Layer subclasses spatially shading the cell cluster as a continuous surface.
+Layer subclasses spatially shading the cell _qfn_cluster_node as a continuous surface.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -17,7 +17,7 @@ class LayerCellsVectorSmoothGrids(LayerCellsVectorColorfulABC):
     '''
     Layer subclass plotting a single vector spatially situated at environmental
     grid space centres (e.g., extracellular electric field magnitudes) as a
-    continuous surface depicted by a polygonal mesh onto the cell cluster for
+    continuous surface depicted by a polygonal mesh onto the cell _qfn_cluster_node for
     one on more simulation steps.
 
     Attributes
@@ -89,7 +89,7 @@ class LayerCellsVectorSmoothRegions(LayerCellsVectorColorfulABC):
     '''
     Layer subclass plotting a single vector spatially situated at Voronoi region
     centres (e.g., transmembrane voltage averages) as a continuous
-    Gouraud-shaded surface depicted by a polygonal mesh onto the cell cluster
+    Gouraud-shaded surface depicted by a polygonal mesh onto the cell _qfn_cluster_node
     for one on more simulation steps, interpolating the cell data for each cell
     across the smooth spatial continuum inhabited by that cell.
 
@@ -97,7 +97,7 @@ class LayerCellsVectorSmoothRegions(LayerCellsVectorColorfulABC):
     ----------
     _cluster_tri_mesh : matplotlib.collections.TriMesh
         Unstructured triangulation mesh grid interpolating the cell data for
-        each cell over the cell cluster as a contiuous whole.
+        each cell over the cell _qfn_cluster_node as a contiuous whole.
     '''
 
     # ..................{ INITIALIZERS                       }..................
@@ -128,7 +128,7 @@ class LayerCellsVectorSmoothRegions(LayerCellsVectorColorfulABC):
         membranes_midpoint_data = self._vector.times_membranes_midpoint[
             self._visual.time_step]
 
-        # Gouraud-shaded triangulation mesh for this cell cluster, computed from
+        # Gouraud-shaded triangulation mesh for this cell _qfn_cluster_node, computed from
         # the Delaunay hull of the non-triangular centers of these regions.
         self._cluster_tri_mesh = self._visual.axes.tripcolor(
             # Positional arguments. Thanks to internal flaws in the

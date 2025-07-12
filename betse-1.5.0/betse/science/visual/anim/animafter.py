@@ -20,7 +20,7 @@ class AnimCellsAfterSolving(AnimCellsABC):
     Abstract base class of all post-simulation animation subclasses.
 
     Each subclass of this class animates arbitrary cell data as a time series
-    plotted over the cell cluster (e.g., cell membrane voltage as a function of
+    plotted over the cell _qfn_cluster_node (e.g., cell membrane voltage as a function of
     time) *after* rather than *while* solving simulations.
     '''
 
@@ -68,7 +68,7 @@ class AnimCellsAfterSolvingLayered(AnimCellsAfterSolving):
     '''
     Post-simulation animation of arbitrary cell data as a time series (e.g.,
     cell membrane voltage as a function of time), plotted over the cell
-    cluster using a predefined sequence of layers.
+    _qfn_cluster_node using a predefined sequence of layers.
     '''
 
     # ..................{ SUPERCLASS                        }..................
@@ -120,7 +120,7 @@ class AnimCellsAfterSolvingLayered(AnimCellsAfterSolving):
 class AnimVelocity(AnimCellsAfterSolving):
     '''
     Abstract base class of all animations of a velocity flow plotted on the
-    current cell cluster.
+    current cell _qfn_cluster_node.
     '''
 
     def __init__(self, *args, **kwargs) -> None:

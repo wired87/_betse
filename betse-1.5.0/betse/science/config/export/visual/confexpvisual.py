@@ -26,7 +26,7 @@ class SimConfExportVisual(YamlABC):
     ----------
     is_show_cell_indices : bool
         ``True`` only if the 0-based indices of all cells are to be displayed
-        over all cell cluster visuals (e.g., as integers situated at cell
+        over all cell _qfn_cluster_node visuals (e.g., as integers situated at cell
         centres).
     single_cell_index : int
         0-based index of the cell to be visualized for all single cell visuals.

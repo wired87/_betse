@@ -192,7 +192,7 @@ def side_check(p):
 
 def alpha_shape(points, alpha):
     """
-    Calculate the alpha_shape of a cluster of points in 2D.
+    Calculate the alpha_shape of a _qfn_cluster_node of points in 2D.
 
     Parameters
     ----------
@@ -445,7 +445,7 @@ def grid_vector_data(xpts,ypts,zdata_x,zdata_y,cells,p):
     # X = cells.x_2d
     # Y = cells.y_2d
 
-    # create an interpolation function to resample the cluster mask matrix:
+    # create an interpolation function to resample the _qfn_cluster_node mask matrix:
     # mask_funk = interp.interp2d(x_full,y_full,cells.cluster_mask)
     # mask_funk = interp.RectBivariateSpline(x_full,y_full,cells.cluster_mask)
     #
@@ -487,7 +487,7 @@ def griddata(xpts,ypts,zdata,gridsize,cells):
     xlin = np.linspace(cells.xmin,cells.xmax,gridsize)
     ylin = np.linspace(cells.ymin,cells.ymax,gridsize)
 
-    # create an interpolation function to resample the cluster mask matrix:
+    # create an interpolation function to resample the _qfn_cluster_node mask matrix:
     # mask_funk =  interp.RectBivariateSpline(x_full,y_full,cells.cluster_mask)
     # new_mask = mask_funk.ev(xlin,ylin)
 

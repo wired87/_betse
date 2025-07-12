@@ -1366,7 +1366,7 @@ def makeMask(M,xy_pts,X,Y,delta,sensitivity=1.0):
 def boundTag(points,delta,alpha=1.0):
     """
     Flag elements that are on the boundary to the environment by calculating
-    the convex hull for a points cluster.
+    the convex hull for a points _qfn_cluster_node.
 
     Parameters
     ----------

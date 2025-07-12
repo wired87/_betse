@@ -72,7 +72,7 @@ def f_sweep(pc, cells, p) -> tuple:
 
 def single_cell(pc, cells, p):
     '''
-    Randomly selects a single cell on the cluster boundary and generates a modulator
+    Randomly selects a single cell on the _qfn_cluster_node boundary and generates a modulator
     function with a max value at the single cell and zero value elsewhere (with offset)
 
     Parameters

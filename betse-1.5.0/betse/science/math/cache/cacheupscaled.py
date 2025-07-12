@@ -33,7 +33,7 @@ class SimPhaseCacheUpscaled(SimPhaseCacheABC):
     def extent(self) -> tuple:
         '''
         4-tuple of the upscaled minimum and maximum X and Y coordinates of the
-        environmental grid for this cell cluster.
+        environmental grid for this cell _qfn_cluster_node.
 
         Specifically, this tuple consists of (in order):
 
@@ -55,7 +55,7 @@ class SimPhaseCacheUpscaled(SimPhaseCacheABC):
     def times_cells_vertices_coords(self) -> ndarray:
         '''
         Four-dimensional Numpy array of the upscaled coordinates of all cell
-        membrane vertices for this cell cluster over all time steps under the
+        membrane vertices for this cell _qfn_cluster_node over all time steps under the
         assumption that these vertices are deformed over these time steps.
 
         See Also
@@ -72,7 +72,7 @@ class SimPhaseCacheUpscaled(SimPhaseCacheABC):
     def cells_vertices_coords(self) -> ndarray:
         '''
         Three-dimensional Numpy array of the upscaled coordinates of all cell
-        membrane vertices for this cell cluster under the assumption that these
+        membrane vertices for this cell _qfn_cluster_node under the assumption that these
         vertices are *not* deformed at any time step and hence are fixed over
         all time steps.
 
@@ -89,7 +89,7 @@ class SimPhaseCacheUpscaled(SimPhaseCacheABC):
     def cells_centre_x(self) -> ndarray:
         '''
         One-dimensional Numpy array of the upscaled X coordinates of all cell
-        centres for this cell cluster.
+        centres for this cell _qfn_cluster_node.
         '''
 
         return mathunit.upscale_coordinates(
@@ -100,7 +100,7 @@ class SimPhaseCacheUpscaled(SimPhaseCacheABC):
     def cells_centre_y(self) -> ndarray:
         '''
         One-dimensional Numpy array of the upscaled Y coordinates of all cell
-        centres for this cell cluster.
+        centres for this cell _qfn_cluster_node.
         '''
 
         return mathunit.upscale_coordinates(
@@ -111,7 +111,7 @@ class SimPhaseCacheUpscaled(SimPhaseCacheABC):
     def grids_centre_x(self) -> ndarray:
         '''
         One-dimensional Numpy array of the upscaled X coordinates of all
-        environmental grid space centres for this cell cluster.
+        environmental grid space centres for this cell _qfn_cluster_node.
         '''
 
         return mathunit.upscale_coordinates(self._phase.cells.xypts[:, 0])
@@ -121,7 +121,7 @@ class SimPhaseCacheUpscaled(SimPhaseCacheABC):
     def grids_centre_y(self) -> ndarray:
         '''
         One-dimensional Numpy array of the upscaled X coordinates of all
-        environmental grid space centres for this cell cluster.
+        environmental grid space centres for this cell _qfn_cluster_node.
         '''
 
         return mathunit.upscale_coordinates(self._phase.cells.xypts[:, 1])

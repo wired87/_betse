@@ -34,8 +34,8 @@ duration (i.e., from fastest to slowest), trivially improving aesthetic
 responsiveness for end users:
 
 * CSV files, typically exported faster than visuals.
-* Single-cell plots, typically exported faster than cell cluster plots.
-* Cell cluster plots, typically exported faster than animations.
+* Single-cell plots, typically exported faster than cell _qfn_cluster_node plots.
+* Cell _qfn_cluster_node plots, typically exported faster than animations.
 * Animations.
 '''
 

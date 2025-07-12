@@ -167,20 +167,20 @@ class LogHandlerFileRotateSafe(RotatingFileHandler):
         #         self.doRollover()
         #       File "/opt/shared/python/3.6.0/lib/python3.6/logging/handlers.py", line 169, in doRollover
         #         os.rename(sfn, dfn)
-        #     FileNotFoundError: [Errno 2] No such file or directory: '/cluster/home/sburck01/.betse/betse.log.4' -> '/cluster/home/sburck01/.betse/betse.log.5'
+        #     FileNotFoundError: [Errno 2] No such file or directory: '/_qfn_cluster_node/home/sburck01/.betse/betse.log.4' -> '/_qfn_cluster_node/home/sburck01/.betse/betse.log.5'
         #     Call stack:
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/bin/betse", line 63, in <module>
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/bin/betse", line 63, in <module>
         #         sys.exit(entry_module.main())
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/__main__.py", line 45, in main
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/__main__.py", line 45, in main
         #         return CLIMain().run(arg_list)
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/cliabc.py", line 156, in run
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/cliabc.py", line 156, in run
         #         matplotlib_backend_name=self._args.matplotlib_backend_name)
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 258, in reinit
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 258, in reinit
         #         init(*args, **kwargs)
         #       File "<string>", line 15, in func_type_checked
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 291, in init
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 291, in init
         #         mpl_config.init(backend_name=matplotlib_backend_name)
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 226, in init
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 226, in init
         #         self._init_backend(backend_name=backend_name)
         #
         #     # Traceback implicating the "OSError" exception.
@@ -191,26 +191,26 @@ class LogHandlerFileRotateSafe(RotatingFileHandler):
         #         self.stream.seek(0, 2)  #due to non-posix-compliant Windows feature
         #     OSError: [Errno 116] Stale file handle
         #     Call stack:
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/bin/betse", line 63, in <module>
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/bin/betse", line 63, in <module>
         #         sys.exit(entry_module.main())
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/__main__.py", line 45, in main
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/__main__.py", line 45, in main
         #         return CLIMain().run(arg_list)
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/cliabc.py", line 156, in run
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/cli/cliabc.py", line 156, in run
         #         matplotlib_backend_name=self._args.matplotlib_backend_name)
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 258, in reinit
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 258, in reinit
         #         init(*args, **kwargs)
         #       File "<string>", line 15, in func_type_checked
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 291, in init
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/libs.py", line 291, in init
         #         mpl_config.init(backend_name=matplotlib_backend_name)
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 226, in init
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 226, in init
         #         self._init_backend(backend_name=backend_name)
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 434, in _init_backend
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 434, in _init_backend
         #         if self.is_backend_usable(_BACKEND_NAME_HEADLESS):
         #       File "<string>", line 15, in func_type_checked
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 760, in is_backend_usable
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/lib/matplotlib/matplotlibs.py", line 760, in is_backend_usable
         #         logs.log_debug('Testing matplotlib backend "%s"...', backend_name)
         #       File "<string>", line 15, in func_type_checked
-        #       File "/cluster/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/util/io/log/logs.py", line 100, in log_debug
+        #       File "/_qfn_cluster_node/kappa/90-days-archive/levin/levinlab/sburck01/venv-betse/lib/python3.6/site-packages/betse-0.4.2-py3.6.egg/betse/util/io/log/logs.py", line 100, in log_debug
         #         logging.debug(message, *args, **kwargs)
         #
         # If this is a "FileNotFoundError", unconditionally retry.

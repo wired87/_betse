@@ -5,7 +5,7 @@
 
 '''
 **Post-simulation single-cell plot pipelines** (i.e., pipelines plotting
-simulated data of a single cell of the cell cluster).
+simulated data of a single cell of the cell _qfn_cluster_node).
 '''
 
 # ....................{ IMPORTS                           }....................
@@ -27,7 +27,7 @@ class SimPipeExportPlotCell(SimPipeExportPlotABC):
     '''
     **Post-simulation single-cell plot pipeline** (i.e., object iteratively
     displaying and/or saving all plots specific to a single cell of the cell
-    cluster, produced after initialization and simulation as specified by the
+    _qfn_cluster_node, produced after initialization and simulation as specified by the
     current simulation configuration).
     '''
 

@@ -20,7 +20,7 @@ from numpy import ndarray
 # ....................{ SUPERCLASSES                      }....................
 class VectorCellsCache(SimPhaseCacheABC):
     '''
-    Cell cluster vector cache, persisting all two-dimensional Numpy arrays
+    Cell _qfn_cluster_node vector cache, persisting all two-dimensional Numpy arrays
     describing the same underlying data spatially situated along different
     coordinate systems (e.g., cell centres, cell membrane vertices) for one or
     more simulation time steps.
@@ -28,9 +28,9 @@ class VectorCellsCache(SimPhaseCacheABC):
     The input data encapsulated by this cache may be spatially situated at
     either:
 
-    * The centre of each cell in the simulated cluster.
-    * The vertex of each cell membrane in the simulated cluster.
-    * The midpoint of each cell membrane in the simulated cluster.
+    * The centre of each cell in the simulated _qfn_cluster_node.
+    * The vertex of each cell membrane in the simulated _qfn_cluster_node.
+    * The midpoint of each cell membrane in the simulated _qfn_cluster_node.
     * The centre of each square grid space (in either dimension).
 
     Each property provided by this cache (e.g., :meth:`times_cell_centres`)
@@ -289,11 +289,11 @@ class VectorCellsCache(SimPhaseCacheABC):
            * Else:
 
              * If this grid space resides *inside* the convex hull of this cell
-               cluster, arbitrary grid data spatially interpolated from the
+               _qfn_cluster_node, arbitrary grid data spatially interpolated from the
                centres of all cells whose membranes overlap this grid space
                onto the centre of this grid space for this time step.
              * Else, 0. In this case, this is an environmental grid space
-               residing *outside* the convex hull of this cell cluster. Since
+               residing *outside* the convex hull of this cell _qfn_cluster_node. Since
                this vector was initialized with a cell-centric array rather
                than the `times_grids_centre` parameter, this vector contains no
                extracellular data to interpolate environmental grid spaces

@@ -70,9 +70,9 @@ containing this file.
 
                 CLISubcommandYAMLOnly(
                     name='seed',
-                    help_synopsis='seed a new cell cluster for a config file',
+                    help_synopsis='seed a new cell _qfn_cluster_node for a config file',
                     help_description='''
-Create the cell cluster defined by the passed configuration file. The results
+Create the cell _qfn_cluster_node defined by the passed configuration file. The results
 will be saved to output files defined by this configuration.
 ''',),
 
@@ -80,12 +80,12 @@ will be saved to output files defined by this configuration.
                 CLISubcommandYAMLOnly(
                     name='init',
                     help_synopsis=(
-                        'initialize a seeded cell cluster for a config file'),
+                        'initialize a seeded cell _qfn_cluster_node for a config file'),
                     help_description='''
 Initialize (i.e., calculate steady-state concentrations for) the previously
-created cell cluster defined by the passed configuration file. Initialization
+created cell _qfn_cluster_node defined by the passed configuration file. Initialization
 results will be saved to output files defined by this configuration, while the
-previously created cell cluster will be loaded from input files defined by this
+previously created cell _qfn_cluster_node will be loaded from input files defined by this
 configuration.
 ''',),
 
@@ -93,13 +93,13 @@ configuration.
                 CLISubcommandYAMLOnly(
                     name='sim',
                     help_synopsis=(
-                        'simulate an initialized cell cluster '
+                        'simulate an initialized cell _qfn_cluster_node '
                         'for a config file'
                     ),
                     help_description='''
-Simulate the previously initialized cell cluster defined by the passed
+Simulate the previously initialized cell _qfn_cluster_node defined by the passed
 configuration file. Simulation results will be saved to output files defined by
-this configuration, while the previously initialized cell cluster will be loaded
+this configuration, while the previously initialized cell _qfn_cluster_node will be loaded
 from input files defined by this configuration.
 ''',),
 
@@ -110,12 +110,12 @@ from input files defined by this configuration.
                         'simulate a gene regulatory network for a config file'),
                     help_description='''
 Simulate a gene regulatory network (GRN) for the previously initialized cell
-cluster defined by the passed configuration file, whose "gene regulatory network
+_qfn_cluster_node defined by the passed configuration file, whose "gene regulatory network
 config" option specifies the path of the configuration file defining this
 network. All other simulation features and options will be ignored.
 
 Simulation results will be saved to output files defined by this configuration,
-while the previously initialized cell cluster will be loaded from input files
+while the previously initialized cell _qfn_cluster_node will be loaded from input files
 defined by this configuration.
 ''',),
 
@@ -168,8 +168,8 @@ including:
                         'create, init, simulate, and plot a sample simulation'),
                     help_description='''
 Run a sample tissue simulation. This subcommand (A) creates a default YAML
-configuration file, (B) creates the cell cluster defined by that file, (C)
-initializes that cell cluster, (D) plots that initialization, (E) simulates that
+configuration file, (B) creates the cell _qfn_cluster_node defined by that file, (C)
+initializes that cell _qfn_cluster_node, (D) plots that initialization, (E) simulates that
 initialization, and (F) plots that simulation. All files and directories created
 by these operations will be preserved (rather than deleted on subcommand
 completion).
@@ -202,11 +202,11 @@ Equivalently, this subcommand is shorthand for the following:
                 CLISubcommandYAMLOnly(
                     name='seed',
                     help_synopsis=(
-                        'plot a seeded cell cluster for a config file'),
+                        'plot a seeded cell _qfn_cluster_node for a config file'),
                     help_description='''
-Plot the previously seeded cell cluster defined by the passed configuration
+Plot the previously seeded cell _qfn_cluster_node defined by the passed configuration
 file. Plot results will be saved to output files defined by this configuration,
-while the previously seeded cell cluster will be loaded from input files
+while the previously seeded cell _qfn_cluster_node will be loaded from input files
 defined by this configuration.
 ''',),
 
@@ -214,11 +214,11 @@ defined by this configuration.
                 CLISubcommandYAMLOnly(
                     name='init',
                     help_synopsis=(
-                        'plot an initialized cell cluster for a config file'),
+                        'plot an initialized cell _qfn_cluster_node for a config file'),
                     help_description='''
-Plot the previously initialized cell cluster defined by the passed configuration
+Plot the previously initialized cell _qfn_cluster_node defined by the passed configuration
 file. Plot results will be saved to output files defined by this configuration,
-while the previously initialized cell cluster will be loaded from input files
+while the previously initialized cell _qfn_cluster_node will be loaded from input files
 defined by this configuration.
 ''',),
 
@@ -226,11 +226,11 @@ defined by this configuration.
                 CLISubcommandYAMLOnly(
                     name='sim',
                     help_synopsis=(
-                        'plot a simulated cell cluster for a config file'),
+                        'plot a simulated cell _qfn_cluster_node for a config file'),
                     help_description='''
-Plot the previously simulated cell cluster defined by the passed configuration
+Plot the previously simulated cell _qfn_cluster_node defined by the passed configuration
 file. Plot results will be saved to output files defined by this configuration,
-while the previously simulated cell cluster will be loaded from input files
+while the previously simulated cell _qfn_cluster_node will be loaded from input files
 defined by this configuration.
 ''',
             ),
@@ -245,7 +245,7 @@ defined by this configuration.
                     help_description='''
 Plot the previously simulated gene regulatory network (GRN) defined by the
 passed configuration file. Plot results will be saved to output files defined by
-this configuration, while the previously simulated cell cluster will be loaded
+this configuration, while the previously simulated cell _qfn_cluster_node will be loaded
 from input files defined by this configuration.
 ''',),
 

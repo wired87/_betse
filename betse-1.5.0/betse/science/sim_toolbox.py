@@ -1080,7 +1080,7 @@ def molecule_mover(sim, cX_env_o, cX_cells, cells, p, z=0, Dm=1.0e-18, Do=1.0e-9
                 # if tight junction barrier applies, create a mask that defines relative strength of barrier:
                 denv_multiplier = denv_multiplier.reshape(cells.X.shape)*sim.D_env_weight
 
-                # at the cluster boundary, further modify the env diffusion map by a relative TJ diffusion factor:
+                # at the _qfn_cluster_node boundary, further modify the env diffusion map by a relative TJ diffusion factor:
                 denv_multiplier.ravel()[sim.TJ_targets] = denv_multiplier.ravel()[sim.TJ_targets]*Ftj
 
             else:

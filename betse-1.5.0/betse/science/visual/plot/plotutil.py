@@ -88,7 +88,7 @@ def plotFFT(simtime,simdata_time,celli,fig=None,ax=None,lncolor='b',lab='Data'):
     Parameters
     -----------
     simtime:            The time vector for the plot
-    simdata_time:       The full data for the plot define on all cell centres of the cluster at all sample times
+    simdata_time:       The full data for the plot define on all cell centres of the _qfn_cluster_node at all sample times
     celli:              The single cell index to extract data for
     fig:                A handle to an existing figure (default None; function creates the figure)
     ax:                 Handle to an existing axis (default None; function creates the axis)
@@ -134,7 +134,7 @@ def plotHetMem(sim,cells, p, fig=None, ax=None, zdata=None,clrAutoscale = True, 
     clrmap=None,edgeOverlay = True,pointOverlay=None, number_cells = False, number_mems = False,
     number_ecm = False, current_overlay = False,plotIecm = False):
         """
-        This plotting method assigns color-data to each node in the cell cluster that has distinct
+        This plotting method assigns color-data to each node in the cell _qfn_cluster_node that has distinct
         membrane domains for each cell. Data is interpolated to generate a smooth surface plot.
         The method returns a plot instance (fig, axes)
 
@@ -271,7 +271,7 @@ def plotPolyData(
     plotIecm: bool =False,
 ):
     """
-    Assigns color-data to each polygon in a cell cluster diagram and returns a
+    Assigns color-data to each polygon in a cell _qfn_cluster_node diagram and returns a
     plot instance (fig, axes).
 
     Parameters
@@ -389,7 +389,7 @@ def plotPolyData(
 def plotPrettyPolyData(data, sim, cells, p, fig=None, ax=None, clrAutoscale = True, clrMin = None, clrMax = None,
     clrmap = None, number_cells=False, current_overlay = False,plotIecm=False):
         """
-        Assigns color-data to each polygon mem-mid, vertex and cell centre in a cell cluster
+        Assigns color-data to each polygon mem-mid, vertex and cell centre in a cell _qfn_cluster_node
         diagram and returns a plot instance (fig, axes).
 
         Parameters

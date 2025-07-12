@@ -28,7 +28,7 @@ class SimPhaseCacheLayerCellsVector(SimPhaseCacheABC):
     def voltage_membrane(self) -> LayerCellsVectorColorfulABC:
         '''
         Vector layer layering all transmembrane voltages (Vmem) for the cell
-        cluster over all time steps onto caller-provided visuals.
+        _qfn_cluster_node over all time steps onto caller-provided visuals.
         '''
 
         return lyrvecabc.make_layer(

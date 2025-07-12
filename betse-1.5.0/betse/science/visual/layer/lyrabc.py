@@ -5,7 +5,7 @@
 
 '''
 Abstract base classes of all matplotlib-based layer subclasses  spatially
-plotting onto the cell cluster.
+plotting onto the cell _qfn_cluster_node.
 '''
 
 #FIXME: The current approach to implementing animation overlays is totally
@@ -28,7 +28,7 @@ plotting onto the cell cluster.
 #      open state as a "LineCollection" overlay. This layer subclass would
 #      probably only be used for this specific purpose.
 #    * A new "CellsLayerTimeSeries" subclass plotting *ONLY* an arbitrary
-#      time series for the cell cluster as a mesh plot underlay. Clearly, this
+#      time series for the cell _qfn_cluster_node as a mesh plot underlay. Clearly, this
 #      layer subclass would be extensively reused elsewhere as well.
 #* Replace all current overlay functionality in "AnimCellsABC" with "layers".
 #* Refactor the configuration file from the current hard-coded non-composable
@@ -57,7 +57,7 @@ from matplotlib.cm import ScalarMappable
 class LayerCellsABC(object, metaclass=ABCMeta):
     '''
     Abstract base class of all subclasses spatially plotting a single feature
-    of the cell cluster for a parent visual.
+    of the cell _qfn_cluster_node for a parent visual.
 
     Each subclass of this class plots the spatial distribution of a single
     modelled variable (e.g., membrane voltage) for one or more simulation time
@@ -167,7 +167,7 @@ class LayerCellsABC(object, metaclass=ABCMeta):
         '''
         Layer the spatial distribution of a single modelled variable (e.g.,
         cell membrane voltage) for the current time step and each cell of the
-        current cluster onto the figure axes of the current plot or animation.
+        current _qfn_cluster_node onto the figure axes of the current plot or animation.
         '''
 
         # If this method has yet to be called...
@@ -215,7 +215,7 @@ class LayerCellsABC(object, metaclass=ABCMeta):
 class LayerCellsColorfulABC(LayerCellsABC):
     '''
     Abstract base class of all subclasses spatially plotting a single modelled
-    variable of the cell cluster (e.g., cell membrane voltage) whose values are
+    variable of the cell _qfn_cluster_node (e.g., cell membrane voltage) whose values are
     mappable as colors onto the colorbar for a parent plot or animation.
 
     Attributes

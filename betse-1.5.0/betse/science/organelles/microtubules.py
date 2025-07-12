@@ -18,7 +18,7 @@ from betse.util.io.log import logs
 class Mtubes(object):
     '''
     High-level **microtubules modeller** (i.e., object encapsulating all
-    cellular microtubules for the cell cluster) simulated at the current
+    cellular microtubules for the cell _qfn_cluster_node) simulated at the current
     simulation time step.
 
     Attributes (Scalars)

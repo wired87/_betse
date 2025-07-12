@@ -213,19 +213,19 @@ def _upgrade_sim_conf_to_0_5_0(p: Parameters) -> None:
             after_solving_plots['single cell']['pipeline']
             if 'single cell' in after_solving_plots else [])
 
-    if 'cell cluster pipeline' not in after_solving_plots:
+    if 'cell _qfn_cluster_node pipeline' not in after_solving_plots:
         # Log a non-fatal warning.
-        if 'cell cluster' not in after_solving_plots:
+        if 'cell _qfn_cluster_node' not in after_solving_plots:
             logs.log_warning(
                 'Config file setting "results options" -> "after solving" -> '
-                '"plots" -> "cell cluster pipeline" not found. '
+                '"plots" -> "cell _qfn_cluster_node pipeline" not found. '
                 'Repairing to preserve backward compatibility. '
                 'Consider upgrading to the newest config file format!',
             )
 
-        after_solving_plots['cell cluster pipeline'] = (
-            after_solving_plots['cell cluster']['pipeline']
-            if 'cell cluster' in after_solving_plots else [])
+        after_solving_plots['cell _qfn_cluster_node pipeline'] = (
+            after_solving_plots['cell _qfn_cluster_node']['pipeline']
+            if 'cell _qfn_cluster_node' in after_solving_plots else [])
 
     if 'plot networks single cell' not in results_dict:
         # Log a non-fatal warning.
@@ -240,10 +240,10 @@ def _upgrade_sim_conf_to_0_5_0(p: Parameters) -> None:
         results_dict['plot networks single cell'] = results_dict[
             'plot single cell graphs']
 
-    # For each pipelined animation and cell cluster plot...
+    # For each pipelined animation and cell _qfn_cluster_node plot...
     for anim_conf in iterables.iter_items(
         results_dict['after solving']['animations']['pipeline'],
-        results_dict['after solving']['plots']['cell cluster pipeline'],
+        results_dict['after solving']['plots']['cell _qfn_cluster_node pipeline'],
     ):
         # Add the "enabled" boolean.
         if 'enabled' not in anim_conf:
@@ -496,7 +496,7 @@ def _upgrade_sim_conf_to_1_0_0_exports_name(p: Parameters) -> None:
     export_pipelines = (
         results_dict['after solving']['animations']['pipeline'],
         results_dict['after solving']['csvs']['pipeline'],
-        results_dict['after solving']['plots']['cell cluster pipeline'],
+        results_dict['after solving']['plots']['cell _qfn_cluster_node pipeline'],
         results_dict['after solving']['plots']['single cell pipeline'],
     )
 

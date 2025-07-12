@@ -4,8 +4,8 @@
 # See "LICENSE" for further details.
 
 '''
-**Cell cluster profile** (i.e., collection of parameters associated with a
-subset of the cells in a cell cluster) functionality.
+**Cell _qfn_cluster_node profile** (i.e., collection of parameters associated with a
+subset of the cells in a cell _qfn_cluster_node) functionality.
 '''
 
 # ....................{ IMPORTS                           }....................
@@ -16,8 +16,8 @@ from betse.util.type.types import type_check
 # ....................{ SUPERCLASS                        }....................
 class CellsProfileABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **cell cluster profile** (i.e., collection of
-    parameters associated with a subset of the cells in a cell cluster)
+    Abstract base class of all **cell _qfn_cluster_node profile** (i.e., collection of
+    parameters associated with a subset of the cells in a cell _qfn_cluster_node)
     subclasses.
 
     Instances of this class assign a subset of all cells matching
@@ -41,7 +41,7 @@ class CellsProfileABC(object, metaclass=ABCMeta):
     def __init__(
         self, name: str, z_order: int, picker: TissuePickerABC) -> None:
         '''
-        Initialize this cell cluster region.
+        Initialize this cell _qfn_cluster_node region.
 
         Parameters
         ----------
@@ -63,7 +63,7 @@ class CellsProfileABC(object, metaclass=ABCMeta):
 # ....................{ SUBCLASSES                        }....................
 class TissueProfile(CellsProfileABC):
     '''
-    **Tissue profile** (i.e., cell cluster region unconditionally assigning all
+    **Tissue profile** (i.e., cell _qfn_cluster_node region unconditionally assigning all
     cells in this region the same initial parameters).
 
     Since these parameters are typically derived from real-world observation of
@@ -151,7 +151,7 @@ class TissueProfile(CellsProfileABC):
 #FIXME: Actually do something here.
 class CutProfile(CellsProfileABC):
     '''
-    **Cut profile** (i.e., cell cluster region to be permanently removed by a
+    **Cut profile** (i.e., cell _qfn_cluster_node region to be permanently removed by a
     cutting event triggered during the simulation phase).
 
     There exists a many-to-one relation between cut profiles and cutting

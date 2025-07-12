@@ -4,7 +4,7 @@
 
 '''
 Abstract base classes of all matplotlib-based layer subclasses spatially
-plotting vector fields onto the cell cluster.
+plotting vector fields onto the cell _qfn_cluster_node.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -17,7 +17,7 @@ from betse.util.type.types import type_check
 class LayerCellsFieldColorlessABC(LayerCellsABC):
     '''
     Abstract base class of all classes spatially plotting vector fields of
-    arbitrary data onto the cell cluster (e.g., current density, electric field)
+    arbitrary data onto the cell _qfn_cluster_node (e.g., current density, electric field)
     such that neither the components nor magnitudes of these fields are mappable
     as colors onto the colorbars of parent plots and animations.
 
@@ -52,7 +52,7 @@ class LayerCellsFieldColorlessABC(LayerCellsABC):
 class LayerCellsFieldColorfulABC(LayerCellsColorfulABC):
     '''
     Abstract base class of all classes spatially plotting vector fields of
-    arbitrary data onto the cell cluster (e.g., current density, electric field)
+    arbitrary data onto the cell _qfn_cluster_node (e.g., current density, electric field)
     such that the components and/or magnitudes of these fields are mappable as
     colors onto the colorbars of parent plots and animations.
 

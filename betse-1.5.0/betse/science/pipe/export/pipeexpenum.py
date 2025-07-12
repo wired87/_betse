@@ -22,15 +22,15 @@ SimExportType = make_enum(
     Attributes
     ----------
     ANIM : enum
-        Post-simulation animations, visualizing the cell cluster across one or
+        Post-simulation animations, visualizing the cell _qfn_cluster_node across one or
         more sampled time steps of an initialization or simulation phase as the
         same number of frames of an animated video.
     CSV : enum
         Post-simulation comma-separated value (CSV) files, aggregating raw data
-        for the cell cluster across one or more sampled time steps of an
+        for the cell _qfn_cluster_node across one or more sampled time steps of an
         initialization or simulation phase.
     PLOT : enum
-        Post-simulation plots, visualizing the cell cluster across one or more
+        Post-simulation plots, visualizing the cell _qfn_cluster_node across one or more
         sampled time steps of an initialization or simulation phase as a single
         non-animated image.
     ''',

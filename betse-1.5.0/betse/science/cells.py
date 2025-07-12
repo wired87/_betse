@@ -37,7 +37,7 @@ class Cells(object):
     Specifically, this object:
 
     * Creates and stores data structures relating to the geometric properties
-      of the cell cluster grid and (optional) environmental computational grid.
+      of the cell _qfn_cluster_node grid and (optional) environmental computational grid.
     * Provides functions to facilitate data association and plotting on the
       geometric structures (e.g., cell volumes, membrane surface area, etc).
     * Constructs computational matrices used in simulation for direct
@@ -201,8 +201,8 @@ class Cells(object):
         cell membranes, whose:
 
         #. First dimension indexes cell membrane vertices, whose length is the
-           number of cell membrane vertices in this cluster. This length is
-           strictly greater than the number of cell membranes in this cluster.
+           number of cell membrane vertices in this _qfn_cluster_node. This length is
+           strictly greater than the number of cell membranes in this _qfn_cluster_node.
            Since this array contains *no* duplicate vertices, this length is
            strictly less than twice the number of cell membranes.
         #. Second dimension indexes the coordinates of the current membrane
@@ -217,10 +217,10 @@ class Cells(object):
     cell_nn_i : ndarray
         Two-dimensional Numpy array of the indices of the pairs of adjacent
         cells comprising all gap junctions connecting one cell to another in
-        this cluster, whose:
+        this _qfn_cluster_node, whose:
 
         #. First dimension indexes cell membranes, whose length is the number
-           of cell membranes in this cluster.
+           of cell membranes in this _qfn_cluster_node.
         #. Second dimension indexes the indices of the pair of cells defining
            the gap junction connecting the current membrane to another
            membrane, whose length is unconditionally guaranteed to be 2 *and*
@@ -236,10 +236,10 @@ class Cells(object):
     mem_nn : ndarray
         Two-dimensional Numpy array of the indices of the pairs of adjacent
         cell membranes comprising all gap junctions connecting one membrane to
-        another in this cluster, whose:
+        another in this _qfn_cluster_node, whose:
 
         #. First dimension indexes cell membranes, whose length is the number
-           of cell membranes in this cluster.
+           of cell membranes in this _qfn_cluster_node.
         #. Second dimension indexes the indices of the pair of cell membranes
            defining the gap junction connecting the current membrane to another
            membrane, whose length is unconditionally guaranteed to be 2 *and*
@@ -249,8 +249,8 @@ class Cells(object):
            #. Second item is:
 
               * If the current membrane is adjacent to no other membrane (e.g.,
-                due to being situated at either the periphery of this cluster
-                *or* a discontiguous hole in this cluster), the index of the
+                due to being situated at either the periphery of this _qfn_cluster_node
+                *or* a discontiguous hole in this _qfn_cluster_node), the index of the
                 current membrane again. A solitary membrane thus connects to
                 itself with a self-referential gap junction "loop."
               * If the current membrane is adjacent to exactly one other
@@ -342,7 +342,7 @@ class Cells(object):
     voronoi_centres : ndarray
         Two-dimensional Numpy array of the coordinates of the center points of
         all polygonal regions in the Voronoi diagram producing this cell
-        cluster, whose:
+        _qfn_cluster_node, whose:
 
         #. First dimension indexes regions in this diagram, whose length is the
            total number of regions in this diagram.
@@ -354,7 +354,7 @@ class Cells(object):
            #. Second item is the Y coordinate of the current region center.
     voronoi_grid : ndarray
         Two-dimensional Numpy array of the vertex coordinates of all
-        polygonal regions in the Voronoi diagram producing this cell cluster,
+        polygonal regions in the Voronoi diagram producing this cell _qfn_cluster_node,
         whose:
 
         #. First dimension indexes the vertices of all regions in this diagram,
@@ -369,7 +369,7 @@ class Cells(object):
         over the first dimension of that array.
     voronoi_verts : ndarray
         Three-dimensional Numpy array of the vertex coordinates of all
-        polygonal regions in the Voronoi diagram producing this cell cluster,
+        polygonal regions in the Voronoi diagram producing this cell _qfn_cluster_node,
         whose dimensions are structured as those of the :attr:`cell_verts`
         attribute (replacing "cell" with "Voronoi region").
     '''
@@ -385,7 +385,7 @@ class Cells(object):
     @type_check
     def __init__(self, p: 'betse.science.parameters.Parameters') -> None:
         '''
-        Initialize this cell cluster with the passed simulation configuration.
+        Initialize this cell _qfn_cluster_node with the passed simulation configuration.
 
         Parameters
         ----------
@@ -413,7 +413,7 @@ class Cells(object):
     @type_check
     def make_world(self, phase: SimPhase) -> None:
         '''
-        Construct the entire world (including both the cell cluster and
+        Construct the entire world (including both the cell _qfn_cluster_node and
         extracellular environment) to be simulated for the passed seed
         simulation phase.
 
@@ -425,7 +425,7 @@ class Cells(object):
 
         # Notify the sink callback of the current state of progress.
         phase.callbacks.progress_stated(
-            'Creating pseudo-random cell cluster...')
+            'Creating pseudo-random cell _qfn_cluster_node...')
 
         # If this is *NOT* the seed phase, raise an exception.
         phase.die_unless_kind_seed()
@@ -809,7 +809,7 @@ class Cells(object):
         # Define a data structure that holds [x,y] coordinate points of each 2d
         # grid-matrix entry.
 
-        # define geometric limits and centre for the cluster of points
+        # define geometric limits and centre for the _qfn_cluster_node of points
         self.xmin = np.min(xypts[:,0])
         self.xmax = np.max(xypts[:,0])
         self.ymin = np.min(xypts[:,1])
@@ -853,7 +853,7 @@ class Cells(object):
         #. Calculates this diagram.
         #. Closes this diagram at the square boundaries of the global
            environment.
-        #. Removes all cells from this diagram to define a cluster shape.
+        #. Removes all cells from this diagram to define a _qfn_cluster_node shape.
 
         Parameters
         --------
@@ -866,20 +866,20 @@ class Cells(object):
         self.ecm_verts_unique       x,y points of unique Voronoi cell vertices (nulled at world creation endpoint)
         self.ecm_polyinds           indices into self.ecm_verts_unique list defining each Voronoi polygon
                                     (nulled at world creation endpoint)
-        self.cluster_mask           Matrix of booleans defining masked shape of cell cluster
+        self.cluster_mask           Matrix of booleans defining masked shape of cell _qfn_cluster_node
         self.msize                  Size of bitmap (side pixel number)
         '''
 
         # Log this action.
         logs.log_info('Creating Voronoi geometry... ')
 
-        # Cell cluster image picker, producing the cell cluster image mask.
+        # Cell _qfn_cluster_node image picker, producing the cell _qfn_cluster_node image mask.
         from betse.science.tissue.picker.tispickimage import TissuePickerImage
         image_picker = TissuePickerImage(
             filename=phase.p.tissue_default.picker_image_filename,
             dirname=phase.p.conf_dirname)
 
-        # Cell cluster image mask, clipping the cell cluster against a
+        # Cell _qfn_cluster_node image mask, clipping the cell _qfn_cluster_node against a
         # user-defined image file.
         image_mask = image_picker.get_image_mask(cells=self)
 
@@ -901,7 +901,7 @@ class Cells(object):
                                 image_mask=None,
                                 make_all_operators=False, # FIXME: later fix this; for now set to False
                                 mesh_type=lattice_to_mesh_type[phase.p.cell_lattice_type],
-                                center = self.centre) # Optional center point for cluster (used to center a single cell)
+                                center = self.centre) # Optional center point for _qfn_cluster_node (used to center a single cell)
 
             self.mesh.init_mesh()
 
@@ -950,12 +950,12 @@ class Cells(object):
                                      fix_bounds=True)
 
 
-        # Clip the Voronoi cluster to the shape of the clipping bitmap -------------------------------------------------
-        self.ecm_verts = self.mesh.vcell_verts # voronoi verts of clipped cluster, nested as polygons defining each cell
+        # Clip the Voronoi _qfn_cluster_node to the shape of the clipping bitmap -------------------------------------------------
+        self.ecm_verts = self.mesh.vcell_verts # voronoi verts of clipped _qfn_cluster_node, nested as polygons defining each cell
 
-        # self.voronoi_verts = []  # track all voronoi cells, even those not in cluster (used as grid for masking)
+        # self.voronoi_verts = []  # track all voronoi cells, even those not in _qfn_cluster_node (used as grid for masking)
 
-        self.cluster_mask = image_mask.clipping_matrix  # keep track of cluster mask and its size
+        self.cluster_mask = image_mask.clipping_matrix  # keep track of _qfn_cluster_node mask and its size
         self.msize = image_mask.msize
 
         self.ecm_verts_unique = self.mesh.vor_verts  # convert to numpy array
@@ -966,7 +966,7 @@ class Cells(object):
         from every corresponding Voronoi polygon.
 
         This method is typically called *after* creating, closing, and clipping
-        the Voronoi diagram for this cell cluster. Doing so creates an ordering
+        the Voronoi diagram for this cell _qfn_cluster_node. Doing so creates an ordering
         of cells consistent with all Voronoi polygons, membrane domains, and
         extracellular matrix (ECM)-driven polygons and segments.
         '''
@@ -1442,7 +1442,7 @@ class Cells(object):
 
         self.mem_nn = np.asarray(mem_nn)
 
-        # Tag membranes and cells on the outer boundary of the cell cluster---------------------------------------------
+        # Tag membranes and cells on the outer boundary of the cell _qfn_cluster_node---------------------------------------------
         self.bflags_mems = np.asarray(mem_bound)
 
          # get the boundary cells associated with these membranes:
@@ -1477,14 +1477,14 @@ class Cells(object):
     def near_neigh(self,p):
 
         """
-        Calculate the nearest neighbours for each cell centre in the cluster and return a numpy
-        array of nn indices with an index consistent with all other data lists for the cluster.
+        Calculate the nearest neighbours for each cell centre in the _qfn_cluster_node and return a numpy
+        array of nn indices with an index consistent with all other data lists for the _qfn_cluster_node.
 
         Creates
         -------
         self.cell_nn            Indices of all nearest neighbours to each cell (ordered to self.cell_i)
         self.num_nn             Number of nearest neighbours for each cell (ordered to self.cell_i)
-        self.average_nn         Average number of nearest neighbours for entire cluster
+        self.average_nn         Average number of nearest neighbours for entire _qfn_cluster_node
         self.nn_i                           Non-unique list of index pairs to cells, each pair defining a cell-cell GJ
         self.gj_len                         Length of each GJ [m]
         self.nn_tx, self.nn_ty              Tangent vector coordinates to each gj
@@ -1761,8 +1761,8 @@ class Cells(object):
         all_bound_mem_inds = self.cell_to_mems[self.bflags_cells]
         all_bound_mem_inds, _ ,_ = tb.flatten(all_bound_mem_inds)
 
-        # need these to obtain cluster membrane values from the ECM perspective, or it won't write to the array!
-        self.ecm_bound_k = self.map_mem2ecm[self.bflags_mems]  # k indices to xypts for ecms on cluster boundary
+        # need these to obtain _qfn_cluster_node membrane values from the ECM perspective, or it won't write to the array!
+        self.ecm_bound_k = self.map_mem2ecm[self.bflags_mems]  # k indices to xypts for ecms on _qfn_cluster_node boundary
 
         self.ecm_allbound_k = self.map_mem2ecm[all_bound_mem_inds]
 
@@ -1845,7 +1845,7 @@ class Cells(object):
     def graphLaplacian(self, p) -> None:
         '''
         Define an abstract inverse Laplacian used to solve Poisson's equation
-        on the irregular Voronoi grid of this cell cluster.
+        on the irregular Voronoi grid of this cell _qfn_cluster_node.
 
         Parameters
         ----------
@@ -1898,7 +1898,7 @@ class Cells(object):
         """
         Defines a matrix, self.divCell_inv, which
         performs the inverse of divergence operation
-        for membranes on individual cells of the cluster.
+        for membranes on individual cells of the _qfn_cluster_node.
 
         If we consider a scalar property Phi, which is
         defined at points immediately inside and outside
@@ -2121,7 +2121,7 @@ class Cells(object):
     @type_check
     def save_cluster(self, phase: SimPhase) -> None:
         '''
-        Pickle (i.e., save) this cell cluster to the file configured by the
+        Pickle (i.e., save) this cell _qfn_cluster_node to the file configured by the
         passed seed simulation phase.
 
         Parameters
@@ -2132,9 +2132,9 @@ class Cells(object):
 
         # Log this pickling.
         logs.log_debug(
-            'Pickling cell cluster to: %s', phase.p.seed_pickle_filename)
+            'Pickling cell _qfn_cluster_node to: %s', phase.p.seed_pickle_filename)
 
-        # Pickle this cell cluster.
+        # Pickle this cell _qfn_cluster_node.
         datadump = [self, phase.p]
         fh.saveSim(phase.p.seed_pickle_filename, datadump)
 
@@ -2142,7 +2142,7 @@ class Cells(object):
     def make_maskM(self,p):
         '''
         Create structures for plotting interpolated data on cell centres and
-        differentiating between the cell cluster and environment.
+        differentiating between the cell _qfn_cluster_node and environment.
         '''
 
         voronoiTree = cKDTree(self.xypts)
@@ -2266,7 +2266,7 @@ class Cells(object):
     def parse_svg(self, p: 'betse.science.parameters.Parameters') -> None:
         '''
         Parse the passed SVG-formatted file into a clipping bitmask, cell
-        centers, tissue profiles, and related cell cluster metadata.
+        centers, tissue profiles, and related cell _qfn_cluster_node metadata.
 
         Parameters
         ----------
@@ -2298,7 +2298,7 @@ class Cells(object):
 
         doc.unlink()
 
-        # define geometric limits and centre for the cluster of points
+        # define geometric limits and centre for the _qfn_cluster_node of points
         self.xmin = 0
         self.xmax = p.wsx
         self.ymin = 0
@@ -2504,7 +2504,7 @@ class Cells(object):
 
     def zero_div_cell(self, Fn, rho=0.0, bc = 0.0, open_bounds=True):
         """
-        Calculates a divergence free field on the cell cluster.
+        Calculates a divergence free field on the cell _qfn_cluster_node.
 
         Parameters
         -----------
@@ -2559,7 +2559,7 @@ class Cells(object):
         ------------
         Fx:                # x-coordinate of field on cell centers
         Fy:                # y-coordinate of field on cell centers
-        bounds_closed:     # cluster boundary moves flux out, or is sealed
+        bounds_closed:     # _qfn_cluster_node boundary moves flux out, or is sealed
         rot_only           # return only the divergence-free field components
                            # (i.e. rotation only)
 
@@ -2912,10 +2912,10 @@ class Cells(object):
             defined at cells whose membranes overlap this target point is
             defined as follows:
             * If this target point resides *inside* the convex hull of this cell
-              cluster, this output data is spatially interpolated from the
+              _qfn_cluster_node, this output data is spatially interpolated from the
               centres of these cells onto this target point.
             * Else, 0. In this case, this target point resides *outside* the
-              convex hull of this cell cluster. The source data is spatially
+              convex hull of this cell _qfn_cluster_node. The source data is spatially
               situated at cell centres and hence perfectly intracellular. No
               extracellular source data exists with which to interpolate onto
               extracellular target points.
@@ -2951,7 +2951,7 @@ class Cells(object):
                 'two-dimensional.'.format(len(cells_centre_data.shape)))
 
         # If the last dimension of this source data does *NOT* index all cells
-        # in this cluster, raise an exception.
+        # in this _qfn_cluster_node, raise an exception.
         if cells_centre_data.shape[-1] != self.cell_centres.shape[0]:
             raise BetseSequenceException(
                 'Source data not spatially situated at cell centres '

@@ -33,15 +33,15 @@ Attributes
 SEED : enum
     Seed simulation phase, as implemented by the
     :meth:`betse.science.simrunner.SimRunner.seed` method. This phase creates
-    the cell cluster and caches this cluster to an output file.
+    the cell _qfn_cluster_node and caches this _qfn_cluster_node to an output file.
 INIT : enum
     Initialization simulation phase, as implemented by the
     :meth:`betse.science.simrunner.SimRunner.init` method. This phase
-    initializes the previously created cell cluster from a cached input file
+    initializes the previously created cell _qfn_cluster_node from a cached input file
     and caches this initialization to an output file.
 SIM : enum
     Proper simulation phase, as implemented by the
     :meth:`betse.science.simrunner.SimRunner.sim` method. This phase simulates
-    the previously initialized cell cluster from a cached input file and caches
+    the previously initialized cell _qfn_cluster_node from a cached input file and caches
     this simulation to an output file.
 ''')

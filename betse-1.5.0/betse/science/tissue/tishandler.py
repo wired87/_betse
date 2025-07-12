@@ -57,7 +57,7 @@ class TissueHandler(object):
     cell_target_inds : dict
         Dictionary mapping from the name of each tissue profile enabled by the
         current simulation configuration to a one-dimensional array of the
-        indices of all cells in the cluster belonging to this tissue.
+        indices of all cells in the _qfn_cluster_node belonging to this tissue.
     tissue_default : TissueProfile
         **Default tissue profile** (i.e., profile applicable to all cells *not*
         already assigned to a non-default tissue profile). For convenience,
@@ -72,7 +72,7 @@ class TissueHandler(object):
     tissue_target_inds : dict
         Dictionary mapping from the name of each tissue profile enabled by the
         current simulation configuration to a one-dimensional array of the
-        indices of all cell membranes in the cluster belonging to this tissue.
+        indices of all cell membranes in the _qfn_cluster_node belonging to this tissue.
 
     Attributes (Profile: Cut)
     ----------
@@ -96,7 +96,7 @@ class TissueHandler(object):
         environmental boundary for a range of simulation time steps) if enabled
         by the current simulation configuration *or* ``None`` otherwise.
     event_cut : {SimEventCut, NoneType}
-        **Cutting event** (i.e., event removing a region of the current cluster
+        **Cutting event** (i.e., event removing a region of the current _qfn_cluster_node
         at some time step during the simulation phase) if enabled by the
         current simulation configuration *or* ``None`` otherwise.
     '''
@@ -160,7 +160,7 @@ class TissueHandler(object):
         # 1-based index of the default tissue profile.
         tissue_z_order = 1
 
-        # Object assigning a cell cluster region to the default tissue profile.
+        # Object assigning a cell _qfn_cluster_node region to the default tissue profile.
         tissue_picker = TissuePickerAll()
 
         #FIXME: Set this picker for the "tissue_default" object, while still
@@ -181,7 +181,7 @@ class TissueHandler(object):
                 z_order=tissue_z_order,
                 picker=tissue_picker,
 
-                # By definition, the cell cluster shares no gap junctions with
+                # By definition, the cell _qfn_cluster_node shares no gap junctions with
                 # cells in the environment -- since, of course, there *ARE* no
                 # cells in the environment.
                 is_gj_insular=True,
@@ -207,7 +207,7 @@ class TissueHandler(object):
             # 1-based index of this tissue profile.
             tissue_z_order += 1
 
-            # Picker assigning a cell cluster region to this tissue profile.
+            # Picker assigning a cell _qfn_cluster_node region to this tissue profile.
             tissue_picker = None
 
             # Conditionally define this picker.
@@ -357,7 +357,7 @@ class TissueHandler(object):
     #Previously, we considered renaming this method to
     #_map_tissue_profiles_to_cells(). Doing so appears wholly insufficient,
     #however; external callers *MUST* finalize the initialization of this
-    #object after the cell cluster has been created. See the
+    #object after the cell _qfn_cluster_node has been created. See the
     #SimPhase.__init__() method for further (albeit obsolete) discussion.
     @type_check
     def init_profiles(self, phase: SimPhase) -> None:
@@ -369,7 +369,7 @@ class TissueHandler(object):
 
         * Defines all dictionaries mapping from tissue profile names to
           one-dimensional arrays of the indices of various cellular objects
-          (e.g., cells, cell membranes) in the cluster belonging to these
+          (e.g., cells, cell membranes) in the _qfn_cluster_node belonging to these
           tissues. This includes the :attr:`cell_target_inds`,
           :attr:`env_target_inds`, and :attr:`tissue_target_inds` dictionaries.
 
@@ -445,7 +445,7 @@ class TissueHandler(object):
     # ..................{ INITIALIZERS ~ event              }..................
     #FIXME: The overwhelming majority of the logic performed by this method
     #should be shifted into the _init_events() method. The only logic that
-    #should remain here is that which requires a fully seeded cell cluster --
+    #should remain here is that which requires a fully seeded cell _qfn_cluster_node --
     #notably, the logic initializing the "gj_block" event in the
     #_init_events_global() method. All other logic is simple and unconditional.
     #FIXME: Shift what remains of this method into the init_profiles() method.
@@ -892,7 +892,7 @@ class TissueHandler(object):
         ):
             for cut_profile_name in p.event_cut_profile_names:
                 logs.log_info(
-                    'Cutting cell cluster via cut profile "%s"...',
+                    'Cutting cell _qfn_cluster_node via cut profile "%s"...',
                     cut_profile_name)
 
                 cut_profile_picker = (
@@ -925,7 +925,7 @@ class TissueHandler(object):
     ) -> None:
         '''
         Permanently remove all cells selected by the passed tissue picker from
-        the cell cluster described by the passed simulation phase.
+        the cell _qfn_cluster_node described by the passed simulation phase.
 
         Parameters
         ----------
@@ -944,7 +944,7 @@ class TissueHandler(object):
         # around cut world to the free value (True) or not (False)?
         # open_TJ = True
 
-        # Subtract this bitmap's clipping mask from the global cluster mask.
+        # Subtract this bitmap's clipping mask from the global _qfn_cluster_node mask.
         # bitmap_mask = tissue_picker.get_image_mask(cells).clipping_matrix
         # cells.cluster_mask = cells.cluster_mask - bitmap_mask
 
@@ -1146,7 +1146,7 @@ class TissueHandler(object):
         cells.ecm_verts_unique = np.asarray(cells.ecm_verts_unique)  # convert to numpy array
 
         #-----------------------------------------------------------------
-        logs.log_info('Recalculating cluster variables for new configuration...')
+        logs.log_info('Recalculating _qfn_cluster_node variables for new configuration...')
 
         # Cut the DEC meshes and save the inds to modify data defined on DEC
         # edges, verts, and simplices.

@@ -68,7 +68,7 @@ class InitFileSavingSerializer(serializers.Serializer):
         default='INITS', help_text='Directory containing initialization files.'
     )
     worldfile = serializers.CharField(
-        default='world_1.betse.gz', help_text='File with cell cluster created by "betse seed".'
+        default='world_1.betse.gz', help_text='File with cell _qfn_cluster_node created by "betse seed".'
     )
     file = serializers.CharField(
         default='init_1.betse.gz', help_text='File of initialization results created by "betse init".'
@@ -274,7 +274,7 @@ class DiffusionConstantsTissueDefault(serializers.Serializer):
 class DefaultTissueProfileSerializer(serializers.Serializer):
     name = serializers.CharField(default='Base', help_text='Arbitrary unique profile name.')
     image = serializers.CharField(default='geo/circle/circle_Base.png',
-                                  help_text='Filename of the image defining the cell cluster shape.')
+                                  help_text='Filename of the image defining the cell _qfn_cluster_node shape.')
     diffusion_constants = DiffusionConstantsTissueDefault(
         help_text='Membrane diffusion constants applied to all unprofiled cells.')
 
@@ -305,7 +305,7 @@ class CellTargetsSerializer(serializers.Serializer):
     )
     percent = serializers.IntegerField(
         default=50,
-        help_text='# Percentage of all cells in this cluster to randomly apply this tissue profile to in the range [0, 100] (e.g., 50 selects 50% of all cells. Ignored unless "type: random" specified above,'
+        help_text='# Percentage of all cells in this _qfn_cluster_node to randomly apply this tissue profile to in the range [0, 100] (e.g., 50 selects 50% of all cells. Ignored unless "type: random" specified above,'
     )
 
 
@@ -368,7 +368,7 @@ class TissueProfileDefinitionSerializer(serializers.Serializer):
                 "image": "geo/circle/wedge.png"
             }
         ],
-        help_text='List of all cut profiles (i.e., cell cluster regions to be permanently removed by a cutting event triggered during the simulation phase). Ignored if "profiles enabled" is False or cutting event is disabled.'
+        help_text='List of all cut profiles (i.e., cell _qfn_cluster_node regions to be permanently removed by a cutting event triggered during the simulation phase). Ignored if "profiles enabled" is False or cutting event is disabled.'
     )
 
 

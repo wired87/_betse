@@ -12,7 +12,7 @@ from matplotlib import animation
 
 
 # FIXME to integrate with BETSE, needs to be able to take in forcing function data (which comes from BETSE) and may
-# need to be interpolated to this particular grid (along with 'c', by the way, which might be 0 outside of cell cluster)
+# need to be interpolated to this particular grid (along with 'c', by the way, which might be 0 outside of cell _qfn_cluster_node)
 
 # FIXME thinking about implementing the FitzHugh-Nagumo or van der Poll relaxation oscillator math as as simple model
 # to demonstrate how phase oscillators might create Pilot Wave fields that go on to control the phase oscillators.

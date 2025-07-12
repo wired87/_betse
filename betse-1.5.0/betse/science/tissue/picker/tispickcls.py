@@ -37,13 +37,13 @@ class TissuePickerABC(object, metaclass=ABCMeta):
     ) -> SequenceTypes:
         '''
         One-dimensional Numpy array of the indices of all cells in the passed
-        cell cluster selected by this tissue picker, ignoring extracellular
+        cell _qfn_cluster_node selected by this tissue picker, ignoring extracellular
         spaces.
 
         Parameters
         ----------
         cells : Cells
-            Current cell cluster.
+            Current cell _qfn_cluster_node.
         p : Parameters
             Current simulation configuration.
 
@@ -83,7 +83,7 @@ class TissuePickerABC(object, metaclass=ABCMeta):
         '''
         2-tuple ``(cells_index, mems_index)`` of one-dimensional Numpy arrays
         of the indices of both all cells *and* cell membranes in the passed
-        cell cluster selected by this tissue picker, ignoring extracellular
+        cell _qfn_cluster_node selected by this tissue picker, ignoring extracellular
         spaces.
 
         By default, this method returns the array returned by the subclass
@@ -93,7 +93,7 @@ class TissuePickerABC(object, metaclass=ABCMeta):
         Parameters
         ----------
         cells : Cells
-            Current cell cluster.
+            Current cell _qfn_cluster_node.
         p : Parameters
             Current simulation configuration.
 
@@ -137,7 +137,7 @@ class TissuePickerABC(object, metaclass=ABCMeta):
 class TissuePickerAll(TissuePickerABC):
     '''
     All-inclusive tissue picker, unconditionally matching *all* cells in the
-    current cell cluster.
+    current cell _qfn_cluster_node.
     '''
 
     # ..................{ PICKERS                           }..................
@@ -154,7 +154,7 @@ class TissuePickerAll(TissuePickerABC):
 class TissuePickerColor(TissuePickerABC):
     '''
     Vector image-based tissue picker, matching all cells in the current cell
-    cluster whose cell centres are simple circles with a given fill color of a
+    _qfn_cluster_node whose cell centres are simple circles with a given fill color of a
     vector image (defined by the ``cells from svg`` setting in the current
     YAML-formatted simulation configuration file).
 
@@ -191,11 +191,11 @@ class TissuePickerColor(TissuePickerABC):
         p:     'betse.science.parameters.Parameters',
     ) -> SequenceTypes:
 
-        # If no cell cluster SVG is enabled, raise an exception.
+        # If no cell _qfn_cluster_node SVG is enabled, raise an exception.
         if cells.seed_fills is None:
             raise BetseSimConfException(
                 'Color-based cell targets type requires '
-                'cell cluster SVG to be enabled.')
+                'cell _qfn_cluster_node SVG to be enabled.')
 
         # Search for cells matching the tissue profile color.
         selected_cells = []
@@ -210,7 +210,7 @@ class TissuePickerColor(TissuePickerABC):
 class TissuePickerIndices(TissuePickerABC):
     '''
     Cell indices-based tissue picker, matching all cells in the current cell
-    cluster whose indices are defined by a given sequence.
+    _qfn_cluster_node whose indices are defined by a given sequence.
 
     Attributes
     ----------
@@ -246,7 +246,7 @@ class TissuePickerIndices(TissuePickerABC):
 class TissuePickerPercent(TissuePickerABC):
     '''
     Randomized cell picker, randomly matching a given percentage of all cells
-    in the current cell cluster.
+    in the current cell _qfn_cluster_node.
 
     Attributes
     ----------
@@ -285,16 +285,16 @@ class TissuePickerPercent(TissuePickerABC):
         p:     'betse.science.parameters.Parameters',
     ) -> SequenceTypes:
 
-        # Total number of cells in this cluster.
+        # Total number of cells in this _qfn_cluster_node.
         data_length = len(cells.cell_i)
 
-        # Total number of cells to randomly select from this cluster.
+        # Total number of cells to randomly select from this _qfn_cluster_node.
         data_fraction = int((self.cells_percent/100)*data_length)
 
         cell_i_copy = cells.cell_i[:]
         np.random.shuffle(cell_i_copy)
 
         # For simplicity, non-randomly select the indices of the first
-        # "data_fraction"-th cells in this cluster. While technically
+        # "data_fraction"-th cells in this _qfn_cluster_node. While technically
         # non-random, this simplistic approach currently suffices.
         return [cell_i_copy[x] for x in range(0, data_fraction)]

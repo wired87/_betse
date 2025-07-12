@@ -15,7 +15,7 @@ from betse.util.type.types import type_check
 class PlotCellsAfterSolving(VisualCellsABC):
     '''
     Abstract base class of all post-simulation cell plot subclasses, plotting
-    simulation data over the cell cluster _after_ rather than _during_
+    simulation data over the cell _qfn_cluster_node _after_ rather than _during_
     simulation modelling.
     '''
 

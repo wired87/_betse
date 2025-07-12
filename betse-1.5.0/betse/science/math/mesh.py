@@ -98,7 +98,7 @@ class DECMesh(object):
         allow_merging = True, # Allow tri-cells to be merged to quads if circumcenters are close?
         merge_thresh = 0.2, # Distance threshhold (%of total radius) for merging close circumcenters
         close_thresh = 0.25, # threshhold for removal of close tri vert neighour points
-        center = None, # Optional center point for cluster (used to center a single cell)
+        center = None, # Optional center point for _qfn_cluster_node (used to center a single cell)
     ):
 
         self.single_cell_noise = single_cell_noise
@@ -126,7 +126,7 @@ class DECMesh(object):
         self.removed_bad_verts = False # flag to bad tri-vert removal (only do case once!)
 
         if cell_radius is None and seed_points is not None:
-            # find the average distance between points in the cluster:
+            # find the average distance between points in the _qfn_cluster_node:
             point_tree = cKDTree(seed_points)
             nd, _ = point_tree.query(seed_points, k=2)
             self.cell_radius = np.mean(nd[:,1])/2
@@ -314,7 +314,7 @@ class DECMesh(object):
         self.tri_verts = np.delete(self.tri_verts, mark_for_merge, axis = 0)
 
         # Calculate the Delaunday triangulation of cell centres based on the
-        # cluster-masked seed points.
+        # _qfn_cluster_node-masked seed points.
         trimesh = Delaunay(self.tri_verts)
 
         # Number of tri_verts.
@@ -342,14 +342,14 @@ class DECMesh(object):
                 # methodology:
                 if r_circ < (self.cell_radius) / self.alpha_shape:
 
-                    # but also check that circumcentre is in the cluster mask...
+                    # but also check that circumcentre is in the _qfn_cluster_node mask...
                     if self.image_mask is not None:
                         flagc = self.image_mask.clipping_function(vx, vy)
 
                     else:
                         flagc = 1.0
 
-                    # If it's not outside the cluster region, include the
+                    # If it's not outside the _qfn_cluster_node region, include the
                     # simplex.
                     if flagc != 0.0:
                         tri_ccents.append([vx, vy])
@@ -998,7 +998,7 @@ class DECMesh(object):
         self.vor_cell_i = np.linspace(
             0, self.n_vcells - 1, self.n_vcells, dtype=int)
 
-        # get final bounds for the cluster:
+        # get final bounds for the _qfn_cluster_node:
         xmin = self.vor_verts[:, 0].min()
         xmax = self.vor_verts[:, 0].max()
         ymin = self.vor_verts[:, 1].min()

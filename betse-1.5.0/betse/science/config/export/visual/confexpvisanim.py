@@ -240,7 +240,7 @@ class SimConfExportAnims(YamlABC):
 class SimConfExportAnimCells(
     SimConfVisualCellsYAMLMixin, SimConfExportABC):
     '''
-    **Exported cell cluster animation subconfiguration** (i.e., YAML-backed
+    **Exported cell _qfn_cluster_node animation subconfiguration** (i.e., YAML-backed
     list item configuring the exportation of one or more video files applicable
     to all cells from the simulation configuration file containing this item).
     '''
@@ -266,7 +266,7 @@ class SimConfExportAnimCells(
 
 class SimConfExportAnimCellsEmbedded(SimConfVisualCellsYAMLMixin, YamlABC):
     '''
-    **Exported embedded cell cluster animation subconfiguration** (i.e.,
+    **Exported embedded cell _qfn_cluster_node animation subconfiguration** (i.e.,
     YAML-backed dictionary configuring the exportation of one or more video
     files applicable to all cells from the simulation configuration file
     containing this item).

@@ -69,16 +69,16 @@ Attributes
 SEED : enum
     Unpickled seed phase, running this network on the results of a previously
     run ``betse seed`` subcommand and hence an uninitialized and unsimulated
-    cell cluster (i.e., neither initialized to steady-state concentrations
+    cell _qfn_cluster_node (i.e., neither initialized to steady-state concentrations
     *nor* simulated with non-steady-state bioelectrical phenomena).
 INIT : enum
     Unpickled initialization phase, running this network on the results of a
     previously run ``betse init`` subcommand and hence an initialized but
-    unsimulated cell cluster.
+    unsimulated cell _qfn_cluster_node.
 SIM : enum
     Unpickled simulation phase, running this network on the results of a
     previously run ``betse sim`` subcommand and hence an initialized and
-    simulated cell cluster.
+    simulated cell _qfn_cluster_node.
 ''')
 
 # ....................{ ENUMS ~ ion                       }....................

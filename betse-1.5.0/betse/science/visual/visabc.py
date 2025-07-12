@@ -29,7 +29,7 @@ Abstract base classes of all Matplotlib-based plot and animation subclasses.
 #matplotlib >= 3.10.0 and Arch Linux + Wayland, anyway. Let's choose to
 #conveniently ignore this probably non-issue for the moment, please. \o/
 
-#FIXME: Refactor all procedural cell cluster-specific
+#FIXME: Refactor all procedural cell _qfn_cluster_node-specific
 #"betse.science.visual.plot.plotutil" functions into subclasses of the
 #"LayerCellsABC" base class defined elsewhere. Ultimate power fights the dark
 #deceit!
@@ -74,8 +74,8 @@ from matplotlib.streamplot import StreamplotSet
 # ....................{ SUPERCLASSES                       }....................
 class VisualCellsABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **cell cluster visual** (i.e., plot or animation
-    spatially visualizing the current cell cluster) subclasses.
+    Abstract base class of all **cell _qfn_cluster_node visual** (i.e., plot or animation
+    spatially visualizing the current cell _qfn_cluster_node) subclasses.
 
     Subclasses of this class plot the spatial distribution of one or more
     modelled variables (e.g., charge distribution, membrane voltage) for
@@ -528,7 +528,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
         '''
         Matplotlib axes for this visual's figure.
 
-        All modelled variables for this cell cluster are spatially plotted onto
+        All modelled variables for this cell _qfn_cluster_node are spatially plotted onto
         this axes at each time step of this visual.
         '''
 
@@ -569,7 +569,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
         :data:`None` otherwise.
 
         This colormap maps all numeric data for one modelled variable for this
-        cell cluster into color values displayed on this plot or animation's
+        cell _qfn_cluster_node into color values displayed on this plot or animation's
         colorbar.
         '''
 
@@ -1211,10 +1211,10 @@ class VisualCellsABC(object, metaclass=ABCMeta):
         magnitude: SequenceTypes
             One-dimensional sequence of vector flow magnitudes.
         grid_x : SequenceTypes or NoneType
-            Optional scaled X components of the cell cluster grid. Defaults to
+            Optional scaled X components of the cell _qfn_cluster_node grid. Defaults to
             `None`, in which case the default `self.cells.X` array is used.
         grid_y : SequenceTypes or NoneType
-            Optional scaled Y components of the cell cluster grid. Defaults to
+            Optional scaled Y components of the cell _qfn_cluster_node grid. Defaults to
             `None`, in which case the default `self.cells.Y` array is used.
         magnitude_max: NumericSimpleTypes or NoneType
             Optional maximum magnitude in the passed `magnitude` array.
@@ -1297,10 +1297,10 @@ class VisualCellsABC(object, metaclass=ABCMeta):
 
         * If this configuration requests that individual cells be plotted
           (i.e., ``show cells`` is ``True``), a mosaic plot of this
-          simulation's cell cluster will be returned. See the
+          simulation's cell _qfn_cluster_node will be returned. See the
           :meth:`_plot_cell_mosaic` method.
         * Else, a mesh plot interpolating the individual cells of this
-          simulation's cell cluster will be returned. See the
+          simulation's cell _qfn_cluster_node will be returned. See the
           `_plot_cell_mesh()` method.
 
         Parameters
@@ -1354,7 +1354,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
             assert types.is_matplotlib_polycollection(cell_plot), (
                 types.assert_not_matplotlib_polycollection(cell_plot))
             cell_plot.set_array(cell_data)
-        # Else, the cell cluster is being plotted as an unstructured triangular
+        # Else, the cell _qfn_cluster_node is being plotted as an unstructured triangular
         # grid, requiring this data be reshaped onto this grid.
         else:
             assert types.is_matplotlib_trimesh(cell_plot), (
@@ -1379,7 +1379,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
         data (e.g., transmembrane cell voltages for the current time step) onto
         the current figure's axes.
 
-        This method is typically called to replot an animation of a cell cluster
+        This method is typically called to replot an animation of a cell _qfn_cluster_node
         subject to physical cell changes (e.g., cutting, deformation). The type
         of plot returned is defined by this simulation's configuration.
         Specifically:
@@ -1451,7 +1451,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
         figure's axes.
 
         The returned plot will be a polygon collection such that each polygon
-        signifies a cell in this simulation's cell cluster.
+        signifies a cell in this simulation's cell _qfn_cluster_node.
 
         Parameters
         -----------
@@ -1494,7 +1494,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
         axes.
 
         The returned plot will be an unstructured triangular grid interpolating
-        each cell of this simulation's cell cluster into a smooth continuum.
+        each cell of this simulation's cell _qfn_cluster_node into a smooth continuum.
 
         Parameters
         -----------

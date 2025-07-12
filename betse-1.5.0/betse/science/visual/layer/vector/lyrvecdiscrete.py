@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Layer subclasses spatially shading each individual cell in the cell cluster as a
+Layer subclasses spatially shading each individual cell in the cell _qfn_cluster_node as a
 discrete (i.e., individual, disseparate, discontiguous) surface.
 '''
 
@@ -22,7 +22,7 @@ class LayerCellsVectorDiscreteMembranesABC(LayerCellsVectorColorfulABC):
     Abstract base class of all layer subclasses plotting a single vector
     spatially situated at cell membrane vertices (e.g., transmembrane voltages)
     as a discontiguous Gouraud-shaded surface depicted by a polygonal mesh onto
-    the cell cluster for one on more time steps.
+    the cell _qfn_cluster_node for one on more time steps.
 
     Such layers are somewhat more computationally expensive in both space and
     time than the average layer. Gouraud-shading the surface of each cell
@@ -33,7 +33,7 @@ class LayerCellsVectorDiscreteMembranesABC(LayerCellsVectorColorfulABC):
     ----------
     _cell_tri_meshes : list
         List of :class:`matplotlib.collections.TriMesh` instances, each
-        encapsulating the triangulation mesh for the cell in this cell cluster
+        encapsulating the triangulation mesh for the cell in this cell _qfn_cluster_node
         whose 0-based index is the same structure as that of the
         :attr:`betse.science.cells.Cells.cell_verts` array.
     '''
@@ -52,7 +52,7 @@ class LayerCellsVectorDiscreteMembranesABC(LayerCellsVectorColorfulABC):
     def cells_vertices_coords(self) -> ndarray:
         '''
         Three-dimensional Numpy array of the upscaled coordinates of all cell
-        membrane vertices for this cell cluster at the current time step.
+        membrane vertices for this cell _qfn_cluster_node at the current time step.
 
         See Also
         ----------
@@ -80,7 +80,7 @@ class LayerCellsVectorDiscreteMembranesABC(LayerCellsVectorColorfulABC):
         self._cell_tri_meshes = []
 
         # For the index and two-dimensional array of upscaled vertex X and Y
-        # coordinates for each cell in this cluster...
+        # coordinates for each cell in this _qfn_cluster_node...
         for cell_index, cell_vertices_coords in enumerate(
             self.cells_vertices_coords):
             # X coordinates of all vertices defining this cell's polygon.
@@ -131,7 +131,7 @@ class LayerCellsVectorDiscreteMembranesFixed(
     '''
     Layer subclass plotting a single vector spatially situated at cell membrane
     vertices (e.g., transmembrane voltages) as a discontiguous Gouraud-shaded
-    surface depicted by a polygonal mesh onto the cell cluster for one on more
+    surface depicted by a polygonal mesh onto the cell _qfn_cluster_node for one on more
     time steps under the assumption that these vertices are fixed over these
     time steps.
 
@@ -170,7 +170,7 @@ class LayerCellsVectorDiscreteMembranesDeformed(
     '''
     Layer subclass plotting a single vector spatially situated at cell membrane
     vertices (e.g., transmembrane voltages) as a discontiguous Gouraud-shaded
-    surface depicted by a polygonal mesh onto the cell cluster for one on more
+    surface depicted by a polygonal mesh onto the cell _qfn_cluster_node for one on more
     time steps under the assumption that these vertices are deformed over these
     time steps.
 

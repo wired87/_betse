@@ -18,7 +18,7 @@ from betse.util.type.types import type_check  #, SequenceTypes
 class SimEventCut(SimEventSpikeABC):
     '''
     **Cutting event** (i.e., event removing one or more cells of the current
-    cell cluster at some time step during the simulation phase).
+    cell _qfn_cluster_node at some time step during the simulation phase).
     '''
 
     # ..................{ INITIALIZERS                      }..................

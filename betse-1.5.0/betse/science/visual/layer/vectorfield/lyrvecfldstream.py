@@ -4,7 +4,7 @@
 
 '''
 Layer subclasses spatially overlaying streamlines as stream plots onto the
-current cell cluster.
+current cell _qfn_cluster_node.
 '''
 
 #FIXME: Optimize. The current _get_time_currents() approach is extremely
@@ -35,13 +35,13 @@ from matplotlib.patches import FancyArrowPatch
 class LayerCellsFieldStream(LayerCellsFieldColorlessABC):
     '''
     Layer subclass both simulating *and* plotting streamlines of a single
-    vector field (e.g., total current density) onto the cell cluster for one on
+    vector field (e.g., total current density) onto the cell _qfn_cluster_node for one on
     more simulation time steps.
 
     This layer is somewhat more computationally expensive in both space and
     time than the average layer. For each plot or animation frame to be layered
     with streamlines, an internal fluid simulation of the density of the
-    desired vector field through the cell cluster specific to this frame is
+    desired vector field through the cell _qfn_cluster_node specific to this frame is
     solved.
 
     Attributes

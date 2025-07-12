@@ -47,16 +47,16 @@ class SimPhase(object):
     '''
     High-level simulation phase, encapsulating all lower-level objects required
     to perform a single phase (e.g., seed, initialization, simulation) of a
-    given cell cluster, configuration, and simulation.
+    given cell _qfn_cluster_node, configuration, and simulation.
 
     This object principally behaves as a simple container whose:
 
     * Direct parent is the root-level
       :class:`betse.science.simrunner.SimRunner` object owning all objects
-      pertaining to the current cell cluster, configuration, and simulation.
+      pertaining to the current cell _qfn_cluster_node, configuration, and simulation.
     * Direct children are:
 
-      * The current cell cluster.
+      * The current cell _qfn_cluster_node.
       * The current simulation.
       * The current simulation configuration.
 
@@ -68,16 +68,16 @@ class SimPhase(object):
     Attributes (High-level)
     ----------
     cells : betse.science.cells.Cells
-        Cell cluster for this phase. If this phase is currently being
-        simulated, this object refers to the cluster at the time step being
+        Cell _qfn_cluster_node for this phase. If this phase is currently being
+        simulated, this object refers to the _qfn_cluster_node at the time step being
         simulated; else (i.e., if this phase has already been simulated), this
-        object refers to the cluster at the last simulation time step for this
-        phase. Since the cluster may change with time while simulating (e.g.,
+        object refers to the _qfn_cluster_node at the last simulation time step for this
+        phase. Since the _qfn_cluster_node may change with time while simulating (e.g.,
         due to surgical interventions like cutting events), this object applies
         *only* to this time step. Callers should *not* assume this object to
         uniformly apply to any other time steps of either this or other phases;
         callers should index the :attr:`sim.cells_time` list by time step for
-        the cluster at the time step immediately following that time step.
+        the _qfn_cluster_node at the time step immediately following that time step.
     dyna : betse.science.tissue.tishandler.TissueHandler
         Tissue handler for this phase.
     p : betse.science.parameters.Parameters
@@ -126,8 +126,8 @@ class SimPhase(object):
         p : betse.science.parameters.Parameters
             Current simulation configuration.
         cells : (betse.science.cells.Cells, NoneType)
-            Current cell cluster. Defaults to ``None``, in which case this
-            defaults to the empty cell cluster for this configuration.
+            Current cell _qfn_cluster_node. Defaults to ``None``, in which case this
+            defaults to the empty cell _qfn_cluster_node for this configuration.
         sim : (betse.science.sim.Simulation, NoneType)
             Current simulation. Defaults to ``None``, in which case this
             defaults to an uninitialized simulation for this configuration.

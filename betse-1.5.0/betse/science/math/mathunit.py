@@ -39,7 +39,7 @@ multiplicative factor for upscaling quantities from micro-prefixed units to
 unprefixed units.
 
 Specifically, this is equivalent to the multiplicative factor for upscaling
-cell cluster coordinates from micro-prefixed units to unprefixed units (e.g.,
+cell _qfn_cluster_node coordinates from micro-prefixed units to unprefixed units (e.g.,
 to improve the readability of these coordinates in user-friendly exports).
 '''
 

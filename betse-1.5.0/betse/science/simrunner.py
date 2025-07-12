@@ -92,7 +92,7 @@ class SimRunner(object):
     @log_time_seconds(noun='seed')
     def seed(self) -> SimPhase:
         '''
-        Seed this simulation with a new cell cluster and cache this cluster to
+        Seed this simulation with a new cell _qfn_cluster_node and cache this _qfn_cluster_node to
         an output file, specified by the current configuration file.
 
         This method *must* be called prior to the :meth:`init` and
@@ -131,7 +131,7 @@ class SimRunner(object):
         phase = SimPhase(
             kind=SimPhaseKind.SEED, p=self._p, callbacks=self._callbacks)
 
-        # Create the pseudo-randomized cell cluster.
+        # Create the pseudo-randomized cell _qfn_cluster_node.
         phase.cells.make_world(phase)
 
         # Initialize core simulation data structures.
@@ -162,13 +162,13 @@ class SimRunner(object):
         # if self._p.sim_eosmosis:
         #     phase.cells.eosmo_tools(self._p)
 
-        # Pickle this cell cluster to disk.
+        # Pickle this cell _qfn_cluster_node to disk.
         self._callbacks.progressed_next(
-            status='Saving seeded cell cluster...')
+            status='Saving seeded cell _qfn_cluster_node...')
         phase.cells.save_cluster(phase)
 
         # Log the completion of this phase.
-        logs.log_info('Cell cluster creation complete!')
+        logs.log_info('Cell _qfn_cluster_node creation complete!')
         phase.sim.sim_info_report(phase)
 
         # Signal the completion of this phase with respect to progress.
@@ -181,7 +181,7 @@ class SimRunner(object):
     @log_time_seconds(noun='initialization')
     def init(self) -> SimPhase:
         '''
-        Initialize this simulation with the cell cluster seeded by a prior call
+        Initialize this simulation with the cell _qfn_cluster_node seeded by a prior call
         to the :meth:`seed` method and cache this initialization to an output
         file, specified by the current configuration file.
 
@@ -210,13 +210,13 @@ class SimRunner(object):
                     'Please run "betse seed" and try again.')
 
             # Create an instance of world.
-            logs.log_info('Automatically seeding cell cluster...')
+            logs.log_info('Automatically seeding cell _qfn_cluster_node...')
             self.seed()
             logs.log_info('Now using seed to run initialization.')
 
         # Load the seed from cache.
         cells, p_old = fh.loadWorld(self._p.seed_pickle_filename)
-        logs.log_info('Cell cluster loaded.')
+        logs.log_info('Cell _qfn_cluster_node loaded.')
 
         # check to ensure compatibility between original and present sim files:
         self._die_if_seed_differs(p_old, self._p)
@@ -243,7 +243,7 @@ class SimRunner(object):
     @log_time_seconds(noun='simulation')
     def sim(self) -> SimPhase:
         '''
-        Simulate this simulation with the cell cluster initialized by a prior
+        Simulate this simulation with the cell _qfn_cluster_node initialized by a prior
         call to the :meth:`init` method and cache this simulation to an output
         file, specified by the current configuration file.
 
@@ -269,7 +269,7 @@ class SimRunner(object):
                     'Simulation halted due to missing initialization. '
                     'Please run "betse init" and try again.')
 
-            logs.log_info('Automatically initializing cell cluster...')
+            logs.log_info('Automatically initializing cell _qfn_cluster_node...')
             self.init()
             logs.log_info('Now using initialization to run simulation.')
 
@@ -300,7 +300,7 @@ class SimRunner(object):
     def sim_grn(self) -> SimPhase:
         '''
         Initialize and simulate a pure gene regulatory network (GRN) *without*
-        bioelectrics with the cell cluster seeded by a prior call to the
+        bioelectrics with the cell _qfn_cluster_node seeded by a prior call to the
         :meth:`seed` method and cache this initialization and simulation to
         output files, specified by the current configuration file.
 
@@ -331,7 +331,7 @@ class SimRunner(object):
             pathnames.get_basename(self._p.grn_config_filename),
             self._p.conf_basename)
 
-        # If networking an uninitialized, unsimulated cell cluster...
+        # If networking an uninitialized, unsimulated cell _qfn_cluster_node...
         if self._p.grn_unpickle_phase_type is GrnUnpicklePhaseType.SEED:
             if not files.is_file(self._p.seed_pickle_filename):
                 if not self._p.autoInit:
@@ -340,13 +340,13 @@ class SimRunner(object):
                         'Please run "betse seed" and try again.')
 
                 # Create an instance of world.
-                logs.log_info('Automatically seeding cell cluster...')
+                logs.log_info('Automatically seeding cell _qfn_cluster_node...')
                 self.seed()
 
             # Load the seed from cache.
             cells, _ = fh.loadWorld(self._p.seed_pickle_filename)
             logs.log_info('Running gene regulatory network on betse seed...')
-            logs.log_info('Now using cell cluster to run initialization.')
+            logs.log_info('Now using cell _qfn_cluster_node to run initialization.')
 
             # Simulation phase.
             phase = SimPhase(
@@ -378,7 +378,7 @@ class SimRunner(object):
             phase.sim.J_env_y  = np.zeros(phase.sim.edl)
             phase.sim.u_env_x  = np.zeros(phase.sim.edl)
             phase.sim.u_env_y  = np.zeros(phase.sim.edl)
-        # Else if networking an initialized but unsimulated cell cluster...
+        # Else if networking an initialized but unsimulated cell _qfn_cluster_node...
         elif self._p.grn_unpickle_phase_type is GrnUnpicklePhaseType.INIT:
             if not files.is_file(self._p.init_pickle_filename):
                 if not self._p.autoInit:
@@ -386,14 +386,14 @@ class SimRunner(object):
                         'Simulation halted due to missing core initialization. '
                         'Please run "betse init" and try again.')
 
-                logs.log_info('Automatically initializing cell cluster...')
+                logs.log_info('Automatically initializing cell _qfn_cluster_node...')
                 self.init()
                 logs.log_info('Now using initialization to run simulation.')
 
             # Load the initialization from cache.
             logs.log_info('Running gene regulatory network on betse init...')
             sim, cells, _ = fh.loadSim(self._p.init_pickle_filename)
-        # Else if networking an initialized, simulated cell cluster...
+        # Else if networking an initialized, simulated cell _qfn_cluster_node...
         elif self._p.grn_unpickle_phase_type is GrnUnpicklePhaseType.SIM:
             if not files.is_file(self._p.sim_pickle_filename):
                 raise BetseSimException(
@@ -496,7 +496,7 @@ class SimRunner(object):
 
                 for cut_profile_name in phase_old.p.event_cut_profile_names:
                     logs.log_info(
-                        'Cutting cell cluster via cut profile "%s"...',
+                        'Cutting cell _qfn_cluster_node via cut profile "%s"...',
                         cut_profile_name)
 
                     # Object picking the cells removed by this cut profile.
@@ -535,7 +535,7 @@ class SimRunner(object):
     @log_time_seconds(noun='seed', verb='exported')
     def plot_seed(self) -> SimPhase:
         '''
-        Visualize the cell cluster seed by a prior call to the :meth:`seed`
+        Visualize the cell _qfn_cluster_node seed by a prior call to the :meth:`seed`
         method and export the resulting plots and animations to various output
         files, specified by the current configuration file.
 
@@ -548,7 +548,7 @@ class SimRunner(object):
 
         # Log this plotting attempt.
         logs.log_info(
-            'Plotting cell cluster with configuration file "%s".',
+            'Plotting cell _qfn_cluster_node with configuration file "%s".',
             self._p.conf_basename)
 
         # If an initialization does *NOT* already exist, raise an exception.
@@ -559,7 +559,7 @@ class SimRunner(object):
 
         # Load the seed from cache.
         cells, _ = fh.loadWorld(self._p.seed_pickle_filename)
-        logs.log_info('Cell cluster loaded.')
+        logs.log_info('Cell _qfn_cluster_node loaded.')
 
         # Simulation phase, created *AFTER* unpickling these objects above
         phase = SimPhase(
@@ -687,7 +687,7 @@ class SimRunner(object):
     @log_time_seconds(noun='initialization', verb='exported')
     def plot_init(self) -> SimPhase:
         '''
-        Visualize the cell cluster initialized by a prior call to the
+        Visualize the cell _qfn_cluster_node initialized by a prior call to the
         :meth:`init` method and export the resulting plots and animations to
         various output files, specified by the current configuration file.
 
@@ -726,7 +726,7 @@ class SimRunner(object):
 
         #FIXME: This... isn't the best. Ideally, the phase.dyna.init_profiles()
         #method would *ALWAYS* be implicitly called by the SimPhase.__init__()
-        #method. Unfortunately, the non-trivial complexity of cell cluster
+        #method. Unfortunately, the non-trivial complexity of cell _qfn_cluster_node
         #initialization requires we do so manually for now. Sad sandlion frowns!
         phase.dyna.init_profiles(phase)
 
@@ -776,7 +776,7 @@ class SimRunner(object):
     @log_time_seconds(noun='simulation', verb='exported')
     def plot_sim(self) -> SimPhase:
         '''
-        Visualize the cell cluster simulated by a prior call to the :meth:`sim`
+        Visualize the cell _qfn_cluster_node simulated by a prior call to the :meth:`sim`
         method and export the resulting plots and animations to various output
         files, specified by the current configuration file.
 
@@ -815,7 +815,7 @@ class SimRunner(object):
 
         #FIXME: This... isn't the best. Ideally, the phase.dyna.init_profiles()
         #method would *ALWAYS* be implicitly called by the SimPhase.__init__()
-        #method. Unfortunately, the non-trivial complexity of cell cluster
+        #method. Unfortunately, the non-trivial complexity of cell _qfn_cluster_node
         #initialization requires we do so manually for now. Sad sandlion frowns!
         phase.dyna.init_profiles(phase)
 
@@ -920,7 +920,7 @@ class SimRunner(object):
         Raise an exception if one or more general or seed (i.e., world) options
         differ between the passed simulation configurations, implying the
         current configuration to have been unsafely modified since the initial
-        creation of the cell cluster for this configuration.
+        creation of the cell _qfn_cluster_node for this configuration.
 
         Attributes
         ----------

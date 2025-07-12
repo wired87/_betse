@@ -66,13 +66,13 @@ class Simulator(object):
     Attributes (Counts)
     ----------
     cdl : int
-        Number of cells in this simulated cell cluster.
+        Number of cells in this simulated cell _qfn_cluster_node.
     edl : int
-        Number of extracellular grid spaces in this simulated cell cluster if
+        Number of extracellular grid spaces in this simulated cell _qfn_cluster_node if
         this simulation enables extracellular spaces *or* :attr:`mdl`
         otherwise.
     mdl : int
-        Number of cell membranes in this simulated cell cluster.
+        Number of cell membranes in this simulated cell _qfn_cluster_node.
 
     Attributes (Time)
     ----------
@@ -458,7 +458,7 @@ class Simulator(object):
         concerning intracellular and environmental concentrations, voltages,
         specific diffusion constants, and types of ions included in the
         simulation. This method is performed only once per seed (i.e., cell
-        cluster creation) and thus contains crucial parameters that *cannot* be
+        _qfn_cluster_node creation) and thus contains crucial parameters that *cannot* be
         safely modified after running an initialization.
 
         Parameters
@@ -709,7 +709,7 @@ class Simulator(object):
             self.z_array_env = np.asarray(self.z_array_env)
             self.D_env = np.asarray(self.D_env)
 
-            # redo environmental protein handling so that it's only present in the cell cluster:
+            # redo environmental protein handling so that it's only present in the cell _qfn_cluster_node:
             # self.c_env_bound[self.iM] += 1*self.c_env_bound[self.iP]
             # self.c_env_bound[self.iP] = 0.0
             #
@@ -1429,7 +1429,7 @@ class Simulator(object):
         # get the leak channel reversibility represented by the resting potential of the base membrane:
         stb.ghk_calculator(self, cells, p)
 
-        # get the conversion for geometry of the cluster (required to convert to conductivity):
+        # get the conversion for geometry of the _qfn_cluster_node (required to convert to conductivity):
         # self.geo_conv = (cells.cell_sa/ np.dot(cells.M_sum_mems, cells.mem_sa))*cells.num_nn
         self.geo_conv = 1.0
 
@@ -1954,7 +1954,7 @@ class Simulator(object):
     #into the "betse.science.cells.Cells" class. Humongous mongrels unite!
     def sim_info_report(self, phase: SimPhase) -> None:
         '''
-        Log a human-readable synopsis of this seeded cell cluster, the
+        Log a human-readable synopsis of this seeded cell _qfn_cluster_node, the
         surrounding extracellular matrix, and simulation features enabled by
         the passed simulation phase.
 
@@ -2113,7 +2113,7 @@ class Simulator(object):
 
     def acid_handler(self, cells, p) -> None:
         '''
-        Update H+ concentrations in both the cell cluster and environment,
+        Update H+ concentrations in both the cell _qfn_cluster_node and environment,
         which are further influenced by the bicarbonate buffer action.
 
         This method additionally runs the HKATPase and VATPase pumps if enabled
@@ -2354,7 +2354,7 @@ class Simulator(object):
             for i, _ in enumerate(self.D_env):
                 Denv_o = np.ones(self.edl) * self.D_free[i]
 
-                # adherens junctions slow diffusion throughout the cell cluster:
+                # adherens junctions slow diffusion throughout the cell _qfn_cluster_node:
                 Denv_o[cells.envInds_inClust] = self.D_free[i]*p.D_adh
 
                 # if p.env_type is True:

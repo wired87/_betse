@@ -25,7 +25,7 @@ class DeformationSerializer(serializers.Serializer):
     viscous_damping = serializers.FloatField(default=0.01,
                                              help_text="Viscous damping of elastic waves in tissue (0.0 to 1.0; larger = higher damping)")
     fixed_cluster_boundary = serializers.BooleanField(default=True,
-                                                      help_text="Exterior cells of the cluster are fixed (True) or free to move (False)")
+                                                      help_text="Exterior cells of the _qfn_cluster_node are fixed (True) or free to move (False)")
     young_modulus = serializers.FloatField(default=1.0e3,
                                            help_text="Young's modulus (elastic modulus) of individual cell [Pa] (1 kPa to 10e6 Pa)")
 

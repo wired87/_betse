@@ -92,11 +92,11 @@ class Parameters(YamlFileDefaultABC):
     ----------
     seed_pickle_basename : str
         Basename of the pickled file providing this simulation's most recently
-        seeded cell cluster, relative to the :attr:`init_pickle_dirname`
+        seeded cell _qfn_cluster_node, relative to the :attr:`init_pickle_dirname`
         directory.
     seed_pickle_filename : str
         Abolute filename of the pickled file providing this simulation's most
-        recently seeded cell cluster.
+        recently seeded cell _qfn_cluster_node.
 
     Attributes (Path: Pickle: Initialization)
     ----------
@@ -109,11 +109,11 @@ class Parameters(YamlFileDefaultABC):
         recent initialization run.
     init_pickle_dirname : str
         Absolute dirname of the directory containing this simulation's most
-        recently seeded cell cluster *and* initialization run, guaranteed to
+        recently seeded cell _qfn_cluster_node *and* initialization run, guaranteed to
         exist.
     init_pickle_dirname_relative : str
         Relative dirname of the directory containing this simulation's most
-        recently seeded cell cluster *and* initialization run, relative to the
+        recently seeded cell _qfn_cluster_node *and* initialization run, relative to the
         :attr:`conf_dirname` directory.
 
     Attributes (Path: Pickle: Simulation)
@@ -162,7 +162,7 @@ class Parameters(YamlFileDefaultABC):
     Attributes (Space: Cell)
     ----------
     cell_radius : float
-        Radius in meters of each cell in this cluster. This should typically be
+        Radius in meters of each cell in this _qfn_cluster_node. This should typically be
         within an order of magnitude of the recommended default of ``5.0e-6``.
 
     Attributes (Space: Cell Cluster)
@@ -189,7 +189,7 @@ class Parameters(YamlFileDefaultABC):
     is_ecm : bool
         ``True`` only if the extracellular matrix (ECM) simulating
         **extracellular spaces** (i.e., the environment surrounding each cell
-        in the cluster) is enabled. Disabling this reduces simulation accuracy
+        in the _qfn_cluster_node) is enabled. Disabling this reduces simulation accuracy
         at a substantial reduction in space and time costs.
     world_len : float
         Length in meters of both the X and Y dimensions of this simulation's
@@ -200,7 +200,7 @@ class Parameters(YamlFileDefaultABC):
     ----------
     is_tissue_profiles : bool
         ``True`` only if **tissue profiles** (i.e., user-defined regions within
-        the cell cluster to which specific base membrane diffusion profiles,
+        the cell _qfn_cluster_node to which specific base membrane diffusion profiles,
         interventions, and individualized dynamics may be applied) are enabled.
         Note that tissue profiles should typically *always* be enabled.
     tissue_default : SimConfTissueDefault
@@ -208,7 +208,7 @@ class Parameters(YamlFileDefaultABC):
         another tissue profile in the :attr:`tissue_profiles` list.
     tissue_profiles : YamlList
         List of all **non-default tissue profiles** (i.e., objects targeting a
-        region of the cell cluster to be associated with particular simulation
+        region of the cell _qfn_cluster_node to be associated with particular simulation
         constants and parameters). Ignored if :attr:`is_tissue_profiles` is
         ``False``.
 
@@ -216,7 +216,7 @@ class Parameters(YamlFileDefaultABC):
     ----------
     cut_profiles : YamlList
         List of all **cut profiles** (i.e., objects targeting a region of the
-        cell cluster to be permanently removed by a corresponding simulation
+        cell _qfn_cluster_node to be permanently removed by a corresponding simulation
         event). Ignored if :attr:`is_tissue_profiles` is ``False``.
     event_cut_profile_names : SequenceTypes
         List of the names of all cut profiles whose corresponding cells are to
@@ -380,7 +380,7 @@ class Parameters(YamlFileDefaultABC):
     # ..................{ ALIASES ~ space : cell            }..................
     cell_radius = yaml_alias("['world options']['cell radius']", float)
 
-    # ..................{ ALIASES ~ space : cell cluster    }..................
+    # ..................{ ALIASES ~ space : cell _qfn_cluster_node    }..................
     cell_lattice_disorder = yaml_alias(
         "['world options']['lattice disorder']", float)
     cell_lattice_type = yaml_enum_alias(
@@ -843,7 +843,7 @@ class Parameters(YamlFileDefaultABC):
 
         self.galvanotropism = float(self._conf['variable settings']['deformation']['galvanotropism'])
         self.td_deform = False # this has been disabled due to ongoing technical difficulties
-        self.fixed_cluster_bound = self._conf['variable settings']['deformation']['fixed cluster boundary']
+        self.fixed_cluster_bound = self._conf['variable settings']['deformation']['fixed _qfn_cluster_node boundary']
         self.youngMod = float(self._conf['variable settings']['deformation']['young modulus'])
         self.mu_tissue = float(self._conf['variable settings']['deformation']['viscous damping'])
 
@@ -1040,7 +1040,7 @@ class Parameters(YamlFileDefaultABC):
 
         #FIXME: Remove all of the following after globally removing "plot seed".
         # Plot seed options.
-        self.plot_cluster_mask = ro.get('plot cluster mask', True)
+        self.plot_cluster_mask = ro.get('plot _qfn_cluster_node mask', True)
 
         #--------------------------------------------------------------------------------------------------------------
         # INTERNAL USE ONLY

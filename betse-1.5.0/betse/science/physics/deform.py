@@ -12,7 +12,7 @@ from scipy.interpolate import SmoothBivariateSpline
 # ....................{ FUNCTIONS                          }....................
 def getDeformation(sim, cells, t, p):
     """
-    Calculate the deformation of the cell cluster under the action of
+    Calculate the deformation of the cell _qfn_cluster_node under the action of
     intracellular forces and pressures, assuming steady-state (slow) changes.
 
     The method assumes that material is incompressible and total volume is
@@ -87,7 +87,7 @@ def getDeformation(sim, cells, t, p):
 
 def timeDeform(sim, cells, t, p):
     """
-    Calculates the deformation of the cell cluster under the action
+    Calculates the deformation of the cell _qfn_cluster_node under the action
     of intracellular pressure, considering the full time-dependent
     linear elasticity equation for an incompressible medium.
 
@@ -249,7 +249,7 @@ def timeDeform(sim, cells, t, p):
 
 def implement_deform_timestep(sim, cells, t, p):
     '''
-    Implements the deformation of the tissue cluster based on divergence-free
+    Implements the deformation of the tissue _qfn_cluster_node based on divergence-free
     deformation calculated for cell centres.
     '''
 

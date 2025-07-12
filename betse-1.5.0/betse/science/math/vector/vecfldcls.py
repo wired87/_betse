@@ -188,7 +188,7 @@ class VectorField(object):
 # ....................{ CLASSES ~ cache                    }....................
 class VectorFieldCellsCache(object):
     '''
-    Cell cluster vector field cache, persisting all vector fields whose X and Y
+    Cell _qfn_cluster_node vector field cache, persisting all vector fields whose X and Y
     components are two-dimensional Numpy arrays describing the same underlying
     data spatially situated along different coordinate systems (e.g., cell
     centres, cell membrane vertices) for one or more simulation time steps.
@@ -196,9 +196,9 @@ class VectorFieldCellsCache(object):
     The input data encapsulated by this cache may be spatially situated at
     either:
 
-    * The centre of each cell in the simulated cluster.
-    * The vertex of each cell membrane in the simulated cluster.
-    * The midpoint of each cell membrane in the simulated cluster.
+    * The centre of each cell in the simulated _qfn_cluster_node.
+    * The vertex of each cell membrane in the simulated _qfn_cluster_node.
+    * The midpoint of each cell membrane in the simulated _qfn_cluster_node.
     * The centre of each square grid space (in either dimension).
 
     Each property provided by this vector field (e.g.,

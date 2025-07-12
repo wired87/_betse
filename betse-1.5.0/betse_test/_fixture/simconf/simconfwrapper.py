@@ -86,7 +86,7 @@ class SimConfigTestWrapper(object):
     def environment_size(self) -> float:
         '''
         Square dimension in meters of the external environment containing the
-        cell cluster for this configuration.
+        cell _qfn_cluster_node for this configuration.
 
         For simplicity, BETSE constrains the environment to be square in shape.
         This dimension thus defines both the environmental width *and* height.
@@ -101,7 +101,7 @@ class SimConfigTestWrapper(object):
     def environment_size(self, environment_size: float) -> None:
         '''
         Set the square dimension in meters of the external environment
-        containing the cell cluster for this configuration.
+        containing the cell _qfn_cluster_node for this configuration.
         '''
 
         # Coerce the passed number to a float for safety.
@@ -177,11 +177,11 @@ class SimConfigTestWrapper(object):
         #     self.p.sim_time_total * event_cut['cut time'] /
         #     sim_time_total_old)
 
-        # Minify the physical dimensions of the cell cluster in meters. By
+        # Minify the physical dimensions of the cell _qfn_cluster_node in meters. By
         # experimentation, the default simulation configuration both:
         #
         # * Exhibits expected instabilities for physical dimensions less than
-        #   100e-6, typically due to the cell cluster cutting event. Since these
+        #   100e-6, typically due to the cell _qfn_cluster_node cutting event. Since these
         #   instabilities are expected and hence best ignored, the dimensions
         #   specified below should *NEVER* be smaller than 100e-6.
         # * Exhibits unexpected instabilities for physical dimensions greater

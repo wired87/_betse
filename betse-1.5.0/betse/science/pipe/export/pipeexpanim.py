@@ -73,7 +73,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_currents_intra(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all intracellular current densities for the cell cluster for
+        Animate all intracellular current densities for the cell _qfn_cluster_node for
         all time steps.
         '''
 
@@ -115,7 +115,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_currents_extra(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all extracellular current densities for the cell cluster
+        Animate all extracellular current densities for the cell _qfn_cluster_node
         environment over all sampled time steps.
         '''
 
@@ -159,7 +159,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
         '''
         Animate all **total cellular displacements** (i.e., summations of all
         cellular deformations due to galvanotropic and osmotic pressure body
-        forces) for the cell cluster over all sampled time steps.
+        forces) for the cell _qfn_cluster_node over all sampled time steps.
         '''
 
         # Total cellular displacements.
@@ -198,7 +198,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_electric_intra(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all intracellular electric field lines for the cell cluster
+        Animate all intracellular electric field lines for the cell _qfn_cluster_node
         over all sampled time steps.
         '''
 
@@ -240,7 +240,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_electric_extra(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all extracellular electric field lines for the cell cluster
+        Animate all extracellular electric field lines for the cell _qfn_cluster_node
         environment over all sampled time steps.
         '''
 
@@ -282,7 +282,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_fluid_intra(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all intracellular fluid flow field lines for the cell cluster
+        Animate all intracellular fluid flow field lines for the cell _qfn_cluster_node
         over all sampled time steps.
         '''
 
@@ -303,7 +303,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_fluid_extra(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all extracellular fluid flow field lines for the cell cluster
+        Animate all extracellular fluid flow field lines for the cell _qfn_cluster_node
         environment over all sampled time steps.
         '''
 
@@ -351,7 +351,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
         '''
         Animate all **gap junction connectivity states** (i.e., relative
         permeabilities of the gap junctions connecting all cell membranes) for
-        the cell cluster over all sampled time steps.
+        the cell _qfn_cluster_node over all sampled time steps.
         '''
 
         # Animate this animation.
@@ -373,7 +373,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     # def export_microtubule(
     #     self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
     #     '''
-    #     Animate the coherence of all cellular microtubules for the cell cluster
+    #     Animate the coherence of all cellular microtubules for the cell _qfn_cluster_node
     #     over all sampled time steps.
     #     '''
     #
@@ -399,7 +399,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
         Animate all **cellular pressure totals** (i.e., summations of all
-        cellular mechanical and osmotic pressures) for the cell cluster over
+        cellular mechanical and osmotic pressures) for the cell _qfn_cluster_node over
         all time steps.
         '''
 
@@ -441,7 +441,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     # )
     # def export_pump_density(self, conf: SimConfExportAnimCells) -> None:
     #     '''
-    #     Animate all cell membrane ion pump density factors for the cell cluster
+    #     Animate all cell membrane ion pump density factors for the cell _qfn_cluster_node
     #     over all sampled time steps.
     #     '''
     #
@@ -463,7 +463,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_voltage_extra(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all extracellular voltages for the cell cluster environment
+        Animate all extracellular voltages for the cell _qfn_cluster_node environment
         over all sampled time steps.
         '''
 
@@ -486,7 +486,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_voltage_membrane(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all transmembrane voltages (Vmem) for the cell cluster over all
+        Animate all transmembrane voltages (Vmem) for the cell _qfn_cluster_node over all
         time steps.
         '''
 
@@ -506,7 +506,7 @@ class SimPipeExportAnimCells(SimPipeExportABC):
     def export_voltage_polarity(
         self, phase: SimPhase, conf: SimConfExportAnimCells) -> None:
         '''
-        Animate all cellular voltage polarities for the cell cluster over all
+        Animate all cellular voltage polarities for the cell _qfn_cluster_node over all
         time steps.
         '''
 

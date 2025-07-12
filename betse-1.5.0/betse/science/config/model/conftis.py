@@ -66,7 +66,7 @@ class SimConfTissueDefault(SimConfTissueABC, YamlABC):
     ----------
     picker_image_filename : str
         Absolute or relative filename of the image mask whose pure-black pixels
-        define the shape of the cell cluster to be populated with cells. See
+        define the shape of the cell _qfn_cluster_node to be populated with cells. See
         the :attr:`SimConfTissueListItem.picker_image_filename` variable for
         details.
     '''
@@ -110,7 +110,7 @@ class SimConfTissueListItem(SimConfTissueABC, YamlListItemABC):
     picker_image_filename : str
         Absolute or relative filename of the image mask whose pure-black pixels
         (i.e., pixels whose red, green, and blue color components are all 0)
-        define the region of the cell cluster whose cells are all to be
+        define the region of the cell _qfn_cluster_node whose cells are all to be
         assigned to this tissue. This image *must*:
 
         * Be square (i.e., have equal width and height).
@@ -179,7 +179,7 @@ class SimConfCutListItem(YamlNamedMixin, YamlListItemABC):
     ----------
     picker_image_filename : str
         Absolute or relative filename of the image mask whose pure-black pixels
-        define the region of the cell cluster whose cells are all to be removed
+        define the region of the cell _qfn_cluster_node whose cells are all to be removed
         by this cut profile. See the
         :attr:`SimConfTissueListItem.picker_image_filename` variable for
         details.

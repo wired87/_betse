@@ -32,7 +32,7 @@ from betse.util.path import files
 # ....................{ CLASSES                            }....................
 class BetseWrapper(object):
     '''
-    Object allowing for simple creation of BETSE cell cluster and simulation
+    Object allowing for simple creation of BETSE cell _qfn_cluster_node and simulation
     object that can be easily worked with in an external script using BETSE as a
     dependency.
 
@@ -103,7 +103,7 @@ class BetseWrapper(object):
     ) -> None:
         '''
         Runs an entire BETSE modelling pipeline -- including creating or loading
-        a cell cluster, running an init phase simulation, and running a sim
+        a cell _qfn_cluster_node, running an init phase simulation, and running a sim
         phase simulation.
 
         Parameters:
@@ -128,7 +128,7 @@ class BetseWrapper(object):
 
         self._set_logging(verbose=verbose)
 
-        # Make or load a BETSE cell cluster.
+        # Make or load a BETSE cell _qfn_cluster_node.
         self._make_mesh(new_mesh=new_mesh)
 
         if run_init:
@@ -142,7 +142,7 @@ class BetseWrapper(object):
     def run_seed(self, verbose: bool = False):
         '''
         Initializes the BETSE modelling object, which includes creating
-        a cell cluster.
+        a cell _qfn_cluster_node.
 
         Parameters:
         --------------
@@ -154,18 +154,18 @@ class BetseWrapper(object):
 
         self._set_logging(verbose=verbose)
 
-        self._make_mesh(new_mesh=True)  # make a BETSE cell cluster
+        self._make_mesh(new_mesh=True)  # make a BETSE cell _qfn_cluster_node
 
         if self.verbose is True:
             logs.log_info(
-                "Successfully created a new BETSE cell cluster object!")
+                "Successfully created a new BETSE cell _qfn_cluster_node object!")
 
 
     @beartype
     def run_init(self, new_mesh: bool = True, verbose: bool = False):
         '''
         Initializes the BETSE modelling object, which includes creating or loading
-        a cell cluster, and running an init phase simulation.
+        a cell _qfn_cluster_node, and running an init phase simulation.
 
         Parameters:
         --------------
@@ -184,7 +184,7 @@ class BetseWrapper(object):
 
         self._set_logging(verbose=verbose)
 
-        self._make_mesh(new_mesh=new_mesh)  # make or load a BETSE cell cluster
+        self._make_mesh(new_mesh=new_mesh)  # make or load a BETSE cell _qfn_cluster_node
 
         self._init_runner(runsim=False)
 
@@ -195,7 +195,7 @@ class BetseWrapper(object):
     @beartype
     def run_sim(self, verbose: bool = False):
         '''
-        Loads a previously-made BETSE cell cluster and init phase simulation to run
+        Loads a previously-made BETSE cell _qfn_cluster_node and init phase simulation to run
         the sim phase simulation.
 
         Parameters:
@@ -213,7 +213,7 @@ class BetseWrapper(object):
 
         self._set_logging(verbose=verbose)
 
-        self._make_mesh(new_mesh=False)  # load a BETSE cell cluster
+        self._make_mesh(new_mesh=False)  # load a BETSE cell _qfn_cluster_node
 
         self._sim_runner() # Run the BETSE simulation
 
@@ -235,9 +235,9 @@ class BetseWrapper(object):
 
         if not files.is_file(self.p.seed_pickle_filename):  # If file doesn't exist...
             if self.verbose is True:
-                logs.log_warning("File not found. Run seed to create a cell cluster.")
+                logs.log_warning("File not found. Run seed to create a cell _qfn_cluster_node.")
 
-        else:  # Otherwise, load the saved cell cluster:
+        else:  # Otherwise, load the saved cell _qfn_cluster_node:
             if self.verbose is True:
                 logs.log_info("Loading 2D Grid from file.")
 
@@ -269,7 +269,7 @@ class BetseWrapper(object):
             if self.verbose is True:
                 logs.log_warning("File not found. Run init to create an initialization.")
 
-        else:  # Otherwise, load the saved cell cluster:
+        else:  # Otherwise, load the saved cell _qfn_cluster_node:
             if self.verbose is True:
                 logs.log_info("Loading BETSE init from file.")
 
@@ -304,7 +304,7 @@ class BetseWrapper(object):
             if self.verbose is True:
                 logs.log_warning("File not found. Run sim to create a simulation.")
 
-        else:  # Otherwise, load the saved cell cluster:
+        else:  # Otherwise, load the saved cell _qfn_cluster_node:
             if self.verbose is True:
                 logs.log_info("Loading BETSE sim from file.")
 
@@ -339,7 +339,7 @@ class BetseWrapper(object):
             if self.verbose is True:
                 logs.log_warning("File not found. Run sim_grn to create a new grn simulation.")
 
-        else:  # Otherwise, load the saved cell cluster:
+        else:  # Otherwise, load the saved cell _qfn_cluster_node:
             if self.verbose is True:
                 logs.log_info("Loading simulated grn from file.")
 
@@ -372,7 +372,7 @@ class BetseWrapper(object):
 
         self._set_logging(verbose=verbose)
 
-        self._make_mesh(new_mesh=new_mesh)  # load a BETSE cell cluster
+        self._make_mesh(new_mesh=new_mesh)  # load a BETSE cell _qfn_cluster_node
 
         self.phase = self.simrun.sim_grn()  # Run the BETSE simulation as GRN-only
 
@@ -574,7 +574,7 @@ class BetseWrapper(object):
     ):
         '''
         Interpolate a greyscale bitmap (supplied in the bitmap_filename string)
-        to the cell cluster. The resulting interpolation is an array of floats,
+        to the cell _qfn_cluster_node. The resulting interpolation is an array of floats,
         where 0.0 is black and 255.0 is white.
 
         Parameters
@@ -584,8 +584,8 @@ class BetseWrapper(object):
             greyscale image.
         to_mems : bool
             If True, interpolates the bitmap to membrane domains of the cell
-            cluster. If False, interpolates the bitmap to cell centres of the
-            cell cluster.
+            _qfn_cluster_node. If False, interpolates the bitmap to cell centres of the
+            cell _qfn_cluster_node.
         smooth : bool
             Apply smoothing to the interpolated bitmap (True) or keep raw
             interpolation (False).
@@ -595,7 +595,7 @@ class BetseWrapper(object):
         ndarray
             An array (shaped to membrane domains or for to_mems == True and cell
             centres for to_mems=False) of bitmap greyscale values interpolated
-            over the cell cluster. Values of
+            over the cell _qfn_cluster_node. Values of
             0.0 are pure black while 255.0 are pure white.
         '''
 
@@ -681,33 +681,33 @@ class BetseWrapper(object):
             one (False).
         '''
 
-        if new_mesh is True:  # If 'new mesh' is requested, make a whole new cell cluster
+        if new_mesh is True:  # If 'new mesh' is requested, make a whole new cell _qfn_cluster_node
 
             if self.verbose is True:
-                logs.log_info("Creating a new cell cluster.")
+                logs.log_info("Creating a new cell _qfn_cluster_node.")
 
             # Create a new grid:
 
             self.simrun = SimRunner(self.p)  # Call an instance of BETSE's "SimRunner'
-            phase = self.simrun.seed()  # Go through the making of a whole cell cluster
-            self.phase = phase  # save the phase object (which contains the cell cluster
+            phase = self.simrun.seed()  # Go through the making of a whole cell _qfn_cluster_node
+            self.phase = phase  # save the phase object (which contains the cell _qfn_cluster_node
             # to the DemoSim object)
 
-        else:  # otherwise, if a new mesh isn't needed, go ahead and load a saved cluster,
+        else:  # otherwise, if a new mesh isn't needed, go ahead and load a saved _qfn_cluster_node,
             # if it exists!
 
             if not files.is_file(self.p.seed_pickle_filename):  # If it doesn't exist...
                 if self.verbose is True:
-                    logs.log_warning("File not found; Creating a new cell cluster...")
+                    logs.log_warning("File not found; Creating a new cell _qfn_cluster_node...")
 
                 # Make a new mesh
                 self.simrun = SimRunner(self.p)
-                phase = self.simrun.seed()  # Go ahead and make a new cluster
+                phase = self.simrun.seed()  # Go ahead and make a new _qfn_cluster_node
                 self.phase = phase
 
-            else:  # Otherwise, load the saved cell cluster:
+            else:  # Otherwise, load the saved cell _qfn_cluster_node:
                 if self.verbose is True:
-                    logs.log_info("Loading a cell cluster from file.")
+                    logs.log_info("Loading a cell _qfn_cluster_node from file.")
 
                 # Load from previous creation:
                 cells, _ = fh.loadWorld(self.p.seed_pickle_filename)
@@ -734,7 +734,7 @@ class BetseWrapper(object):
     @beartype
     def _init_runner(self, runsim: bool = False):
         '''
-        Run the BETSE cell cluster through the initialization specified in
+        Run the BETSE cell _qfn_cluster_node through the initialization specified in
         the loaded configuration file.
 
         Parameters
@@ -756,7 +756,7 @@ class BetseWrapper(object):
 
     def _sim_runner(self):
         '''
-        Run the BETSE cell cluster through the initialization specified in
+        Run the BETSE cell _qfn_cluster_node through the initialization specified in
         the loaded configuration file.
 
         Parameters
@@ -780,7 +780,7 @@ class BetseWrapper(object):
         Parameters
         -----------
         cells : ???
-            BETSE cell cluster object.
+            BETSE cell _qfn_cluster_node object.
         '''
 
         # Data defined on cell centrepoints (self.xc, self.yc):
@@ -826,11 +826,11 @@ class BetseWrapper(object):
         self.xenv = cells.xypts[:, 0]
         self.yenv = cells.xypts[:, 1]
 
-        # global size limits of the whole environment and cell cluster:
+        # global size limits of the whole environment and cell _qfn_cluster_node:
 
         self.xyaxis = np.asarray([cells.xmin, cells.xmax, cells.ymin, cells.ymax])
 
-        # vertices of each polygon representing each cell in the cluster:
+        # vertices of each polygon representing each cell in the _qfn_cluster_node:
         self.verts = cells.cell_verts
 
         # Normal vectors to membrane edges

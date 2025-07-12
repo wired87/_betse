@@ -41,7 +41,7 @@ class SimConfExportPlots(YamlABC):
         YAML-backed list of all post-simulation single-cell plots to be
         animated. Ignored if :attr:``is_after_sim`` is ``False``.
     plots_cells_after_sim : YamlList
-        YAML-backed list of all post-simulation cell cluster plots to be
+        YAML-backed list of all post-simulation cell _qfn_cluster_node plots to be
         animated. Ignored if :attr:``is_after_sim`` is ``False``.
 
     Attributes (Image)
@@ -90,7 +90,7 @@ class SimConfExportPlots(YamlABC):
         self.plots_cell_after_sim.load(
             conf=plot_pipelines['single cell pipeline'])
         self.plots_cells_after_sim.load(
-            conf=plot_pipelines['cell cluster pipeline'])
+            conf=plot_pipelines['cell _qfn_cluster_node pipeline'])
 
 
     def unload(self) -> None:
@@ -139,7 +139,7 @@ class SimConfExportPlotCell(SimConfExportABC):
 class SimConfExportPlotCells(
     SimConfVisualCellsYAMLMixin, SimConfExportABC):
     '''
-    **Exported cell cluster plot subconfiguration** (i.e., YAML-backed list
+    **Exported cell _qfn_cluster_node plot subconfiguration** (i.e., YAML-backed list
     item configuring the exportation of one or more images applicable to all
     cells from the simulation configuration file containing this item).
     '''

@@ -119,7 +119,7 @@ class AnimFlatCellsTimeSeries(AnimCellsAfterSolving):
 class AnimEnvTimeSeries(AnimCellsAfterSolving):
     '''
     Animation of an arbitrary cell-agnostic time series (e.g., environmental
-    voltage as a function of time), plotted over the cell cluster.
+    voltage as a function of time), plotted over the cell _qfn_cluster_node.
 
     Attributes
     ----------
@@ -179,7 +179,7 @@ class AnimGapJuncTimeSeries(AnimCellsAfterSolving):
     Animation of an arbitrary gap junction-centric time series (e.g., the gap
     junction open state as a function of time) overlayed an arbitrary cell-
     centric time series (e.g., cell voltage as a function of time) on the cell
-    cluster.
+    _qfn_cluster_node.
 
     Attributes
     ----------
@@ -271,11 +271,11 @@ class AnimMembraneTimeSeries(AnimCellsAfterSolving):
     '''
     Animation of an arbitrary cell membrane-specific time series (e.g.,
     membrane channel or pump density factor as a function of time), plotted
-    over the cell cluster.
+    over the cell _qfn_cluster_node.
 
     This factor changes in response to changes in electroosmotic and
     electrophoretic movements, produced by self-generated fields and flows in
-    the cell cluster.
+    the cell _qfn_cluster_node.
 
     Attributes
     ----------
@@ -339,7 +339,7 @@ class AnimMembraneTimeSeries(AnimCellsAfterSolving):
 class AnimMorphogenTimeSeries(AnimCellsAfterSolving):
     '''
     Animation of the concentration of an arbitrary morphogen in both cells and
-    the environment as a function of time, plotted over the cell cluster.
+    the environment as a function of time, plotted over the cell _qfn_cluster_node.
 
     Parameters
     ----------
@@ -418,7 +418,7 @@ class AnimMorphogenTimeSeries(AnimCellsAfterSolving):
 class AnimVelocityIntracellular(AnimVelocity):
     '''
     Animation of fluid velocity over all intracellular gap junctions plotted on
-    the cell cluster.
+    the cell _qfn_cluster_node.
 
     Attributes
     -----------
@@ -541,7 +541,7 @@ class AnimVelocityIntracellular(AnimVelocity):
 class AnimVelocityExtracellular(AnimVelocity):
     '''
     Animation of fluid velocity over all extracellular spaces plotted on the
-    cell cluster.
+    cell _qfn_cluster_node.
 
     Attributes
     ----------
