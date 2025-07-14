@@ -145,7 +145,7 @@ def _clean_imports() -> None:
 
     # Print the absolute dirname of the system-wide Python prefix and current
     # Python prefix, which differs from the former under venvs.
-    print('python prefix (system [base]): ' + sys.base_prefix)
+    print('python prefix (system [qf_core_base]): ' + sys.base_prefix)
     print('python prefix (system [real]): ' + getattr(sys, 'real_prefix', ''))
     print('python prefix (current): ' + sys.prefix)
 

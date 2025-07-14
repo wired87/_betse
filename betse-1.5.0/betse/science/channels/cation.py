@@ -18,7 +18,7 @@ from betse.util.io.log import logs
 # .................... BASE                               ....................
 class CationABC(ChannelsABC, metaclass=ABCMeta):
     '''
-    Abstract base class of all non-selective cation channel classes.
+    Abstract qf_core_base class of all non-selective cation channel classes.
 
     Attributes
     ----------

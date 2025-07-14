@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all YAML-backed lists and list item subclasses.
+Abstract qf_core_base classes of all YAML-backed lists and list item subclasses.
 '''
 
 # ....................{ IMPORTS                           }....................
@@ -21,7 +21,7 @@ from collections.abc import MutableSequence
 # ....................{ SUPERCLASSES ~ list item          }....................
 class YamlListItemABC(YamlABC):
     '''
-    Abstract base class of all **YAML-backed list item** (i.e., configuration
+    Abstract qf_core_base class of all **YAML-backed list item** (i.e., configuration
     intended to be added to a parent :class:`YamlList` container) subclasses.
 
     Each instance of this superclass may technically encapsulate any valid YAML
@@ -141,7 +141,7 @@ class YamlList(YamlABC, MutableSequence):
         High-level list of each instance of the :attr:`_item_type` subclass
         encapsulating each dictionary in the low-level :attr:`_conf` sequence.
     _item_type : ClassType
-        Subclass of the :class:`YamlListItemABC` abstract base class with
+        Subclass of the :class:`YamlListItemABC` abstract qf_core_base class with
         which to instantiate each wrapper in the high-level :attr:`_confs_wrap`
         list encapsulating each dictionary in the low-level :attr:`_conf` list.
     '''
@@ -155,7 +155,7 @@ class YamlList(YamlABC, MutableSequence):
         Parameters
         ----------
         item_type : ClassType
-            Subclass of the :class:`YamlListItemABC` abstract base class
+            Subclass of the :class:`YamlListItemABC` abstract qf_core_base class
             with which to encapsulate each low-level YAML-backed list item in
             the passed ``confs`` list. For each such item, a new instance of
             this subclass is appended to the internal :attr:`_confs_wrap` list

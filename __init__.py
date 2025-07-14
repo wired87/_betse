@@ -33,7 +33,7 @@ Betse funktioniert zwar aber du wolltest von anfang an dein gehirn verbessern  !
 """
 import os
 
-from file.yaml import load_yaml
+from utils.file.yaml import load_yaml
 
 """
 

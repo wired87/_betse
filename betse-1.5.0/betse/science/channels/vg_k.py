@@ -17,7 +17,7 @@ from betse.util.io.log import logs
 # .................... BASE                               ....................
 class VgKABC(ChannelsABC, metaclass=ABCMeta):
     '''
-    Abstract base class of all Voltage-gated potassium channel classes.
+    Abstract qf_core_base class of all Voltage-gated potassium channel classes.
 
     Attributes
     ----------

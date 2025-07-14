@@ -58,7 +58,7 @@ class SimPhaseCaches(object):
 # ....................{ SUPERCLASSES                       }....................
 class SimPhaseCacheABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **simulation phase subcache** (i.e., container
+    Abstract qf_core_base class of all **simulation phase subcache** (i.e., container
     persisting previously constructed large-scale objects for some facet of a
     simulation phase) subclasses.
 

@@ -16,7 +16,7 @@ from betse.util.io.log import logs
 
 class VgClABC(ChannelsABC, metaclass=ABCMeta):
     '''
-    Abstract base class of all Voltage-gated chloride channel classes.
+    Abstract qf_core_base class of all Voltage-gated chloride channel classes.
 
     Attributes
     ----------

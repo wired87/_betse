@@ -63,5 +63,5 @@ def test_is_c_monkeypatched(monkeypatch) -> None:
     for module_object in (pymodule, numpy_c_extension):
         monkeypatch.delattr(module_object, name='__loader__', raising=False)
 
-    # Defer to the existing base unit test.
+    # Defer to the existing qf_core_base unit test.
     test_is_c_unmonkeypatched()

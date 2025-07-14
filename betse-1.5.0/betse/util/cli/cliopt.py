@@ -301,7 +301,7 @@ class CLIOptionVersion(CLIOptionABC):
 # ....................{ CLASSES ~ arg                      }....................
 class CLIOptionArgABC(CLIOptionABC):
     '''
-    Abstract base class of all CLI option subclasses accepting an optional
+    Abstract qf_core_base class of all CLI option subclasses accepting an optional
     argument.persisted to an instance variable whose name derives from this
     option's long and short variants.
     '''

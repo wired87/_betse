@@ -21,7 +21,7 @@ from betse.util.type.types import type_check
 # ....................{ SUPERCLASSES                       }....................
 class SimConfTestABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all simulation configuration context subclasses,
+    Abstract qf_core_base class of all simulation configuration context subclasses,
     each encapsulating state and metadata for a test-related simulation
     configuration.
 

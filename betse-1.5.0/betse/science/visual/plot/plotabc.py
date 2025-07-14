@@ -3,7 +3,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all post-simulation plot subclasses.
+Abstract qf_core_base classes of all post-simulation plot subclasses.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -14,7 +14,7 @@ from betse.util.type.types import type_check
 # ....................{ CLASSES                            }....................
 class PlotCellsAfterSolving(VisualCellsABC):
     '''
-    Abstract base class of all post-simulation cell plot subclasses, plotting
+    Abstract qf_core_base class of all post-simulation cell plot subclasses, plotting
     simulation data over the cell _qfn_cluster_node _after_ rather than _during_
     simulation modelling.
     '''

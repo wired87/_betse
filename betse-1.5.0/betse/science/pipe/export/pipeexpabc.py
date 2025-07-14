@@ -15,7 +15,7 @@ from betse.util.type.descriptor.descs import classproperty_readonly
 # ....................{ SUPERCLASSES                      }....................
 class SimPipeExportABC(SimPipeABC):
     '''
-    Abstract base class of all **simulation export pipeline** (i.e., object
+    Abstract qf_core_base class of all **simulation export pipeline** (i.e., object
     iteratively exporting *all* variations on a single type of simulation
     export) subclasses.
     '''

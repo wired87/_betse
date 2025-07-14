@@ -3,7 +3,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all vector field subclasses.
+Abstract qf_core_base classes of all vector field subclasses.
 '''
 
 # ....................{ IMPORTS                            }....................

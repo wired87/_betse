@@ -3,7 +3,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all channel classes.
+Abstract qf_core_base classes of all channel classes.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -15,7 +15,7 @@ from betse.science.math import toolbox as tb
 # ....................{ BASE                               }....................
 class ChannelsABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all channel classes.
+    Abstract qf_core_base class of all channel classes.
 
     Attributes
     ----------

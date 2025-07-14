@@ -67,7 +67,7 @@ def is_conda() -> bool:
         (e.g., ``${HOME}/Miniconda3/envs/${CONDA_ENV_NAME}``).
 
     * ``conda-meta/history`` is a file relative to this prefix guaranteed to
-      exist for *all* ``conda`` environments (including the base environment).
+      exist for *all* ``conda`` environments (including the qf_core_base environment).
       Since this file is unlikely to be created in non-``conda`` environments,
       the existence of this file effectively guarantees this interpreter to be
       managed by ``conda``.

@@ -21,7 +21,7 @@ from betse.util.type.types import type_check, NumericSimpleTypes
 #FIXME: Rename to "SimConfColorbarABC" for clarity.
 class SimConfVisualCellsABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all cell _qfn_cluster_node visual subconfiguration subclasses,
+    Abstract qf_core_base class of all cell _qfn_cluster_node visual subconfiguration subclasses,
     YAML-backed or otherwise.
 
     Attributes (Colorbar)

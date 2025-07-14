@@ -256,7 +256,7 @@ def init() -> None:
     except:
         dill_core_submodule = dill.dill
 
-    # If this submodule does *NOT* contain the expected "Pickler" base class,
+    # If this submodule does *NOT* contain the expected "Pickler" qf_core_base class,
     # raise an exception.
     objtest.die_unless_has_class(dill_core_submodule, 'Pickler')
 

@@ -24,7 +24,7 @@ from betse.util.type.types import (
 # ....................{ SUPERCLASSES                       }....................
 class SimPhaseRequirementABC(metaclass=ABCMeta):
     '''
-    Abstract base class of all **simulation phase requirement** (i.e., object
+    Abstract qf_core_base class of all **simulation phase requirement** (i.e., object
     encapsulating the current state of a single simulation feature for a given
     simulation phase) subclasses.
     '''

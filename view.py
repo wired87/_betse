@@ -13,7 +13,7 @@ from _betse import DEFAULT_BETSE_GEOP
 from _betse.runner import BetseRunner
 from _betse.s.main import BetseConfigSerializer
 from bm.settings import TEST_USER_ID
-from file.yaml import load_yaml
+from utils.file.yaml import load_yaml
 
 import logging
 
@@ -98,7 +98,7 @@ class BetseSimulationView(APIView):
 
 
     def create_next_folder(self, base_path):
-        os.makedirs(base_path, exist_ok=True)  # Create base dir if needed
+        os.makedirs(base_path, exist_ok=True)  # Create qf_core_base dir if needed
         items = os.listdir(base_path)
         new_folder_name = f"new_run_{len(items)+1}"
         new_folder_path = f"{base_path}/{new_folder_name}"
@@ -167,7 +167,7 @@ class BetseSimulationView(APIView):
 
     def get_file_paths(self, files, base_path):
         """
-        Get al received files, save them local in final base data folder
+        Get al received files, save them local in final qf_core_base data folder
 
         :return: dict include file_name and
         """

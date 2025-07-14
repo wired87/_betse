@@ -270,7 +270,7 @@ class Mtubes(object):
 
     def mtubes_to_cell(self, cells, p) -> None:
 
-        # determine the microtubules base electroosmotic velocity:
+        # determine the microtubules qf_core_base electroosmotic velocity:
         uxmto = self.mtubes_x
         uymto = self.mtubes_y
 

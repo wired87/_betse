@@ -35,7 +35,7 @@ value of these variables on the current system.
 '''
 
 # ....................{ CONSTANTS ~ units ~ size          }....................
-# Size denominations in base 2 rather than base 10, for mild efficiency.
+# Size denominations in qf_core_base 2 rather than qf_core_base 10, for mild efficiency.
 
 KiB = 1 << 10
 '''

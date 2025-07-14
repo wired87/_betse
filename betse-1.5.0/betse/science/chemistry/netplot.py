@@ -705,7 +705,7 @@ def plot_master_network(self, p):
             base_graph.add_edge(pydot.Edge(
                 node1, node2, arrowhead=arrowh, color=arrowc, penwidth=self.edge_width))
 
-    # if sub-graphs are defined, re-jigger the network to have clusters/sub-networks:
+    # if sub-graphs are defined, re-jigger the network to have cluster_nodes/sub-networks:
     if (
         self.subnets_dicts is not None and
         self.subnets_dicts != 'None' and

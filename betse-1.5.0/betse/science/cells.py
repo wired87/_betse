@@ -925,7 +925,7 @@ class Cells(object):
 
                 self.mesh.init_mesh()
 
-            else: # Otherwise, make and clip a point cloud to the base shape:
+            else: # Otherwise, make and clip a point cloud to the qf_core_base shape:
                 # Initialize the Discrete Exterior Calculus (DEC) mesh object:
                 self.mesh = DECMesh(
                     cell_radius=phase.p.cell_radius,
@@ -1603,7 +1603,7 @@ class Cells(object):
         Uses Numpy arrays
         """
 
-        # base parameter definitions
+        # qf_core_base parameter definitions
         self.delta = ((self.xmax-self.xmin)/p.grid_size) # spacing between grid points
 
         self.grid_obj = fd.FiniteDiffSolver()

@@ -15,13 +15,13 @@ production of other gene products) in the gene regulatory network (GRN).
 #FIXME: Unify the large amount of code shared in common between this and the
 #"gene" submodule as follows:
 #
-#* Define a new "grnabc" submodule defining a new "GrnABC" abstract base class,
+#* Define a new "grnabc" submodule defining a new "GrnABC" abstract qf_core_base class,
 #  defining at least:
 #  * run_core_sim().
 #  * All other methods shared in common between the "MasterOfGenes" and
 #    "MasterOfMolecules" classes.
 #* Refactor the "MasterOfGenes" and "MasterOfMolecules" classes to subclass the
-#  "GrnABC" abstract base class.
+#  "GrnABC" abstract qf_core_base class.
 
 # ....................{ IMPORTS                           }....................
 import matplotlib.pyplot as plt

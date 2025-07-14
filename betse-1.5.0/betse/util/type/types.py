@@ -73,7 +73,7 @@ Type of all types.
 
 FileType = IOBase
 '''
-Abstract base class implemented by *all* **file-like objects** (i.e., objects
+Abstract qf_core_base class implemented by *all* **file-like objects** (i.e., objects
 implementing the standard ``read()`` and ``write()`` methods).
 
 This class is a synonym of the `io.IOBase` class, provided merely as a
@@ -326,7 +326,7 @@ invariants hold across *all* enumerations:
 
 EnumClassType = Enum
 '''
-Abstract base class of all **enumeration types** (i.e., classes containing all
+Abstract qf_core_base class of all **enumeration types** (i.e., classes containing all
 enumeration members comprising those enumerations).
 
 This class is a synonym of the :class:`enum.Enum` class, permitting callers to
@@ -341,7 +341,7 @@ See Also
 
 EnumMemberType = Enum
 '''
-Abstract base class implemented by all **enumeration members** (i.e.,
+Abstract qf_core_base class implemented by all **enumeration members** (i.e.,
 alternative choices comprising their parent enumerations).
 
 This class is a synonym of the :class:`enum.Enum` class, permitting callers
@@ -451,13 +451,13 @@ built-in or user-defined methods).
 '''
 
 # ....................{ TUPLES ~ container                }....................
-# Note that most tuples of container base classes are defined in the "lib"
+# Note that most tuples of container qf_core_base classes are defined in the "lib"
 # subsection below, due to conditionally containing classes from third-party
 # dependencies. Tuples defined here only contain classes from Python's stdlib.
 
 SequenceStandardTypes = (list, tuple)
 '''
-Tuple of all **standard container base classes** (i.e., classes defined by
+Tuple of all **standard container qf_core_base classes** (i.e., classes defined by
 Python's stdlib and hence guaranteed to exist) both conforming to *and*
 subclassing the canonical :class:`collections.abc.Sequence` API.
 
@@ -612,7 +612,7 @@ See Also
 
 ContainerTypes = None
 '''
-Tuple of all container base classes conforming to (but *not* necessarily
+Tuple of all container qf_core_base classes conforming to (but *not* necessarily
 subclassing) the canonical :class:`collections.abc.Container` API and hence
 defining the special ``__contains__()`` method internally called by the ``in``
 operator.
@@ -626,7 +626,7 @@ See Also
 
 IterableTypes = None
 '''
-Tuple of all container base classes conforming to (but *not* necessarily
+Tuple of all container qf_core_base classes conforming to (but *not* necessarily
 subclassing) the canonical :class:`collections.abc.Iterable` API.
 
 See Also
@@ -638,12 +638,12 @@ See Also
 
 SequenceTypes = None
 '''
-Tuple of all container base classes conforming to (but *not* necessarily
+Tuple of all container qf_core_base classes conforming to (but *not* necessarily
 subclassing) the canonical :class:`collections.abc.Sequence` API.
 
 Sequences are iterables supporting efficient element access via integer
 indices.  Most sequences implement the :class:`collections.abc.Sequence`
-abstract base class, including the concrete :class:`str` string class. All
+abstract qf_core_base class, including the concrete :class:`str` string class. All
 sequences define the special ``__getitem__()`` and ``__len__()`` methods,
 amongst numerous others.
 
@@ -746,28 +746,28 @@ except:
 
 MappingOrSequenceTypes = (MappingType,) + SequenceTypes
 '''
-Tuple of all container base classes conforming to (but *not* necessarily
+Tuple of all container qf_core_base classes conforming to (but *not* necessarily
 subclassing) the canonical :class:`Mapping` *or* :class:`Sequence` APIs.
 '''
 
 
 ModuleOrSequenceTypes = (ModuleType,) + SequenceTypes
 '''
-Tuple of the module type *and* all container base classes conforming to (but
+Tuple of the module type *and* all container qf_core_base classes conforming to (but
 *not* necessarily subclassing) the canonical :class:`Sequence` API.
 '''
 
 
 NumericOrIterableTypes = NumericSimpleTypes + IterableTypes
 '''
-Tuple of all numeric types *and* all container base classes conforming to (but
+Tuple of all numeric types *and* all container qf_core_base classes conforming to (but
 *not* necessarily subclassing) the canonical :class:`Iterable` API.
 '''
 
 
 NumericOrSequenceTypes = NumericSimpleTypes + SequenceTypes
 '''
-Tuple of all numeric types *and* all container base classes conforming to (but
+Tuple of all numeric types *and* all container qf_core_base classes conforming to (but
 *not* necessarily subclassing) the canonical :class:`Sequence` API.
 '''
 
@@ -809,7 +809,7 @@ Tuple of both the integer type *and* that of the ``None`` singleton.
 
 IterableOrNoneTypes = IterableTypes + NoneTypes
 '''
-Tuple of all container base classes conforming to (but _not_ necessarily
+Tuple of all container qf_core_base classes conforming to (but _not_ necessarily
 subclassing) the canonical :class:`Iterable` API as well as the type of the
 ``None`` singleton.
 '''
@@ -817,7 +817,7 @@ subclassing) the canonical :class:`Iterable` API as well as the type of the
 
 MappingOrNoneTypes = (MappingType,) + NoneTypes
 '''
-Tuple of all container base classes conforming to (but *not* necessarily
+Tuple of all container qf_core_base classes conforming to (but *not* necessarily
 subclassing) the canonical :class:`Mapping` API as well as the type of the
 ``None`` singleton.
 '''
@@ -825,7 +825,7 @@ subclassing) the canonical :class:`Mapping` API as well as the type of the
 
 MappingOrSequenceOrNoneTypes = MappingOrSequenceTypes + NoneTypes
 '''
-Tuple of all container base classes conforming to (but *not* necessarily
+Tuple of all container qf_core_base classes conforming to (but *not* necessarily
 subclassing) the canonical :class:`Mapping` *or* :class:`Sequence` APIs as well
 as the type of the ``None`` singleton.
 '''
@@ -839,7 +839,7 @@ Tuple of all numeric types *and* the type of the singleton `None` object.
 
 NumericOrSequenceOrNoneTypes = NumericOrSequenceTypes + NoneTypes
 '''
-Tuple of all numeric types, all container base classes conforming to (but *not*
+Tuple of all numeric types, all container qf_core_base classes conforming to (but *not*
 necessarily subclassing) the canonical :class:`int`, :class:`float`, *or*
 :class:`Sequence` APIs as well as the type of the singletone ``None`` object.
 '''
@@ -853,7 +853,7 @@ Tuple of all Numpy data types *and* the type of the ``None`` singleton.
 
 SequenceOrNoneTypes = SequenceTypes + NoneTypes
 '''
-Tuple of all container base classes conforming to (but *not* necessarily
+Tuple of all container qf_core_base classes conforming to (but *not* necessarily
 subclassing) the canonical :class:`Sequence` API as well as the type of the
 ``None`` singleton.
 '''
@@ -1658,7 +1658,7 @@ def is_iterable(obj: object) -> bool:
     ``True`` only if the passed object is an **iterable**.
 
     Iterables are objects capable of returning their members one at a time.
-    Equivalently, iterables implement the abstract base class
+    Equivalently, iterables implement the abstract qf_core_base class
     `collections.Iterable` and hence define the `__iter__()` method.
     '''
     return isinstance(obj, Iterable)
@@ -1667,7 +1667,7 @@ def is_iterable(obj: object) -> bool:
 def is_iterable_nonstr(obj: object) -> bool:
     '''
     ``True`` only if the passed object is a **non-string iterable** (i.e.,
-    implements the abstract base class `collections.Iterable` *and* is not a
+    implements the abstract qf_core_base class `collections.Iterable` *and* is not a
     string).
     '''
     return is_iterable(obj) and not is_str(obj)
@@ -1678,7 +1678,7 @@ def is_sequence(obj: object) -> bool:
     ``True`` only if the passed object is a **sequence**.
 
     Sequences are iterables supporting efficient element access via integer
-    indices. Equivalently, sequences implement the abstract base class
+    indices. Equivalently, sequences implement the abstract qf_core_base class
     :class:`collections.abc.Sequence` and hence define the ``__getitem__()`` and
     ``__len__()`` methods (among numerous others).
 
@@ -1697,7 +1697,7 @@ def is_sequence(obj: object) -> bool:
 def is_sequence_nonstr(obj: object) -> bool:
     '''
     ``True`` only if the passed object is a **non-string sequence** (i.e.,
-    implements the abstract :class:`collections.abc.Sequence` base class *and*
+    implements the abstract :class:`collections.abc.Sequence` qf_core_base class *and*
     is not a string).
 
     For generality, this functions returns ``True`` for both pure-Python
@@ -1712,7 +1712,7 @@ def is_sequence_nonstr(obj: object) -> bool:
 def is_sequence_nonstr_nonempty(obj: object) -> bool:
     '''
     ``True`` only if the passed object is a **nonempty non-string sequence**
-    (i.e., implements the abstract :class:`collections.abc.Sequence` base class,
+    (i.e., implements the abstract :class:`collections.abc.Sequence` qf_core_base class,
     is not a string, *and* contains at least one element).
 
     '''

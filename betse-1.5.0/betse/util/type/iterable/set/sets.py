@@ -51,7 +51,7 @@ def make_union(*iterables: IterableTypes) -> SetType:
     # is otherwise.
     #
     # Note that testing whether this iterable is a "SetType" does *NOT*
-    # suffice, as that abstract base class sadly fails to require that
+    # suffice, as that abstract qf_core_base class sadly fails to require that
     # subclasses adhere to the public API of the "set" builtin (e.g., by
     # defining a union() method).
     iterable_first_set = (

@@ -5,7 +5,7 @@
 
 '''
 Low-level **non-string iterable sorting** (i.e., sorting of non-string objects
-implementing the abstract base class :class:`collections.abc.Iterable`)
+implementing the abstract qf_core_base class :class:`collections.abc.Iterable`)
 facilities.
 '''
 

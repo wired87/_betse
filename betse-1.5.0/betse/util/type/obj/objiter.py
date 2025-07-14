@@ -175,7 +175,7 @@ def iter_attrs_explicit_matching(
     # Ideally, this function would be reimplemented in terms of the
     # iter_attrs_implicit_matching() function calling the canonical
     # inspect.getmembers() function. Dynamic inspection is surprisingly
-    # non-trivial in the general case, particularly when virtual base classes
+    # non-trivial in the general case, particularly when virtual qf_core_base classes
     # rear their diamond-studded faces. Moreover, doing so would support
     # edge-case attributes when passed class objects, including:
     #
@@ -620,7 +620,7 @@ def iter_vars_custom_simple_matching(
     # Ideally, this function would be reimplemented in terms of the
     # iter_attrs_implicit_matching() function calling the canonical
     # inspect.getmembers() function. Dynamic inspection is surprisingly
-    # non-trivial in the general case, particularly when virtual base classes
+    # non-trivial in the general case, particularly when virtual qf_core_base classes
     # rear their diamond-studded faces. Moreover, doing so would support
     # edge-case attributes when passed class objects, including:
     #

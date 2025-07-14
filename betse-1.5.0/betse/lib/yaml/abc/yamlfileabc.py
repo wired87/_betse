@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all YAML-backed file wrapper subclasses.
+Abstract qf_core_base classes of all YAML-backed file wrapper subclasses.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -20,7 +20,7 @@ from betse.util.type.types import type_check, IterableTypes
 # ....................{ SUPERCLASSES                       }....................
 class YamlFileABC(YamlABC):
     '''
-    Abstract base class of all **YAML-backed file wrapper** (i.e., high-level
+    Abstract qf_core_base class of all **YAML-backed file wrapper** (i.e., high-level
     object wrapping a low-level mapping or sequence of YAML-backed
     configuration settings both loadable from and savable back to a
     YAML-formatted file) subclasses.
@@ -471,7 +471,7 @@ class YamlFileABC(YamlABC):
 #is inadvisable at best and bug-prone at worst.
 class YamlFileDefaultABC(YamlFileABC):
     '''
-    Abstract base class of all **YAML-backed defaultable file wrapper** (i.e.,
+    Abstract qf_core_base class of all **YAML-backed defaultable file wrapper** (i.e.,
     high-level object wrapping a low-level mapping or sequence of YAML-backed
     configuration settings both loadable from and savable back to a
     YAML-formatted file, optionally defaulting to a subclass-specific default

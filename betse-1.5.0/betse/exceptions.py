@@ -21,7 +21,7 @@ from abc import ABCMeta
 #is non-None, which Python permits by default but which is functionally useless.
 class BetseException(Exception, metaclass=ABCMeta):
     '''
-    Abstract base class of all application-specific exceptions.
+    Abstract qf_core_base class of all application-specific exceptions.
     '''
 
     pass
@@ -122,7 +122,7 @@ class BetseMethodUnimplementedException(
 
     This exception is typically raised from **unimplemented optional methods**
     (i.e., non-mandatory methods *not* intended to be called) of concrete
-    subclasses of abstract base classes. While the optimal solution for
+    subclasses of abstract qf_core_base classes. While the optimal solution for
     defining **unimplemented mandatory methods** (i.e., non-optional methods
     also *not* intended to be called) is via the standard
     :call:`collections.abc.abstractmethod` decorator, there exists no standard

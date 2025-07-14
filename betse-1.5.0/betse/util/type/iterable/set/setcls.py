@@ -25,7 +25,7 @@ Metaclass of the builtin "frozenset" container type.
 # ....................{ METACLASSES                       }....................
 class FrozenSetSubclassableMeta(ABCMeta, _FROZENSET_METACLASS):
     '''
-    Metaclass of the abstract :class:`FrozenSetSubclassable` base class and all
+    Metaclass of the abstract :class:`FrozenSetSubclassable` qf_core_base class and all
     concrete subclasses thereof.
 
     This metaclass dynamically redefines *all* container-creating methods of
@@ -58,7 +58,7 @@ class FrozenSetSubclassableMeta(ABCMeta, _FROZENSET_METACLASS):
       :class:`frozenset` type.
     * The :class:`ABCMeta` metaclass, avoiding conflicts between this metaclass
       and concrete subclasses of the :class:`FrozenSetSubclassable` class which
-      additionally subclass one or more other abstract base classes which
+      additionally subclass one or more other abstract qf_core_base classes which
       themselves leverage the :class:`ABCMeta` metaclass. (Subtle dragons.)
 
     For these and similar reasons, metaclass usage in Python should typically
@@ -184,13 +184,13 @@ class FrozenSetSubclassable(frozenset, metaclass=FrozenSetSubclassableMeta):
 
     Caveats
     ----------
-    **Immutable set subclasses should always inherit from this base class.**
+    **Immutable set subclasses should always inherit from this qf_core_base class.**
     Neither the builtin :class:`frozenset` container type nor the abstract
-    :class:`collections.abc.Set` and :class:`collections.abc.Hashable` base
+    :class:`collections.abc.Set` and :class:`collections.abc.Hashable` qf_core_base
     classes should be inherited from.
 
     Subclasses should avoid declaring a metaclass or inheriting from another
-    base class that declares a metaclass - excluding the standard
+    qf_core_base class that declares a metaclass - excluding the standard
     :class:`ABCMeta` metaclass, which is compatible with this class by design.
     All other metaclasses should be considered incompatible. Violating this
     constraint typically raises the following runtime exception:
@@ -249,7 +249,7 @@ class FrozenSetSubclassable(frozenset, metaclass=FrozenSetSubclassableMeta):
 
     * Python 3.x, container-creating methods in both the :class:`frozenset` and
       :class:`set` types incorrectly resolved `issue #1721812`_ by creating
-      instances of the corresponding base types (e.g., :class:`frozenset` or
+      instances of the corresponding qf_core_base types (e.g., :class:`frozenset` or
       :class:`set`) in subclasses inheriting from these types rather than
       instances of these subclasses.
 
@@ -264,11 +264,11 @@ class FrozenSetSubclassable(frozenset, metaclass=FrozenSetSubclassableMeta):
 
     Versus ``Set`` and ``Hashable``
     ----------
-    Technically, the abstract :class:`collections.abc.Set` base class defining
+    Technically, the abstract :class:`collections.abc.Set` qf_core_base class defining
     the official immutable set API *is* safely subclassable, but only under the
     following stipulations:
 
-    * The abstract :class:`collections.abc.Hashable` base class should
+    * The abstract :class:`collections.abc.Hashable` qf_core_base class should
       typically also be subclassed. Failing to do so raises exceptions on
       attempting to add subclass instances to builtin container types expecting
       hashable objects (e.g., :class:`dict`, :class:`set`).

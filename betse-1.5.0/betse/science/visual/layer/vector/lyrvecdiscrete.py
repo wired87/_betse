@@ -19,7 +19,7 @@ from numpy import ndarray
 # ....................{ SUPERCLASSES                       }....................
 class LayerCellsVectorDiscreteMembranesABC(LayerCellsVectorColorfulABC):
     '''
-    Abstract base class of all layer subclasses plotting a single vector
+    Abstract qf_core_base class of all layer subclasses plotting a single vector
     spatially situated at cell membrane vertices (e.g., transmembrane voltages)
     as a discontiguous Gouraud-shaded surface depicted by a polygonal mesh onto
     the cell _qfn_cluster_node for one on more time steps.

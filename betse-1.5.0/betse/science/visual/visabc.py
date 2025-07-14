@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all Matplotlib-based plot and animation subclasses.
+Abstract qf_core_base classes of all Matplotlib-based plot and animation subclasses.
 '''
 
 # ....................{ TODO                               }....................
@@ -31,7 +31,7 @@ Abstract base classes of all Matplotlib-based plot and animation subclasses.
 
 #FIXME: Refactor all procedural cell _qfn_cluster_node-specific
 #"betse.science.visual.plot.plotutil" functions into subclasses of the
-#"LayerCellsABC" base class defined elsewhere. Ultimate power fights the dark
+#"LayerCellsABC" qf_core_base class defined elsewhere. Ultimate power fights the dark
 #deceit!
 
 # ....................{ IMPORTS                            }....................
@@ -74,7 +74,7 @@ from matplotlib.streamplot import StreamplotSet
 # ....................{ SUPERCLASSES                       }....................
 class VisualCellsABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **cell _qfn_cluster_node visual** (i.e., plot or animation
+    Abstract qf_core_base class of all **cell _qfn_cluster_node visual** (i.e., plot or animation
     spatially visualizing the current cell _qfn_cluster_node) subclasses.
 
     Subclasses of this class plot the spatial distribution of one or more
@@ -216,7 +216,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
             Text displayed above the figure colorbar if any *or* ``None``
             otherwise. If this parameter is ``None`` *and* at least one layer
             in the passed ``layers`` parameter is an instance of the
-            :class:`LayerCellsColorfulABC` base class, an exception is raised.
+            :class:`LayerCellsColorfulABC` qf_core_base class, an exception is raised.
         colormap : optional[Colormap]
             Matplotlib colormap to be used by default for all animation artists
             (e.g., colorbar, images). Defaults to ``None``, in which case the
@@ -684,7 +684,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
     #* "_color_max".
     #
     #The two notable exceptions are "_colormap" and "_colorbar_title", which
-    #remain suitable for use in this base class.
+    #remain suitable for use in this qf_core_base class.
     @type_check
     def _prep_colors_obsolete(
         self,
@@ -875,7 +875,7 @@ class VisualCellsABC(object, metaclass=ABCMeta):
         method. The subclass implementation of this abstract method is expected
         to modify this animation's figure and axes so as to display the next
         frame. It is *not*, however, expected to save that figure to disk;
-        frame saving is already implemented by this base class in a
+        frame saving is already implemented by this qf_core_base class in a
         general-purpose manner.
 
         Specifically, this method (in order):

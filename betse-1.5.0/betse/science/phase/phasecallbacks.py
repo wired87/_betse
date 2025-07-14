@@ -19,7 +19,7 @@ from betse.util.type.types import NoneType, StrOrNoneTypes
 # extended with subclass-specific behaviour.
 class SimCallbacksBC(CallbacksBC):
     '''
-    Abstract base class of all **simulation phase callbacks** (i.e.,
+    Abstract qf_core_base class of all **simulation phase callbacks** (i.e.,
     caller-defined object whose methods are periodically called while
     simulating one or more simulation phases) subclasses.
     '''

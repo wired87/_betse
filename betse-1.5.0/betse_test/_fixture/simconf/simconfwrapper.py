@@ -10,7 +10,7 @@ both serialized to and deserialized from on-disk YAML-formatted files.
 
 #FIXME: This submodule requires heavy refactoring away from the current
 #low-level approach in favour of the new high-level "confabc"-based approach --
-#namely, the "YamlABC" base class coupled with the conf_alias() data
+#namely, the "YamlABC" qf_core_base class coupled with the conf_alias() data
 #descriptor. Together, this new functionality provides a substantially better
 #YAML-to-Python-object-mapping (YPOM) than the ad-hoc and overly verbose
 #boilerplate implemented below. Specifically:
@@ -409,14 +409,14 @@ class SimConfigTestWrapper(object):
         # voltage_gated_sodium_channel['turn on'] = True
         # voltage_gated_sodium_channel['channel type'] = ['Nav1p2',]
         # # voltage_gated_sodium_channel['max value'] = 5.0e-6
-        # voltage_gated_sodium_channel['apply to'] = ['base',]
+        # voltage_gated_sodium_channel['apply to'] = ['qf_core_base',]
         #
         # # Enable the voltage-gated potassium (K+) channel K_Slow.
         # voltage_gated_potassium_channel = self.p.conf['voltage gated K+']
         # voltage_gated_potassium_channel['turn on'] = True
         # voltage_gated_potassium_channel['channel type'] = ['K_Slow',]
         # # voltage_gated_potassium_channel['max value'] = 5.0e-7
-        # voltage_gated_potassium_channel['apply to'] = ['base',]
+        # voltage_gated_potassium_channel['apply to'] = ['qf_core_base',]
 
 
     def _enable_solver_full(self) -> None:

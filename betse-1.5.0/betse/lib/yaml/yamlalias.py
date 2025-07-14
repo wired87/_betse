@@ -17,7 +17,7 @@ from betse.util.type.types import type_check
 # ....................{ SUPERCLASSES                      }....................
 class YamlAliasABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all simulation configuration-specific **expression
+    Abstract qf_core_base class of all simulation configuration-specific **expression
     alias data descriptor** (i.e., object satisfying the data descriptor
     protocol aliasing a YAML-backed simulation configuration option to a
     standard instance variable) subclasses.
@@ -35,7 +35,7 @@ class YamlAliasABC(object, metaclass=ABCMeta):
 # ....................{ GLOBALS                           }....................
 _YAML_ALIAS_BASE_CLASSES = (YamlAliasABC,)
 '''
-Tuple of all base classes of all simulation configuration-specific expression
+Tuple of all qf_core_base classes of all simulation configuration-specific expression
 alias data descriptors.
 
 See Also

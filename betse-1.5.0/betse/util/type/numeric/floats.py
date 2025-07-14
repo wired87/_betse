@@ -61,7 +61,7 @@ def is_float_str(text: str) -> bool:
     # Return True only if this string matches a floating point format.
     return regexes.is_match(text=text, regex=get_float_regex())
 
-# ....................{ GETTERS ~ base 10                  }....................
+# ....................{ GETTERS ~ qf_core_base 10                  }....................
 @type_check
 def get_base_10_exponent(number: float) -> int:
     '''
@@ -117,7 +117,7 @@ def get_base_10_exponent(number: float) -> int:
     # * "sign", either:
     #   * 0 if this number is positive.
     #   * 1 if this number is negative.
-    # * "digits", a tuple of all base-10 digits comprising this number.
+    # * "digits", a tuple of all qf_core_base-10 digits comprising this number.
     # * "exponent", the integer power of ten to which raising the integer
     #   produced by concatenating the digits of "digits" yields this number.
     #
@@ -158,7 +158,7 @@ def get_base_10_exponent(number: float) -> int:
     _, digits, exponent_decimals = number_fixed.as_tuple()
 
     # Base-10 exponent of this floating point number, converted from the
-    # base-10 exponent of this fixed-point number via the trivial incrementation
+    # qf_core_base-10 exponent of this fixed-point number via the trivial incrementation
     # scheme given above. And now you know why we use the "Decimals" class.
     exponent_float = exponent_decimals + len(digits) - 1
 
@@ -172,7 +172,7 @@ def get_base_10_precision(number: float) -> int:
     **Base-10 precision** (i.e., length of a floating point number's significand
     excluding leading hidden digit 1) of the passed floating point number.
 
-    Equivalently, this function returns the number of base-10 digits in the
+    Equivalently, this function returns the number of qf_core_base-10 digits in the
     fractional segment of this number *after* accounting for approximation
     errors in floating point arithmetic.
 

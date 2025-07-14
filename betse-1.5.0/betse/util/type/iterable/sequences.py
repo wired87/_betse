@@ -5,7 +5,7 @@
 
 '''
 Low-level **non-string sequence** (i.e., non-string object implementing the
-abstract base class `collections.abc.Sequence`) facilities.
+abstract qf_core_base class `collections.abc.Sequence`) facilities.
 
 See Also
 ----------

@@ -170,7 +170,7 @@ world options:
                               # recommended 26.0e-9 m for animal cells
 
 
-  lattice type: hex           # Type of base cell lattice (i.e., uniform grid to
+  lattice type: hex           # Type of qf_core_base cell lattice (i.e., uniform grid to
                               # which cells are situated before random lattice
                               # disorder is applied), as any following string:
                               # * "hex" for hexagonal cells.
@@ -179,7 +179,7 @@ world options:
   lattice disorder: 0.4       # noise level for the lattice
                               # recommended range 0 to 0.8
                               # this randomizes lattice points from the rectangular or
-                              # hexagonal base grid. If equal to 0, a perfect
+                              # hexagonal qf_core_base grid. If equal to 0, a perfect
                               # hexagonal or rectangular grid is created.
 
   mesh refinement:                  # Use Llyod's algorithm to optimize the Voronoi mesh?
@@ -194,7 +194,7 @@ world options:
 #---------------------------------------------------------------------------------------------------
 # TISSUE PROFILE DESIGNATION
 #---------------------------------------------------------------------------------------------------
-# Tissue profiles are user-defined regions within the _qfn_cluster_node to which specific base membrane
+# Tissue profiles are user-defined regions within the _qfn_cluster_node to which specific qf_core_base membrane
 # diffusion profiles, interventions, and individualized dynamics (e.g., voltage gated channels) can
 # be applied. Tissue profiles can be gap-junction connected or separated (isolated) from other
 # tissue profiles. Cluster shape and individual tissues can be defined by images, or specified via
@@ -217,7 +217,7 @@ tissue profile definition:
   tissue: # Tissue profiles (i.e., regions whose cells all share the same initial conditions).
     default: # Default tissue profile applied to all cells *NOT* specifically targeted by a
              # tissue profile defined below. Never ignored, even if "profiles enabled" is False.
-      name: base # Arbitrary unique profile name.
+      name: qf_core_base # Arbitrary unique profile name.
       image: geo/circle/circle_base.png # Absolute or relative filename of the image whose
                                         # pure-black pixels define the cell _qfn_cluster_node shape.
       diffusion constants: # Membrane diffusion constants applied to all unprofiled cells.
@@ -284,7 +284,7 @@ change Na mem:       # Change the membrane permeability to Na+
     change start: 1.0                # time to start change [s]
     change finish: 4.0               # time to end change and return to original [s]
     change rate: 1.0                 # rate of change [s]
-    multiplier: 10.0                # factor to multiply base level
+    multiplier: 10.0                # factor to multiply qf_core_base level
     modulator function: None               # spatial function:'gradient_x','gradient_y', 'gradient_r' or 'None'
     apply to: ['spot']          # name(s) of the tissue profile(s) to apply intervention to
 
@@ -293,7 +293,7 @@ change K mem:       # Change the membrane permeability to K+
     change start: 1.0                   # time to start change [s]
     change finish: 2.0                 # time to end change and return to original [s]
     change rate: 0.5                    # rate of change [s]
-    multiplier: 50.0                    # factor to multiply base level
+    multiplier: 50.0                    # factor to multiply qf_core_base level
     modulator function: None                   # spatial function:'gradient_x','gradient_y', 'gradient_r' or 'None'
     apply to: ['spot']     # name(s) of the tissue profile(s) to apply intervention to
 
@@ -302,7 +302,7 @@ change Cl mem:      # Change the membrane permeability to Cl-
     change start: 1.0                  # time to start change [s]
     change finish: 4.0                 # time to end change and return to original [s]
     change rate: 0.5                    # rate of change [s]
-    multiplier: 10                    # factor to multiply base level
+    multiplier: 10                    # factor to multiply qf_core_base level
     modulator function: None                # spatial function:'gradient_x','gradient_y', 'gradient_r' or 'None'
     apply to: ['spot']     # name(s) of the tissue profile(s) to apply intervention to
 
@@ -311,9 +311,9 @@ change Ca mem:       # Change the membrane permeability to Ca2+
     change start: 2.0                  # time to start change [s]
     change finish: 8.0                 # time to end change and return to original [s]
     change rate: 1                    # rate of change [s]
-    multiplier: 10                    # factor to multiply base level
+    multiplier: 10                    # factor to multiply qf_core_base level
     modulator function: None              # spatial function:'gradient_x','gradient_y', 'gradient_r' or 'None'
-    apply to: ['base']     # name(s) of the tissue profile(s) to apply intervention to
+    apply to: ['qf_core_base']     # name(s) of the tissue profile(s) to apply intervention to
 
 apply pressure:                       # Schedule application of mechanical pressure
     event happens: False              # turn the event on (True) or off (False)
@@ -412,28 +412,28 @@ change K env:       # Change the environmental concentration of K+
   change start: 1.00           # time to start change [s]
   change finish: 12.00         # time to end change and return to original [s]
   change rate: 1.0            # rate of change [s]
-  multiplier: 20            # factor to multiply base level
+  multiplier: 20            # factor to multiply qf_core_base level
 
 change Cl env:       # Change the environmental concentration of K+
   event happens: False      # turn the event on (True) or off (False)
   change start: 5.0           # sim time to start change [s]
   change finish: 25.0         # sim time to end change and return to original [s]
   change rate: 2.0            # rate of change [s]
-  multiplier: 10             # factor to multiply base level
+  multiplier: 10             # factor to multiply qf_core_base level
 
 change Na env:       # Change the environmental concentration of K+
   event happens: False     # turn the event on (True) or off (False)
   change start: 1          # time to start change [s]
   change finish: 9        # time to end change and return to original [s]
   change rate: 1           # rate of change [s]
-  multiplier: 5            # factor to multiply base level
+  multiplier: 5            # factor to multiply qf_core_base level
 
 change temperature:
   event happens: False      # turn the event on (True) or off (False)
   change start: 1           # time to start change [s]
   change finish: 9         # time to end change and return to original [s]
   change rate: 0.5         # rate of change [s]
-  multiplier: 0.5          # factor to multiply base level
+  multiplier: 0.5          # factor to multiply qf_core_base level
 
 block gap junctions:     # block the gap junctions between cells
   event happens: False      # turn the event on (True) or off (False)
@@ -473,7 +473,7 @@ interventions:
         end time:   12.00     # Time at which to cease intervening [s]
         peak duration: 1.00   # Time duration over which to increase ion
                               # concentration after intervention begins [s]
-        multiplier: 20        # Factor by which to increase base level of ion
+        multiplier: 20        # Factor by which to increase qf_core_base level of ion
                               # concentration during peak intervention duration
       # Example global chloride intervention, disabled by default.
       - type: chloride

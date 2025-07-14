@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Top-level abstract base class of all **subcommandable command line interface
+Top-level abstract qf_core_base class of all **subcommandable command line interface
 (CLI)** (i.e., CLI accepting one or more subcommands) subclasses.
 '''
 
@@ -26,7 +26,7 @@ from betse.util.type.types import type_check, ArgParserType
 # ....................{ SUBCLASS                           }....................
 class CLISubcommandableABC(CLIABC):
     '''
-    Top-level abstract base class of all **subcommandable command line
+    Top-level abstract qf_core_base class of all **subcommandable command line
     interface (CLI)** (i.e., CLI accepting one or more subcommands) subclasses,
     suitable for use by both CLI and GUI front-ends for BETSE.
 

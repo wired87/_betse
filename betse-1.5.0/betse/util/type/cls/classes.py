@@ -73,7 +73,7 @@ def die_unless_subclass(subclass: ClassType, superclass: ClassType) -> None:
 @type_check
 def is_abstract(cls: ClassType) -> bool:
     '''
-    ``True`` only if the passed class is an **abstract base class** (i.e., a
+    ``True`` only if the passed class is an **abstract qf_core_base class** (i.e., a
     class whose metaclass is :class:`abc.ABCMeta` such that at least one
     abstract method decorated by the :func:`abc.abstractmethod` decorator
     remains unimplemented).
@@ -86,7 +86,7 @@ def is_abstract(cls: ClassType) -> bool:
     Returns
     ----------
     bool
-        ``True`` only if this class is an abstract base class (ABC).
+        ``True`` only if this class is an abstract qf_core_base class (ABC).
     '''
 
     # One-liners for ponderous victory.
@@ -392,7 +392,7 @@ def define_class(
 ) -> ClassType:
     '''
     Dynamically define a new class with the passed name subclassing all passed
-    base classes and providing all passed class attributes (e.g., class
+    qf_core_base classes and providing all passed class attributes (e.g., class
     variables, methods).
 
     Parameters
@@ -405,14 +405,14 @@ def define_class(
         Defaults to the empty dictionary, equivalent to declaring a class with
         the trivial body ``pass``.
     base_classes : optional[SequenceTypes]
-        Sequence of all base classes to subclass this class from. Defaults to
+        Sequence of all qf_core_base classes to subclass this class from. Defaults to
         the empty tuple, equivalent to the 1-tuple ``(object,)`` containing
-        only the root base class of all classes.
+        only the root qf_core_base class of all classes.
 
     Returns
     ----------
     ClassType
-        Class dynamically defined with this name from these base classes and
+        Class dynamically defined with this name from these qf_core_base classes and
         class attributes.
     '''
 

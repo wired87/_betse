@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all Matplotlib-based animation subclasses.
+Abstract qf_core_base classes of all Matplotlib-based animation subclasses.
 '''
 
 #FIXME: A potential substantial speedup (albeit possibly non-portable to all
@@ -17,7 +17,7 @@ Abstract base classes of all Matplotlib-based animation subclasses.
 #     WXAgg, and FLTKAgg support the methods discussed here.
 #     The basic idea is to set the 'animated' property of the Artist you want
 #     to animate (all figure elements from Figure to Axes to Line2D to Text
-#     derive from the base class Artist). Then, when the standard canvas draw
+#     derive from the qf_core_base class Artist). Then, when the standard canvas draw
 #     operation is called, all the artists except the animated one will be
 #     drawn. You can then use the method background =
 #     canvas.copy_from_bbox(bbox) to copy a rectangular region (eg the axes
@@ -116,7 +116,7 @@ from matplotlib.animation import FuncAnimation
 # ....................{ BASE                              }....................
 class AnimCellsABC(VisualCellsABC):
     '''
-    Abstract base class of all animation subclasses.
+    Abstract qf_core_base class of all animation subclasses.
 
     Instances of this class animate the spatial distribution of one or more
     modelled variables (e.g., membrane voltage) over all time steps of the
@@ -180,7 +180,7 @@ class AnimCellsABC(VisualCellsABC):
         #"is_current_overlay_only_gj" parameters but *NOT* the corresponding
         #private attributes. Currently, the former parameter is only enabled
         #by subclasses that do *NOT* already plot streamlines. (Makes sense.)
-        #Thanks to the new layer API, however, this base class can now
+        #Thanks to the new layer API, however, this qf_core_base class can now
         #automatically detect when the subclass is plotting streamlines by:
         #
         #* Iteratively searching through the "_layers" list in the
@@ -590,7 +590,7 @@ class AnimCellsABC(VisualCellsABC):
             #  methods (e.g., grab_frame(), finish()) *ONLY* if the current
             #  call to the plot_frame() method is the first such call for the
             #  current frame. While this state would be trivial for this class
-            #  to record, perhaps matplotlib's "Animation" base class already
+            #  to record, perhaps matplotlib's "Animation" qf_core_base class already
             #  records this state? Contemplate us up.
 
             # Indefinitely repeat this animation unless saving animations, as

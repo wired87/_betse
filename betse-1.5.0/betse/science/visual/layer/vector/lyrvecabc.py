@@ -3,7 +3,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all matplotlib-based layer subclasses spatially
+Abstract qf_core_base classes of all matplotlib-based layer subclasses spatially
 plotting vectors onto the cell _qfn_cluster_node.
 '''
 
@@ -16,7 +16,7 @@ from betse.util.type.types import type_check
 # ....................{ SUBCLASSES                         }....................
 class LayerCellsVectorColorfulABC(LayerCellsColorfulABC):
     '''
-    Abstract base class of all classes spatially plotting vectors of arbitrary
+    Abstract qf_core_base class of all classes spatially plotting vectors of arbitrary
     one-dimensional data (e.g., transmembrane voltage) onto the cell _qfn_cluster_node
     such that the elements of these vectors are mappable as colors onto the
     colorbars of parent visuals.

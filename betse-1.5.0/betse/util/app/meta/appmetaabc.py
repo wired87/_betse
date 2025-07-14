@@ -43,7 +43,7 @@ from betse.util.type.types import type_check, ModuleType, StrOrNoneTypes
 # ....................{ SUPERCLASSES                       }....................
 class AppMetaABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **application metadata singleton** (i.e.,
+    Abstract qf_core_base class of all **application metadata singleton** (i.e.,
     application-wide object synopsizing application metadata via read-only
     properties) subclasses.
 

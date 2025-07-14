@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all vector subclasses.
+Abstract qf_core_base classes of all vector subclasses.
 '''
 
 # ....................{ IMPORTS                           }....................

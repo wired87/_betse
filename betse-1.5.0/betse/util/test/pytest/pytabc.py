@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-High-level :mod:`pytest`-specific abstract base class (ABC) hierarchies.
+High-level :mod:`pytest`-specific abstract qf_core_base class (ABC) hierarchies.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -16,7 +16,7 @@ from abc import ABCMeta
 # rather than this actual class instance. This may or may not be a bad thing.
 class SerialTestABC(metaclass=ABCMeta):
     '''
-    Abstract base class running all test methods defined by this concrete
+    Abstract qf_core_base class running all test methods defined by this concrete
     subclass **serially** (i.e., in the order in which this subclass declares
     these test such that subsequently declared tests depend on the success of
     all previously declared tests).
@@ -63,5 +63,5 @@ class SerialTestABC(metaclass=ABCMeta):
 
         # This callable is intended to be run serially only if the test
         # subclass to which this callable is bound subclasses this abstract
-        # base class.
+        # qf_core_base class.
         return test_class is not None and issubclass(test_class, SerialTestABC)

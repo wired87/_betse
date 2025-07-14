@@ -17,7 +17,7 @@ from betse.util.io.log import logs
 # .................... BASE                               ....................
 class VgFunABC(ChannelsABC, metaclass=ABCMeta):
     '''
-    Abstract base class of all Voltage-gated funny current channel classes.
+    Abstract qf_core_base class of all Voltage-gated funny current channel classes.
 
     Attributes
     ----------

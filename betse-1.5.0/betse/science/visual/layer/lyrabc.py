@@ -4,14 +4,14 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all matplotlib-based layer subclasses  spatially
+Abstract qf_core_base classes of all matplotlib-based layer subclasses  spatially
 plotting onto the cell _qfn_cluster_node.
 '''
 
 #FIXME: The current approach to implementing animation overlays is totally
 #fundamentally flawed. We currently attempt to provide a crude form of plot
 #composition (i.e., merging two or more types of plots together into a single
-#plot) by adding new booleans to the "AnimCellsABC" base class (e.g.,
+#plot) by adding new booleans to the "AnimCellsABC" qf_core_base class (e.g.,
 #"is_current_overlayable") -- a fundamentally unwieldy and ultimately
 #unworkable approach. By definition, you cannot provide true composability from
 #within a single class hierarchy. Instead, we need to split the specific
@@ -56,13 +56,13 @@ from matplotlib.cm import ScalarMappable
 # ....................{ SUPERCLASS                        }....................
 class LayerCellsABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all subclasses spatially plotting a single feature
+    Abstract qf_core_base class of all subclasses spatially plotting a single feature
     of the cell _qfn_cluster_node for a parent visual.
 
     Each subclass of this class plots the spatial distribution of a single
     modelled variable (e.g., membrane voltage) for one or more simulation time
     steps. Each instance of the higher-level
-    :class:`betse.science.visual.visabc.VisualCellsABC` abstract base class
+    :class:`betse.science.visual.visabc.VisualCellsABC` abstract qf_core_base class
     contains one or more instances of subclasses of this lower-level class.
 
     Separating low-level layer logic from high-level visual logic (e.g., frame
@@ -90,7 +90,7 @@ class LayerCellsABC(object, metaclass=ABCMeta):
         **Z-order** (i.e., positive integer ordering artist drawing, such that
         artists with larger z-orders are drawn above artists with smaller
         z-orders) of all artists plotted by this layer. While this zorder is
-        *not* strictly enforced by this abstract base class, layer subclasses
+        *not* strictly enforced by this abstract qf_core_base class, layer subclasses
         are encouraged to voluntarily pass the ``zorder=self._zorder`` option
         to all matplotlib axis-specific artist creation methods.
     '''
@@ -214,7 +214,7 @@ class LayerCellsABC(object, metaclass=ABCMeta):
 # ....................{ SUBCLASSES ~ colorful             }....................
 class LayerCellsColorfulABC(LayerCellsABC):
     '''
-    Abstract base class of all subclasses spatially plotting a single modelled
+    Abstract qf_core_base class of all subclasses spatially plotting a single modelled
     variable of the cell _qfn_cluster_node (e.g., cell membrane voltage) whose values are
     mappable as colors onto the colorbar for a parent plot or animation.
 

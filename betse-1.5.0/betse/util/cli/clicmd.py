@@ -190,7 +190,7 @@ Exactly one of the following subcommands must be passed:
 # ....................{ SUPERCLASSES                      }....................
 class CLISubcommandABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **CLI subcommand** (i.e., argument passed to
+    Abstract qf_core_base class of all **CLI subcommand** (i.e., argument passed to
     the external ``betse`` command signifying a high-level action to perform)
     subclasses.
 

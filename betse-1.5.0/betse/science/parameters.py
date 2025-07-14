@@ -168,14 +168,14 @@ class Parameters(YamlFileDefaultABC):
     Attributes (Space: Cell Cluster)
     ----------
     cell_lattice_disorder : float
-        Degree to which cell boundaries spatially deviate from the base cell
+        Degree to which cell boundaries spatially deviate from the qf_core_base cell
         lattice. If 0.0, cells rigidly conform to this lattice; else, cells
         randomly deviate from this lattice. Increasing this increases the
         entropy (i.e., randomness) of these deviations, producing an
         increasingly chaotic arrangement of cells. This should typically reside
         in the range ``[0.0, 0.8]``.
     cell_lattice_type : CellLatticeType
-        Type of **base cell lattice** (i.e., uniform grid to which cells are
+        Type of **qf_core_base cell lattice** (i.e., uniform grid to which cells are
         situated *before* random lattice disorder is applied).
 
     Attributes (Space: Environment)
@@ -200,7 +200,7 @@ class Parameters(YamlFileDefaultABC):
     ----------
     is_tissue_profiles : bool
         ``True`` only if **tissue profiles** (i.e., user-defined regions within
-        the cell _qfn_cluster_node to which specific base membrane diffusion profiles,
+        the cell _qfn_cluster_node to which specific qf_core_base membrane diffusion profiles,
         interventions, and individualized dynamics may be applied) are enabled.
         Note that tissue profiles should typically *always* be enabled.
     tissue_default : SimConfTissueDefault
@@ -1267,7 +1267,7 @@ class Parameters(YamlFileDefaultABC):
         Initialize the ion profile specified by this configuration.
         '''
 
-        # Default tissue profile providing base membrane diffusion constants.
+        # Default tissue profile providing qf_core_base membrane diffusion constants.
         base = self.tissue_default
 
         # simplest ion profile giving realistic results with minimal ions (Na+ & K+ focus):

@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all YAML-backed wrapper subclasses.
+Abstract qf_core_base classes of all YAML-backed wrapper subclasses.
 '''
 
 # ....................{ IMPORTS                           }....................
@@ -24,7 +24,7 @@ from betse.util.type.types import type_check, MappingOrSequenceTypes, NoneType
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 class YamlABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **YAML-backed wrapper** (i.e., high-level object
+    Abstract qf_core_base class of all **YAML-backed wrapper** (i.e., high-level object
     wrapping a low-level mapping or sequence of YAML-backed configuration
     settings) subclasses.
 

@@ -10,7 +10,7 @@ Design
 ------
 Metadata constants defined by this submodule are intentionally *not* defined as
 metadata properties of the :class:`betse.util.app.meta.appmetaabc` abstract
-base class. Why? Because doing so would prevent their use from the top-level
+qf_core_base class. Why? Because doing so would prevent their use from the top-level
 ``setup.py`` scripts defined by downstream consumers (e.g., BETSEE), which
 would render these constants effectively useless for their principal use case.
 '''

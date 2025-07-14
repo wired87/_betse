@@ -20,7 +20,7 @@ import numpy as np
 # ....................{ SUPERCLASS                        }....................
 class TissuePickerABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **tissue profile picker** (i.e., object
+    Abstract qf_core_base class of all **tissue profile picker** (i.e., object
     assigning a subset of all cells matching some criteria to the corresponding
     tissue profile) subclasses.
 

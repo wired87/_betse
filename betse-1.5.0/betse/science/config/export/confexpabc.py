@@ -23,7 +23,7 @@ class SimConfExportABC(
     YamlListItemABC,
 ):
     '''
-    Abstract base class of all **simulation export subconfiguration** (i.e.,
+    Abstract qf_core_base class of all **simulation export subconfiguration** (i.e.,
     YAML-backed list item configuring the exportation of one or more external
     files from the ``plot`` subcommand when passed the simulation configuration
     file containing this item) subclasses.

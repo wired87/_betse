@@ -465,7 +465,7 @@ class SimMaster(object):
     #* "chemistry/networks.py"
     #* "organelles/endo_retic.py".
     #
-    #Ideally, a common abstract base class (ABC) shared between these three
+    #Ideally, a common abstract qf_core_base class (ABC) shared between these three
     #submodules should handle common code like this. Diaphanous dolphins!
     def init_saving(
         self, p, plot_type='init', nested_folder_name='DynamicSystem'):

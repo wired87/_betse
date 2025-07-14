@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Abstract base classes of all timed event classes.
+Abstract qf_core_base classes of all timed event classes.
 '''
 
 # ....................{ IMPORTS                           }....................
@@ -17,7 +17,7 @@ from betse.util.type.types import type_check
 # ....................{ SUPERCLASSES                      }....................
 class SimEventABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all timed event classes.
+    Abstract qf_core_base class of all timed event classes.
 
     Each instance of this class parameterizes some user-defined event (e.g.,
     cell removal) to be applied at some simulation time step(s).
@@ -74,7 +74,7 @@ class SimEventABC(object, metaclass=ABCMeta):
 # ....................{ SUBCLASSES                        }....................
 class SimEventSpikeABC(SimEventABC):
     '''
-    Abstract base class of all **simulation spike event** (i.e., occurring at
+    Abstract qf_core_base class of all **simulation spike event** (i.e., occurring at
     only a single time step rather than over a range of time steps) subclasses.
 
     Attributes
@@ -129,7 +129,7 @@ class SimEventSpikeABC(SimEventABC):
 
 class SimEventPulseABC(SimEventABC):
     '''
-    Abstract base class of all **simulation pulse event** (i.e., occurring over
+    Abstract qf_core_base class of all **simulation pulse event** (i.e., occurring over
     a range of time steps rather than at only a single time step) subclasses.
 
     Attributes

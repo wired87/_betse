@@ -6,7 +6,7 @@
 '''
 Low-level **non-string iterable getters** (i.e., utility functions getting one
 or more items contained within non-string objects implementing the abstract
-:class:`collections.abc.Iterable` base class) facilities.
+:class:`collections.abc.Iterable` qf_core_base class) facilities.
 '''
 
 # ....................{ IMPORTS                           }....................

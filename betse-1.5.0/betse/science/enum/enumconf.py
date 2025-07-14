@@ -16,15 +16,15 @@ CellLatticeType = enums.make_enum(
     class_name='CellLatticeType',
     member_names=('HEX', 'SQUARE',),
     doc='''
-Enumeration of all supported types of **base cell lattices** (i.e., uniform
+Enumeration of all supported types of **qf_core_base cell lattices** (i.e., uniform
 grid to which cells are situated *before* random lattice disorder is applied).
 
 Attributes
 ----------
 HEX : enum
-    Hexagonal base cell lattice, situating cells along a hexagonal grid.
+    Hexagonal qf_core_base cell lattice, situating cells along a hexagonal grid.
 SQUARE : enum
-    Rectilinear base cell lattice, situating cells along a square grid.
+    Rectilinear qf_core_base cell lattice, situating cells along a square grid.
 ''')
 
 # ....................{ ENUMS ~ cells                     }....................
@@ -104,12 +104,12 @@ BASIC_CA : enum
 MAMMAL : enum
     Ion profile enabling M-, Na+, K+, proteins-, Ca2+, Cl-, and H+ ions
     expressed in amniotic environmental concentrations, principally intended
-    for mammalian cell clusters. This profile is the superset of the
+    for mammalian cell cluster_nodes. This profile is the superset of the
     :attr:`BASIC_CA` profile enabling Cl- and H+ ions.
 AMPHIBIAN : enum
     Ion profile enabling M-, Na+, K+, proteins-, Ca2+, Cl-, and H+ ions
     expressed in aquatic environmental concentrations, principally intended for
-    amphibian cell clusters. This profile enables the same ions as the
+    amphibian cell cluster_nodes. This profile enables the same ions as the
     :attr:`MAMMAL` profile -- albeit in differing concentrations.
 CUSTOM : enum
     User-defined ion profile. See the

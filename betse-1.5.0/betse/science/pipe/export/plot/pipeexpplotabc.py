@@ -5,7 +5,7 @@
 
 '''
 **Post-simulation plot pipelining** (i.e., iteratively displaying and/or saving
-plots produced after initialization and simulation) abstract base classes.
+plots produced after initialization and simulation) abstract qf_core_base classes.
 '''
 
 #FIXME: I believe I've finally tracked down the issue relating to the following
@@ -79,7 +79,7 @@ from matplotlib import pyplot
 # ....................{ SUBCLASSES                         }....................
 class SimPipeExportPlotABC(SimPipeExportABC):
     '''
-    Abstract base class of all **post-simulation plot pipelines** (i.e.,
+    Abstract qf_core_base class of all **post-simulation plot pipelines** (i.e.,
     objects iteratively displaying and/or saving all plots produced after
     initialization and simulation enabled by the current simulation
     configuration).

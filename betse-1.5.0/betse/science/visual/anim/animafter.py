@@ -17,7 +17,7 @@ from betse.util.type.types import type_check, SequenceTypes
 # ....................{ SUBCLASSES                        }....................
 class AnimCellsAfterSolving(AnimCellsABC):
     '''
-    Abstract base class of all post-simulation animation subclasses.
+    Abstract qf_core_base class of all post-simulation animation subclasses.
 
     Each subclass of this class animates arbitrary cell data as a time series
     plotted over the cell _qfn_cluster_node (e.g., cell membrane voltage as a function of
@@ -119,7 +119,7 @@ class AnimCellsAfterSolvingLayered(AnimCellsAfterSolving):
 #leverage layers.
 class AnimVelocity(AnimCellsAfterSolving):
     '''
-    Abstract base class of all animations of a velocity flow plotted on the
+    Abstract qf_core_base class of all animations of a velocity flow plotted on the
     current cell _qfn_cluster_node.
     '''
 

@@ -525,7 +525,7 @@ class Simulator(object):
         self.ionlabel = {}  # dictionary to hold ion label names
         self.molar_mass = []
 
-        self.T = p.T  # set the base temperature for the simulation
+        self.T = p.T  # set the qf_core_base temperature for the simulation
 
         self.Jn = np.zeros(self.mdl)  # net normal transmembrane current density at membranes
         self.Jmem = np.zeros(self.mdl)   # current across membrane from intra- to extra-cellular space
@@ -611,14 +611,14 @@ class Simulator(object):
 
                 vars(self)[str_env][:] = p.env_concs[name]
 
-                # base transmembrane diffusion for each ion
+                # qf_core_base transmembrane diffusion for each ion
                 str_Dm = 'Dm' + name
 
                 setattr(self, str_Dm, np.zeros(self.mdl))
 
                 vars(self)[str_Dm][:] = p.mem_perms[name]
 
-                # base gap junction (intercellular) diffusion for each ion
+                # qf_core_base gap junction (intercellular) diffusion for each ion
                 str_Dgj = 'Dgj' + name
 
                 setattr(self, str_Dgj, np.zeros(len(cells.nn_i)))
@@ -809,7 +809,7 @@ class Simulator(object):
         phase.dyna.init_profiles(phase)
 
         if p.is_ecm:
-            # create a copy-base of the environmental junctions diffusion constants:
+            # create a copy-qf_core_base of the environmental junctions diffusion constants:
             self.D_env_base = copy.copy(self.D_env)
 
             # initialize current vectors
@@ -822,7 +822,7 @@ class Simulator(object):
         # # Initialize an array structure that will hold user-scheduled changes to membrane permeabilities:
         Dm_cellsA = np.asarray(self.Dm_cells)
 
-        self.Dm_base = np.copy(Dm_cellsA) # make a copy that will serve as the unaffected values base
+        self.Dm_base = np.copy(Dm_cellsA) # make a copy that will serve as the unaffected values qf_core_base
 
         self.Dm_scheduled = np.copy(Dm_cellsA)
         self.Dm_scheduled[:] = 0
@@ -1426,7 +1426,7 @@ class Simulator(object):
                 sigma_gj.append((self.D_free[ii]* p.q * p.gj_surface * p.F * ccell *self.zs[ii]**2) / (p.cell_space * p.kb * p.T))
                 sigma_mem.append((self.Dm_cells[ii]*p.q*p.F*cbar*self.zs[ii]**2)/(p.tm*p.kb*p.T))
 
-        # get the leak channel reversibility represented by the resting potential of the base membrane:
+        # get the leak channel reversibility represented by the resting potential of the qf_core_base membrane:
         stb.ghk_calculator(self, cells, p)
 
         # get the conversion for geometry of the _qfn_cluster_node (required to convert to conductivity):

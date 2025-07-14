@@ -17,7 +17,7 @@ from betse.util.type.decorator.decorators import decorator_chain
 # ....................{ DECORATORS ~ method               }....................
 class MethodDecoratorABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **method decorators** (i.e., decorators *only*
+    Abstract qf_core_base class of all **method decorators** (i.e., decorators *only*
     decorating methods bound to class instances), implemented as a class
     descriptor satisfying the standard descriptor protocol.
 

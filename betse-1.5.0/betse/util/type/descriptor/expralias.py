@@ -115,7 +115,7 @@ def expr_alias(
     Expression alias **data descriptor** (i.e., object satisfying the data
     descriptor protocol, usually defined at class scope), dynamically aliasing
     a target variable of the passed type and/or satisfying the passed predicate
-    bound to instances of the class subclassing the passed base classes and
+    bound to instances of the class subclassing the passed qf_core_base classes and
     instantiating this descriptor to an arbitrarily complex source Python
     expression suitable for use as both the left- and right-hand sides of
     Python assignment statements.
@@ -243,11 +243,11 @@ def expr_alias(
         Defaults to ``None``, in which case this parameter defaults to the
         value of the ``expr`` parameter.
     base_classes : optional[SequenceTypes]
-        Sequence of all base classes of the class dynamically synthesized by
+        Sequence of all qf_core_base classes of the class dynamically synthesized by
         this function for the returned expression alias data descriptor,
-        usually used to unify all such descriptors under a common abstract base
+        usually used to unify all such descriptors under a common abstract qf_core_base
         class.  Defaults to the empty tuple, equivalent to the 1-tuple
-        ``(object,)`` containing only the root base class of all classes.
+        ``(object,)`` containing only the root qf_core_base class of all classes.
     cls : optional[TestableTypes]
         Either:
 
@@ -313,7 +313,7 @@ def expr_alias(
     ----------
     base_classes
         Expression alias data descriptor as detailed above, guaranteed to be an
-        instance of all passed base classes.
+        instance of all passed qf_core_base classes.
 
     See Also
     ----------
@@ -617,7 +617,7 @@ def expr_enum_alias(
     Enumeration-specific expression alias **data descriptor** (i.e., object
     satisfying the data descriptor protocol), dynamically aliasing a target
     variable of the passed enumeration type bound to instances of the class
-    subclassing the passed base classes and instantiating this descriptor to an
+    subclassing the passed qf_core_base classes and instantiating this descriptor to an
     arbitrarily complex source Python expression suitable for use as both the
     left- and right-hand sides of Python assignment statements.
 
@@ -673,17 +673,17 @@ def expr_enum_alias(
         string value of this expression *must* always be the name of a member
         of this enumeration. If this is *not* the case, an exception is raised.
     base_classes : optional[SequenceTypes]
-        Sequence of all base classes of the class dynamically synthesized by
+        Sequence of all qf_core_base classes of the class dynamically synthesized by
         this function for the returned expression alias data descriptor,
-        usually used to unify all such descriptors under a common abstract base
+        usually used to unify all such descriptors under a common abstract qf_core_base
         class.  Defaults to the empty tuple, equivalent to the 1-tuple
-        ``(object,)`` containing only the root base class of all classes.
+        ``(object,)`` containing only the root qf_core_base class of all classes.
 
     Returns
     ----------
     base_classes
         Enemuration-specific expression alias data descriptor as detailed
-        above, guaranteed to be an instance of all passed base classes.
+        above, guaranteed to be an instance of all passed qf_core_base classes.
 
     See Also
     ----------

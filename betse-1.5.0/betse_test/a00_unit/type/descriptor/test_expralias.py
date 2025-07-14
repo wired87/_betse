@@ -55,7 +55,7 @@ def betse_expralias() -> object:
     # Class containing instances of this descriptor.
     class SongOfAragorn(object):
         # Descriptor aliasing an existing dictionary entry with class typing
-        # and subclassing an ad-hoc base class.
+        # and subclassing an ad-hoc qf_core_base class.
         soa_line_four = expr_alias(
             expr='self._deep_roots["are not"]["reached by"]',
             cls=str,

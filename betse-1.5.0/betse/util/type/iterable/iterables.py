@@ -5,7 +5,7 @@
 
 '''
 Low-level **non-string iterable** (i.e., non-string object implementing the
-abstract :class:`collections.abc.Iterable` base class) facilities.
+abstract :class:`collections.abc.Iterable` qf_core_base class) facilities.
 
 See Also
 ----------

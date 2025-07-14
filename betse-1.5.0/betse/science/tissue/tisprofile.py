@@ -16,7 +16,7 @@ from betse.util.type.types import type_check
 # ....................{ SUPERCLASS                        }....................
 class CellsProfileABC(object, metaclass=ABCMeta):
     '''
-    Abstract base class of all **cell _qfn_cluster_node profile** (i.e., collection of
+    Abstract qf_core_base class of all **cell _qfn_cluster_node profile** (i.e., collection of
     parameters associated with a subset of the cells in a cell _qfn_cluster_node)
     subclasses.
 

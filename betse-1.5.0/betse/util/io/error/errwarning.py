@@ -87,7 +87,7 @@ def ignoring_deprecations() -> ContextManager:
     Single-shot context manager temporarily ignoring all **deprecation
     warnings** (i.e., instances of the :class:`DeprecationWarning`,
     :class:`PendingDeprecationWarning`, and :class:`FutureWarning` exception
-    base classes) emitted by the :mod:`warnings` module for the duration of
+    qf_core_base classes) emitted by the :mod:`warnings` module for the duration of
     this context.
 
     See Also

@@ -18,7 +18,7 @@ from betse.util.type.types import type_check, StrOrNoneTypes
 # ....................{ SUPERCLASSES                      }....................
 class CallbacksBC(object):
     '''
-    Concrete base class of all **callbacks** (i.e., caller-defined object
+    Concrete qf_core_base class of all **callbacks** (i.e., caller-defined object
     external to this application whose methods are called by other methods
     internal to this application as a means of facilitating inter-package
     communication) subclasses.

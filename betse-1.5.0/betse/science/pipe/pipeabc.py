@@ -14,13 +14,13 @@ simulation actions to be run iteratively) functionality.
 #at the BETSE layer and hence untranslateable), consider:
 #
 #* Define a new "betse.util.type.call.callbacks.CallbacksMetadataABC" abstract
-#  base class whose body reduces to simply "pass".
+#  qf_core_base class whose body reduces to simply "pass".
 #* Refactor the "betse.util.type.call.callbacks.CallbacksBC" class as follows:
 #  * Define a new progress_metadated() method accepting a mandatory
 #    "metadata : CallbacksMetadataABC" parameter.
 #  * Improve the progressed_next() method to accept an optional parameter of
 #    the same type.
-#* Define a new "SimPipeMetadataABC" abstract base class in this submodule,
+#* Define a new "SimPipeMetadataABC" abstract qf_core_base class in this submodule,
 #  subclassing "CallbacksMetadataABC" for improved generality.
 #  Shift all of the following "SimPipeABC" class properties into
 #  "SimPipeMetadataABC" *INSTANCE* (i.e., standard non-class) properties:
@@ -65,7 +65,7 @@ from betse.util.type.types import (
 # ....................{ METACLASSES                        }....................
 class SimPipeABCMeta(ABCMeta):
     '''
-    Metaclass of the abstract :class:`SimPipeABC` base class and all concrete
+    Metaclass of the abstract :class:`SimPipeABC` qf_core_base class and all concrete
     subclasses thereof.
 
     This metaclass dynamically annotates each **simulation pipeline runner**
@@ -125,7 +125,7 @@ class SimPipeABCMeta(ABCMeta):
 #FIXME: Revise docstring to account for the recent large-scale class redesign.
 class SimPipeABC(object, metaclass=SimPipeABCMeta):
     '''
-    Abstract base class of all subclasses running a **simulation pipeline**
+    Abstract qf_core_base class of all subclasses running a **simulation pipeline**
     (i.e., sequence of similar simulation activities to be iteratively run).
 
     This class implements the infrastructure for iteratively running all
@@ -158,7 +158,7 @@ class SimPipeABC(object, metaclass=SimPipeABCMeta):
       names of all runners currently enabled by this pipeline (e.g.,
       ``['voltage_intra', 'ion_hydrogen', 'electric_total']``).
 
-    The :meth:`run` method defined by this base class then dynamically
+    The :meth:`run` method defined by this qf_core_base class then dynamically
     implements this pipeline by iterating over the :meth:`iter_runners_conf`
     property and, for each enabled runner, calling that runner's method.
 

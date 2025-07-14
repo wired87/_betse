@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Top-level abstract base class of all command line interface (CLI) subclasses.
+Top-level abstract qf_core_base class of all command line interface (CLI) subclasses.
 '''
 
 # ....................{ IMPORTS                            }....................
@@ -36,7 +36,7 @@ from betse.util.type.types import (
 # ....................{ SUPERCLASS                         }....................
 class CLIABC(object, metaclass=ABCMeta):
     '''
-    Top-level abstract base class of all command line interface (CLI)
+    Top-level abstract qf_core_base class of all command line interface (CLI)
     subclasses, suitable for use by both CLI and GUI front-ends for BETSE.
 
     This superclass provides *no* explicit support for subcommands. Only
@@ -224,7 +224,7 @@ class CLIABC(object, metaclass=ABCMeta):
 
         On failure, the subclass implementation of this method should either:
 
-        * Raise an exception, in which case this abstract base class implicitly
+        * Raise an exception, in which case this abstract qf_core_base class implicitly
           logs this exception and report failure as this application's exit
           status.
         * Explicitly set the :attr:`_exit_status` instance variable to a

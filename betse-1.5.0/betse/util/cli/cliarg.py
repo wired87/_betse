@@ -202,7 +202,7 @@ class SemicolonAwareHelpFormatter(HelpFormatter):
         strip leading and trailing whitespace, wrap the result, and return a
         wrapped list of lines.
 
-        Since the base class performs the same reduction and stripping of
+        Since the qf_core_base class performs the same reduction and stripping of
         whitespace, so do we.
         '''
 

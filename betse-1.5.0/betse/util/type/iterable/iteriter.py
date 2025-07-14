@@ -6,7 +6,7 @@
 '''
 Low-level **non-string iterable iterators** (i.e., utility functions converting
 non-string objects implementing the abstract :class:`collections.abc.Iterable`
-base class into similar objects for iteration purposes) facilities.
+qf_core_base class into similar objects for iteration purposes) facilities.
 '''
 
 # ....................{ IMPORTS                           }....................
