@@ -188,7 +188,7 @@ def iter_attrs_explicit_matching(
     # reimplement rather than defer to inspect.getmembers(). (Sadness reigns.)
     #
     # For the same reason, the unsafe vars() builtin cannot be called either.
-    # Since that builtin fails for builtin containers (e.g., "dict", "list"),
+    # Since that builtin fails for builtin container (e.g., "dict", "list"),
     # this is not altogether a bad thing.
     for attr_name in dir(obj):
         # Value of this attribute guaranteed to be statically rather than
@@ -633,7 +633,7 @@ def iter_vars_custom_simple_matching(
     # reimplement rather than defer to inspect.getmembers(). (Sadness reigns.)
     #
     # For the same reason, the unsafe vars() builtin cannot be called either.
-    # Since that builtin fails for builtin containers (e.g., "dict", "list"),
+    # Since that builtin fails for builtin container (e.g., "dict", "list"),
     # this is not altogether a bad thing.
     for attr_name in dir(obj):
         # If this attribute is *NOT* a builtin...

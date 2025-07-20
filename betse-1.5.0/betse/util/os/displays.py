@@ -177,7 +177,7 @@ def _is_headless() -> bool:
 
     # Return true only if this interpreter is *NOT* headfull.
     #
-    # Note that the "is_os_headfull" boolean intentionally contains the core
+    # Note that the "is_os_headfull" boolean intentionally contains the base
     # detection logic, as detecting headfull environments is fundamentally
     # more intuitive than detecting the converse.
     return not is_os_headfull

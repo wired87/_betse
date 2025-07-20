@@ -73,7 +73,7 @@ def add_representers(representer: object) -> None:
     # Defer third-party imports.
     import numpy
 
-    # Represent all core Numpy types.
+    # Represent all base Numpy types.
     representer.add_representer(numpy.ndarray,    _represent_numpy_ndarray)
     representer.add_representer(numpy.bool,       _represent_numpy_bool)
     representer.add_representer(numpy.complex128, _represent_numpy_complex)

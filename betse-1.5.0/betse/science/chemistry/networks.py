@@ -119,7 +119,7 @@ class MasterOfNetworks(object):
 
     def read_substances(self, sim, cells, config_substances, p):
         """
-        Initialize all core data structures and concentration variables for all
+        Initialize all base data structures and concentration variables for all
         molecules included in the simulation, as well as any ions present in
         sim.
 
@@ -3146,7 +3146,7 @@ class MasterOfNetworks(object):
                 # calculate the value of the channel modulation constant:
                 moddy = eval(chan.alpha_eval_string, globalo, localo)
 
-                # set the modulator state in the channel core
+                # set the modulator state in the channel base
                 chan.channel_core.modulator = moddy
 
                 # run the channel to update its state:
@@ -3249,7 +3249,7 @@ class MasterOfNetworks(object):
                 # calculate the value of the channel modulation constant:
                 moddy = eval(chan.alpha_eval_string, globalo, localo)
 
-                # set the modulator state in the channel core
+                # set the modulator state in the channel base
                 chan.channel_core.modulator = moddy
 
                 # run the channel to update its state:

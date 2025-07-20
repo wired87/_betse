@@ -134,9 +134,9 @@ class SimRunner(object):
         # Create the pseudo-randomized cell _qfn_cluster_node.
         phase.cells.make_world(phase)
 
-        # Initialize core simulation data structures.
+        # Initialize base simulation data structures.
         self._callbacks.progressed_next(
-            status='Creating core computational matrices...')
+            status='Creating base computational matrices...')
         phase.sim.init_core(phase)
 
         # Define the tissue and boundary profiles for plotting.
@@ -229,7 +229,7 @@ class SimRunner(object):
             callbacks=self._callbacks,
         )
 
-        # Initialize core simulation data structures.
+        # Initialize base simulation data structures.
         phase.sim.init_core(phase)
 
         # Run this simulation phase.
@@ -336,7 +336,7 @@ class SimRunner(object):
             if not files.is_file(self._p.seed_pickle_filename):
                 if not self._p.autoInit:
                     raise BetseSimException(
-                        'Simulation halted due to missing core seed. '
+                        'Simulation halted due to missing base seed. '
                         'Please run "betse seed" and try again.')
 
                 # Create an instance of world.
@@ -356,7 +356,7 @@ class SimRunner(object):
                 p=self._p,
             )
 
-            # Initialize core simulation data structures.
+            # Initialize base simulation data structures.
             phase.sim.init_core(phase)
             phase.sim.init_dynamics(phase)
 
@@ -383,7 +383,7 @@ class SimRunner(object):
             if not files.is_file(self._p.init_pickle_filename):
                 if not self._p.autoInit:
                     raise BetseSimException(
-                        'Simulation halted due to missing core initialization. '
+                        'Simulation halted due to missing base initialization. '
                         'Please run "betse init" and try again.')
 
                 logs.log_info('Automatically initializing cell _qfn_cluster_node...')
@@ -397,7 +397,7 @@ class SimRunner(object):
         elif self._p.grn_unpickle_phase_type is GrnUnpicklePhaseType.SIM:
             if not files.is_file(self._p.sim_pickle_filename):
                 raise BetseSimException(
-                    'Simulation halted due to missing core simulation. '
+                    'Simulation halted due to missing base simulation. '
                     'Please run "betse sim" and try again.')
 
             # Load the simulation from cache.
@@ -466,7 +466,7 @@ class SimRunner(object):
                         'to run the GRN simulation!')
 
                     raise BetseSimException(
-                        'Simulation terminated due to missing core init. '
+                        'Simulation terminated due to missing base init. '
                         'Please alter GRN settings and try again.')
                 # Else, a prior initialization exists.
 
@@ -569,7 +569,7 @@ class SimRunner(object):
             callbacks=self._callbacks,
         )
 
-        # Initialize core simulation data structures.
+        # Initialize base simulation data structures.
         phase.sim.init_core(phase)
         phase.dyna.init_profiles(phase)
 
@@ -881,7 +881,7 @@ class SimRunner(object):
             callbacks=self._callbacks,
         )
 
-        # Initialize core simulation data structures.
+        # Initialize base simulation data structures.
         phase.sim.init_core(phase)
 
         # Initialize simulation data structures

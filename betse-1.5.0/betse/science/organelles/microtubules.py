@@ -69,7 +69,7 @@ class Mtubes(object):
     # ..................{ INITIALIZORS                      }..................
     def __init__(self, sim, cells, p) -> None:
 
-        # Initialize all core scalar parameters pertaining to microtubules.
+        # Initialize all base scalar parameters pertaining to microtubules.
         self._init_scalars(cells, p)
 
         # initial angle of microtubules:
@@ -94,7 +94,7 @@ class Mtubes(object):
 
     def _init_scalars(self, cells, p) -> None:
         '''
-        Initialize all core scalar parameters pertaining to microtubules.
+        Initialize all base scalar parameters pertaining to microtubules.
         '''
 
         # Radius of a microtubule.
@@ -156,7 +156,7 @@ class Mtubes(object):
         simulation configuration file since the prior initialization (if any).
         '''
 
-        # Initialize all core scalar parameters pertaining to microtubules.
+        # Initialize all base scalar parameters pertaining to microtubules.
         self._init_scalars(cells, p)
 
         # smoothing weights for membrane and central values:

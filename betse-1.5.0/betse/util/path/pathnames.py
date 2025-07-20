@@ -756,7 +756,7 @@ def join(*partnames: str) -> str:
     Caveats
     ----------
     This high-level wrapper should *always* be called in lieu of the low-level
-    :func:`os.path.join` function, which sadly violates Python's core "Explicit
+    :func:`os.path.join` function, which sadly violates Python's base "Explicit
     is better than implicit." design principle. Specifically, to quote official
     :func:`os.path.join` documentation:
 

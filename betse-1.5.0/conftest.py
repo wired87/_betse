@@ -236,7 +236,7 @@ def _clean_imports() -> None:
     # "pkgutil" submodule from within a purportedly isolated "tox" test venv:
     #
     #    INTERNALERROR> Traceback (most recent call last):
-    #    INTERNALERROR>   File "/home/leycec/py/betse/.tox/py36/lib/python3.6/site-packages/_pytest/main.py", line 194, in wrap_session
+    #    INTERNALERROR>   File "/home/leycec/py/betse/.tox/py36/lib/python3.6/site-packages/_pytest/head.py", line 194, in wrap_session
     #    INTERNALERROR>     config.hook.pytest_sessionstart(session=session)
     #    INTERNALERROR>   File "/home/leycec/py/betse/.tox/py36/lib/python3.6/site-packages/pluggy/hooks.py", line 286, in __call__
     #    INTERNALERROR>     return self._hookexec(self, self.get_hookimpls(), kwargs)

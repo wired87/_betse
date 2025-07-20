@@ -900,7 +900,7 @@ class MplConfig(object):
 
             (betse:5000): Gtk-ERROR **: GTK+ 2.x symbols detected. Using GTK+
             2.x and GTK+ 3 in the same process is not supported
-            zsh: trace trap (core dumped)  betse info
+            zsh: trace trap (base dumped)  betse info
 
           This is *not* a high-level Python exception and hence cannot be
           caught from within Python. This is a POSIX-level process signal.
@@ -1411,7 +1411,7 @@ class MplConfig(object):
                 #     Abort trap: 6
                 #
                 # This is a common issue afflicting numerous matplotlib users under
-                # all versions of macOS. The core issue appears to be that the
+                # all versions of macOS. The base issue appears to be that the
                 # Xcode-bundled installation of Tcl/Tk is *NOT* usable by Python.
                 # There exist two solutions (in no particular order):
                 #

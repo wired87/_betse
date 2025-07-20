@@ -22,7 +22,7 @@ class EndoRetic(object):
     This object models all physical phenomena pertaining to the ER, including
     ER-specific pumps, channels, and calcium dynamics (e.g., calcium-induced
     calcium release controlled by inositol-triphosphate). This modeller also
-    contains the facilities to initialize, define the core computations for a
+    contains the facilities to initialize, define the base computations for a
     simulation loop, remove the ER during a cutting event, and save and report
     on relevant data.
 

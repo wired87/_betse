@@ -12,7 +12,7 @@ another reaction.
 The molecule is assumed to be at low concentrations and to not have a
 significant effect on system voltages or currents. This module creates a
 structure containing all user-defined molecules, along with the facilities to
-initialize, define the core computations for a simulation loop, save and report
+initialize, define the base computations for a simulation loop, save and report
 on data, and plot.
 '''
 
@@ -328,7 +328,7 @@ def plot_master_network(self, p):
     #--------------------------------------------------------------------------
     # Basic Bioelectric relations
 
-    # detail how Vmem is affected via membrane permeability relationships to core ions:
+    # detail how Vmem is affected via membrane permeability relationships to base ions:
     base_graph.add_edge(pydot.Edge(
         'Pmem_Na', 'Vmem', arrowhead='dot', color='blue', penwidth=self.edge_width))
     base_graph.add_edge(pydot.Edge(

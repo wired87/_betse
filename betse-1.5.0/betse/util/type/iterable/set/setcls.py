@@ -226,7 +226,7 @@ class FrozenSetSubclassable(frozenset, metaclass=FrozenSetSubclassableMeta):
     ----------
     The :class:`frozenset` type is *not* safely subclassable, due to
     unfortunate design decisions baked into the C-based implementations of
-    *all* builtin container types. The core issue pertains to the objects
+    *all* builtin container types. The base issue pertains to the objects
     returned by **container-creating methods** (i.e., methods declared by these
     types that create and return instances of the same types). In the case of
     :class:`frozenset`, these methods include:

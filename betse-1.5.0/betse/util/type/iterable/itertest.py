@@ -192,7 +192,7 @@ def is_items_unique(iterable: IterableTypes) -> bool:
       returns ``True`` immediately.
     * Else if this iterable is sufficiently small (e.g., contains less than
       approximately 50 items), reduces this iterable to a :class:`set` and
-      compares the length of these two containers for equality.
+      compares the length of these two container for equality.
     * Else, efficiently iterates this iterable at most once and hence has
       worst-case time complexity ``O(len(iterable))``.
 

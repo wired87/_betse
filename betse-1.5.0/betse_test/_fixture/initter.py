@@ -104,7 +104,7 @@ def init_app() -> None:
        (CI) pipelines typically have no access to an X11 server. Coercing
        headlessness ensures orthogonality between these cases by coercing the
        former to fail as well.
-    #. Initializes the application core.
+    #. Initializes the application base.
     #. Initializes all third-party dependencies thereof.
     #. Enables the default non-interactive matplotlib backend ``Agg``,
        *guaranteed* to be usable on all platforms. By default, matplotlib

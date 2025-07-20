@@ -22,7 +22,7 @@ def test_is_c_unmonkeypatched() -> None:
     from betse.util.py.module import pymodule
 
     # Arbitrary Numpy submodule guaranteed to be implemented as a C extension.
-    # Note that testing this particular C module is critical, as the core
+    # Note that testing this particular C module is critical, as the base
     # codebase explicitly performs the same call at application startup.
     numpy_c_extension = numpys.get_c_extension()
 

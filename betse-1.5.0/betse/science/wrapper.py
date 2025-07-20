@@ -390,7 +390,7 @@ class BetseWrapper(object):
 
         if self.phase.sim.grn is not None:
             # Working with BETSE's networks:
-            # Access the gene regulatory network core:
+            # Access the gene regulatory network base:
             grn = self.phase.sim.grn.core
 
             graph_net = plot_master_network(grn, self.p)
@@ -417,7 +417,7 @@ class BetseWrapper(object):
 
         if self.phase.sim.grn is not None:
             # Working with BETSE's networks:
-            # Access the gene regulatory network core:
+            # Access the gene regulatory network base:
             grn = self.phase.sim.grn.core
 
         else:
@@ -460,7 +460,7 @@ class BetseWrapper(object):
 
         if self.phase.sim.grn is not None:
             # Working with BETSE's networks:
-            # Access the gene regulatory network core:
+            # Access the gene regulatory network base:
             grn = self.phase.sim.grn.core
 
             graph_pydot = plot_master_network(grn, self.p)
@@ -500,7 +500,7 @@ class BetseWrapper(object):
             pydot, networkx = libs.import_runtime_optional('pydot', 'networkx')
 
             # Working with BETSE's networks:
-            # Access the gene regulatory network core:
+            # Access the gene regulatory network base:
             grn = self.phase.sim.grn.core
 
             graph_pydot = plot_master_network(grn, self.p)
@@ -722,7 +722,7 @@ class BetseWrapper(object):
                     cells=cells,
                 )
 
-                # Initialize core simulation data structures.
+                # Initialize base simulation data structures.
 
                 self.phase.sim.init_core(self.phase)
                 self.phase.dyna.init_profiles(self.phase)

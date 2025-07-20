@@ -398,8 +398,8 @@ def is_maps_keys_equal(*mappings: MappingType) -> bool:
     #
     # * If no mappings are passed, this edge case is functionally equivalent to
     #   the edge case in which one or more empty mappings (i.e., mappings
-    #   containing no key-value pairs) are passed. Since the key containers for
-    #   empty mappings are themselves empty, these key containers contain the
+    #   containing no key-value pairs) are passed. Since the key container for
+    #   empty mappings are themselves empty, these key container contain the
     #   exact same keys -- namely, none.
     # * If only one mapping is passed, this mapping by definition contains the
     #   exact same keys as itself.

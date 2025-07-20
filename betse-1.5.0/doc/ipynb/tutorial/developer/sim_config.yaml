@@ -560,7 +560,7 @@ general network:
   #-----------------------------------------------------------------------------------------------------------------------
   # CUSTOM MODULATORS
   #-----------------------------------------------------------------------------------------------------------------------
-  # Allow user-defined biomolecules and/or BETSE default ions to activate/inhibit core BETSE structures such as gap
+  # Allow user-defined biomolecules and/or BETSE default ions to activate/inhibit base BETSE structures such as gap
   # junctions and the default Na/K-ATPase pump. See "extra_config_template.yaml" in the "extra_configs"
   # directory for examples.
   modulators:

@@ -6,7 +6,7 @@
 
 Creates a mitochondria class, which includes a suite of mitochondria-specific molecules, along with
 mitochondria-specific pumps (i.e. electron transport chain), channels, and specific methods.
-This class also contains the facilities to initialize, define the core computations for a simulation loop,
+This class also contains the facilities to initialize, define the base computations for a simulation loop,
 remove mitochondria during a cutting event, save and report on data, and plot.
 
 """

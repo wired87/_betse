@@ -232,7 +232,7 @@ def init() -> None:
     # # If Numpy linked against an unoptimized BLAS, log a non-fatal warning.
     # if not is_blas_optimized():
     #     log_warning(
-    #         'Numpy unoptimized; scaling down to single-core operation. '
+    #         'Numpy unoptimized; scaling down to single-base operation. '
     #         'Consider installing an optimized multithreaded '
     #         'CBLAS implementation (e.g., OpenBLAS, ATLAS, ACML, MKL) and '
     #         'reinstalling Numpy to use this implementation.'

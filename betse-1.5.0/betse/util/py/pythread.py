@@ -76,7 +76,7 @@ def is_gil() -> bool:
     prohibit multithreading (in principal) at the API level. Interpreters that
     prohibit genuine multithreading via a GIL typically still at least support
     standard multithreading APIs, albeit in a manner silently reducing multi-
-    to single-core processing. Consider calling the :func:`is_threadable`
+    to single-base processing. Consider calling the :func:`is_threadable`
     function to clarify this edge case.
 
     This function returns ``True`` only if this interpreter is either CPython
@@ -120,7 +120,7 @@ def is_threadable() -> bool:
     **GIL-less** (i.e., permit genuine multithreading and hence is *not*
     encumbered by a GIL). Interpreters that prohibit genuine multithreading via
     a GIL typically still at least support standard multithreading APIs, albeit
-    in a manner silently reducing multi- to single-core processing. Consider
+    in a manner silently reducing multi- to single-base processing. Consider
     calling the :func:`is_gil` function to clarify this edge case.
     '''
 

@@ -71,7 +71,7 @@ class SimPipeABCMeta(ABCMeta):
     This metaclass dynamically annotates each **simulation pipeline runner**
     (i.e., method decorated by the :func:`piperunner` decorator) on the initial
     definition of each concrete subclass of the :class:`SimPipeABC` superclass
-    with metadata pertaining to that subclass, augmenting the core
+    with metadata pertaining to that subclass, augmenting the base
     runner-specific metadata already annotated on that runner by that
     decorator. (The metadata annotated by this metaclass requires access to the
     class declaring that runner, which the :func:`piperunner` decorator has no

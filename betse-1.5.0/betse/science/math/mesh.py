@@ -1172,7 +1172,7 @@ class DECMesh(object):
 
         """
 
-        logs.log_info("Creating core operators...")
+        logs.log_info("Creating base operators...")
 
         # exterior derivative operator for tri mesh: operates on verts to return edges:
         delta_tri_0 = np.zeros((self.n_tedges, self.n_tverts))
@@ -2650,7 +2650,7 @@ class DECMesh(object):
     #---Removing Points from mesh---------------------
     def cut_mesh(self, tvert_targets: ndarray) -> Tuple[ndarray, ndarray]:
         '''
-        Delete tri-verts from the DEC mesh system and rebuild core operators.
+        Delete tri-verts from the DEC mesh system and rebuild base operators.
 
         Parameters
         ----------

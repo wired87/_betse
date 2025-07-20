@@ -127,7 +127,7 @@ class MasterOfMolecules(object):
         channels_config = config_dic.get('channels', None)
         modulators_config = config_dic.get('modulators', None)
 
-        # initialize the substances of metabolism in a core field encapsulating
+        # initialize the substances of metabolism in a base field encapsulating
         # Master of Molecules:
         self.core = MasterOfNetworks(sim, cells, substances_config, p)
 

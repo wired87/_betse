@@ -27,7 +27,7 @@ def test_defaultdict_pass() -> None:
     # Default dictionary to be tested.
     lake_isle_of_innisfree = DefaultDict(
         missing_key_value=lambda self, missing_key:
-            missing_key + ' the deep heart’s core.',
+            missing_key + ' the deep heart’s base.',
         initial_mapping={
             'There midnight’s all': 'a glimmer',
             'and noon':             'a purple glow,',
@@ -40,7 +40,7 @@ def test_defaultdict_pass() -> None:
 
     # Test whether a missing key defaults to the expected value.
     assert lake_isle_of_innisfree['I hear it in'] == (
-        'I hear it in the deep heart’s core.')
+        'I hear it in the deep heart’s base.')
 
 # ....................{ TESTS ~ ordered                   }....................
 def test_orderedargsdict_pass() -> None:

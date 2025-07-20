@@ -126,7 +126,7 @@ class SimMaster(object):
         self.globals = globals()
         self.locals = locals()
 
-        # Build core data structures:
+        # Build base data structures:
 
         self.build_sim_matrix(p)
 
@@ -169,7 +169,7 @@ class SimMaster(object):
 
     def read_substances(self, config_substances, p):
         """
-        Initialize all core data structures and concentration variables for all
+        Initialize all base data structures and concentration variables for all
         molecules included in the simulation, as well as any ions present in
         sim.
 

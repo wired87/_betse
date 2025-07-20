@@ -136,7 +136,7 @@ class MasterOfGenes(object):
         channels_config = config_dic.get('channels', None)
         modulators_config = config_dic.get('modulators', None)
 
-        # initialize the substances of metabolism in a core field encapsulating
+        # initialize the substances of metabolism in a base field encapsulating
         # Master of Molecules:
         self.core = MasterOfNetworks(sim, cells, substances_config, p)
 
@@ -208,7 +208,7 @@ class MasterOfGenes(object):
             self.core.target_vmem = float(config_dic['optimization']['target Vmem'])
             self.core.opti_T = float(config_dic['optimization']['optimization T'])
             self.core.opti_step = float(config_dic['optimization']['optimization step'])
-            # self.core.opti_run = config_dic['optimization']['run from optimization']
+            # self.base.opti_run = config_dic['optimization']['run from optimization']
 
             if opti:
                 logs.log_info('Analyzing gene network for optimal rates...')
@@ -236,7 +236,7 @@ class MasterOfGenes(object):
         # set molecules to not affect charge for sim-grn test-drives:
         p.substances_affect_charge = False
 
-        #FIXME: This... is quite unfortunate. Ideally, core parameters in the
+        #FIXME: This... is quite unfortunate. Ideally, base parameters in the
         #"Parameters" object should *NEVER* be modified, as doing so actually
         #modifies the underlying YAML dictionary structure. If the current
         #simulation configuration file is saved to disk, the user-defined
@@ -346,7 +346,7 @@ class MasterOfGenes(object):
                     logs.log_info(
                         "Reinitializing the gene regulatory network for simulation...")
                     self.reinitialize(phase)
-                    # self.core.clear_cache()
+                    # self.base.clear_cache()
                     # sim.uxmt, self.uymt = sim.mtubes.mtubes_to_cell(cells, p)
 
                     self.mod_after_cut = True  # set the boolean to avoid repeat action
@@ -408,7 +408,7 @@ class MasterOfGenes(object):
         #     ax.set_title('Microtubule arrangement in cells')
         #
         #     if p.autosave is True:
-        #         savename = self.core.imagePath + 'Microtubules' + '.png'
+        #         savename = self.base.imagePath + 'Microtubules' + '.png'
         #         plt.savefig(savename, format='png', transparent=True)
         #
         #     if p.turn_all_plots_off is False:

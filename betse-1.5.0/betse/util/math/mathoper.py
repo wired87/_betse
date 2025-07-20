@@ -5,7 +5,7 @@
 
 '''
 Project-wide **mathematical operators** (i.e., low-level callables performing
-core tensor operations *not* already performed out-of-the-box by either NumPy or
+base tensor operations *not* already performed out-of-the-box by either NumPy or
 SciPy themselves).
 '''
 

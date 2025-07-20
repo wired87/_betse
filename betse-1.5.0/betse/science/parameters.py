@@ -282,7 +282,7 @@ class Parameters(YamlFileDefaultABC):
     ions_dict : dict
         Dictionary mapping:
 
-        * From each of the following names of a supported core ion:
+        * From each of the following names of a supported base ion:
 
           * ``Na``, the sodium cation Na+.
           * ``K``, the potassium cation K+.

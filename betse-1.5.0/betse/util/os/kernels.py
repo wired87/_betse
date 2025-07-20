@@ -4,7 +4,7 @@
 # See "LICENSE" for further details.
 
 '''
-Low-level **kernel** (i.e., central core software of the current operating
+Low-level **kernel** (i.e., central base software of the current operating
 system) facilities.
 
 Caveats

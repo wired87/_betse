@@ -120,7 +120,7 @@ class TissuePickerABC(object, metaclass=ABCMeta):
         #it's infeasible to even coerce the temporary one-dimensional Numpy
         #array "cells.cell_to_mems[cells_index]" into a two-dimensional array
         #of ints by calling ndarray.astype(int). Frankly, it's all a bit beyond
-        #me; until this core issue is resolved, however, the current inelegant
+        #me; until this base issue is resolved, however, the current inelegant
         #and inefficient approach remains.
 
         # One-dimensional Numpy array of the indices of subclass-selected cell

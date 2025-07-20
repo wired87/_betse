@@ -451,10 +451,10 @@ class Simulator(object):
     @type_check
     def init_core(self, phase: SimPhase) -> None:
         '''
-        Create core data structures required by both the passed simulation
+        Create base data structures required by both the passed simulation
         phase *and* all subsequent phases.
 
-        This method initializes core computational matrices -- including those
+        This method initializes base computational matrices -- including those
         concerning intracellular and environmental concentrations, voltages,
         specific diffusion constants, and types of ions included in the
         simulation. This method is performed only once per seed (i.e., cell
@@ -468,7 +468,7 @@ class Simulator(object):
         '''
 
         # Log this attempt.
-        logs.log_info('Creating core computational matrices...')
+        logs.log_info('Creating base computational matrices...')
 
         # Localize frequently referenced phase variables for convenience.
         p = phase.p
@@ -760,7 +760,7 @@ class Simulator(object):
         Prepare tissue-centric data structures required by the passed phase in
         a general-purpose manner applicable to *all* possible phases.
 
-        This method initializes core computational matrices -- including those
+        This method initializes base computational matrices -- including those
         concerning tissue, cut, and boundary profiles, dynamic activities, and
         optional simulation features safely modifiable between the
         initialization and simulation phases (e.g., electroosmotic fluid flow).
@@ -964,7 +964,7 @@ class Simulator(object):
         self.rho_pump = 1
         self.rho_channel = 1
 
-        # Initialize core user-specified interventions.
+        # Initialize base user-specified interventions.
         phase.dyna.init_events(phase)
 
         # # update the microtubules dipole for the case user changed it between init and sim:
@@ -1045,7 +1045,7 @@ class Simulator(object):
         # * "time_steps", the array of all time steps for this phase.
         # * "time_steps_sampled", this array resampled to reduce data storage.
         # * "solver_context", the context manager intended to contextualize the
-        #   core time loop for this phase.
+        #   base time loop for this phase.
         time_steps, time_steps_sampled, solver_context = self._plot_loop(phase)
 
         # Notify the caller of the range of work performed by this subcommand.
@@ -2428,7 +2428,7 @@ class Simulator(object):
               * The number of frames exported from each animation.
 
             * ``solver_context`` is the context manager intended to wrap the
-              core time loop for this phase. Specifically, this is either:
+              base time loop for this phase. Specifically, this is either:
               * If the configuration for this phase enables non-blocking display
                 and/or saving of one or more in-phase exports (e.g., plots), the
                 context manager doing so.

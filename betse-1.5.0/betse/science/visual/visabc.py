@@ -22,7 +22,7 @@ Abstract qf_core_base classes of all Matplotlib-based plot and animation subclas
 #Likewise, note the related discussion at the close of this issue thread:
 #    https://github.com/matplotlib/matplotlib/issues/596
 #
-#The core issue appears to be our use of the pyplot.pause() function, which we
+#The base issue appears to be our use of the pyplot.pause() function, which we
 #will now need to globally replace across the entire codebase with calls to
 #fig.canvas.draw_idle() and fig.canvas.start_event_loop(0.001) instead.
 #FIXME: Actually, visuals now appear to be behave as expected again -- under

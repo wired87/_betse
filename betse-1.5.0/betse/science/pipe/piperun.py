@@ -194,7 +194,7 @@ def piperunner(
         Sequence of one or more human-readable strings iteratively naming all
         arbitrary categories to which this runner belongs (in descending order
         of hierarchical taxonomy). Categories are arbitrary labels accessed
-        *only* by external interfaces and are otherwise ignored by the core
+        *only* by external interfaces and are otherwise ignored by the base
         codebase. Specifically:
 
         * The first string in this sequence names an arbitrary **root

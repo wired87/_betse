@@ -156,7 +156,7 @@ class AppMetaABC(object, metaclass=ABCMeta):
         #. Validates but does *not* initialize all mandatory third-party
            dependencies of this application, which the :meth:`init_libs` method
            does so subsequently.
-        #. Validates core directories and files required at program startup,
+        #. Validates base directories and files required at program startup,
            creating all such directories and files that do *not* already exist
            and are reasonably creatable.
         #. Validates the active Python interpreter (e.g., to support
